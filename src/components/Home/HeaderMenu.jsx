@@ -81,22 +81,6 @@ export default function HeaderMenu() {
                   alignItems: "center",
                 }}
               >
-                <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                  {MenuData.map((item,i) => (
-                    <Button
-                      key={i}
-                      sx={{
-                        color: "black",
-                        fontFamily: "Barlow",
-                        fontWeight: "500",
-                        ml: 2,
-                      }}
-                      onClick={() => navigate(item.path)}
-                    >
-                      {item.title}
-                    </Button>
-                  ))}
-                </Box>
                 <Box
                   sx={{
                     display: {
@@ -111,12 +95,27 @@ export default function HeaderMenu() {
                     style={{
                       width: "100px",
                       cursor: "pointer",
-                      marginLeft: "-200px",
                     }}
                     src={Logo}
                     onClick={() => navigate("/")}
                     alt=""
                   />
+                </Box>
+                <Box sx={{ display: { xs: "none", sm: "block" } }}>
+                  {MenuData.map((item, i) => (
+                    <Button
+                      key={i}
+                      sx={{
+                        color: "black",
+                        fontFamily: "Barlow",
+                        fontWeight: "500",
+                        ml: 2,
+                      }}
+                      onClick={() => navigate(item.path)}
+                    >
+                      {item.title}
+                    </Button>
+                  ))}
                 </Box>
 
                 <Box sx={{ color: "gray" }}>

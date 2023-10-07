@@ -63,7 +63,21 @@ export default function FormContact() {
           type="submit"
           variant="contained"
           color="primary"
-          sx={{ mt: 2 }}
+          sx={{
+            background: "linear-gradient(270deg, #307bc4 0%, #274760 100%)",
+            p: 1,
+            borderRadius: "30px",
+            width: "250px",
+            mt: 2,
+            transition: " 0.5s linear",
+            color: "white",
+
+            "&:hover": {
+              transition: " 0.5s linear",
+              width: "180px",
+              background: "linear-gradient(270deg, #307bc4 0%, #274760 100%)",
+            },
+          }}
           fullWidth
         >
           Send

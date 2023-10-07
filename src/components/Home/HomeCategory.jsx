@@ -135,8 +135,32 @@ export default function HomeCategory() {
       </Grid>
 
       <Box sx={{ textAlign: "end" }}>
-        <Button variant="outlined" sx={{ mt: 4, mr: 12 }}>
-          <Link target="blank" to="https://ardohome.netlify.app" style={{textDecoration:"none", color:"blue"}}>See all</Link>
+        <Button
+          variant="contained"
+          sx={{
+            background: "linear-gradient(270deg, #307bc4 0%, #274760 100%)",
+            p: 1,
+            borderRadius: "30px",
+            width: "150px",
+            mt: 8,
+            transition: " 0.5s linear",
+            color: "white",
+
+            "&:hover": {
+              transition: " 0.5s linear",
+              width: "180px",
+              background: "linear-gradient(270deg, #307bc4 0%, #274760 100%)",
+            },
+            mr: 10,
+          }}
+        >
+          <Link
+            target="blank"
+            to="https://ardohome.netlify.app"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            See all
+          </Link>
         </Button>
       </Box>
     </Box>

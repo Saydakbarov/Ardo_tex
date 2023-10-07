@@ -38,7 +38,22 @@ export default function NewCollections() {
       <Box sx={{ textAlign: "end" }}>
         <Button
           variant="outlined"
-          sx={{ mt: 4, mr: 12, color: "black", border: "1px solid black" }}
+          sx={{
+            background: "linear-gradient(270deg, #307bc4 0%, #274760 100%)",
+            p: 1,
+            borderRadius: "30px",
+            width: "150px",
+            mt: 4,
+            transition: " 0.5s linear",
+            mr: 8,
+            color: "white",
+
+            "&:hover": {
+              transition: " 0.5s linear",
+              width: "180px",
+              background: "linear-gradient(270deg, #307bc4 0%, #274760 100%)",
+            },
+          }}
         >
           See all
         </Button>
