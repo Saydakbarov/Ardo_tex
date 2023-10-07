@@ -28,6 +28,8 @@ export default function HeaderMenu() {
       sx={{
         position: "relative",
         width: "100%",
+        maxWidth: "1300px",
+        margin: "0 auto",
       }}
     >
       <Box

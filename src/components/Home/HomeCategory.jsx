@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 export default function HomeCategory() {
   return (
-    <Box sx={{ mt: 14 }}>
+    <Box sx={{ maxWidth: "1500px", margin: "0 auto",  mt: 14 }}>
       <Box
         sx={{
           display: "flex",

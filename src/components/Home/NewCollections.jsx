@@ -4,7 +4,7 @@ import { NewCollectionData } from "../../data";
 
 export default function NewCollections() {
   return (
-    <Box sx={{ mt: 8 }}>
+    <Box sx={{ maxWidth: "1500px", margin: "0 auto", mt: 8 }}>
       <Typography
         sx={{ fontSize: "34px", fontWeight: "bold", textAlign: "center" }}
       >

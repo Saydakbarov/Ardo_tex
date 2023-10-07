@@ -17,6 +17,10 @@ export default function HeaderMain() {
       <Grid
         container
         justifyContent={{ xs: "center", sm: "center", md: "center" }}
+        sx={{
+          maxWidth: "1500px",
+          margin: "0 auto",
+        }}
       >
         <Grid item xl={12} lg={12} md={12} sm={11} xs={11}>
           <Swiper

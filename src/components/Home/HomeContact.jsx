@@ -4,7 +4,9 @@ import FormContact from "../Contact/FormContact";
 
 export default function HomeContact() {
   return (
-    <Box sx={{ textAlign: "center", mt: 12 }}>
+    <Box
+      sx={{ textAlign: "center", maxWidth: "1500px", margin: "0 auto", mt: 12 }}
+    >
       <Typography sx={{ fontSize: "34px", color: "black" }}>
         Contact Us
       </Typography>

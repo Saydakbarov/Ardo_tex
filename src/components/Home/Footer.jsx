@@ -22,7 +22,6 @@ export default function Footer() {
     <Box
       sx={{
         mt: 24,
-        width: "100%",
         background: "#E4EEF1",
         p: 3,
       }}

@@ -4,7 +4,12 @@ import LastestNewsCard from "./LastestNewsCard";
 
 export default function LastestNews() {
   return (
-    <Box>
+    <Box
+      sx={{
+        maxWidth: "1500px",
+        margin: "0 auto",
+      }}
+    >
       <Box
         sx={{
           backgroundImage:
