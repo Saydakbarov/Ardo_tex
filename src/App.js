@@ -18,7 +18,7 @@ function App() {
           <Route path="/vacancy" element={<VacancyPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/single" element={<SinglePage />} />
+          <Route path="/single/:id" element={<SinglePage />} />
         </Routes>
       </BrowserRouter>
     </div>

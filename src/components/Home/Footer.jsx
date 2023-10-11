@@ -68,8 +68,8 @@ export default function Footer() {
 
         <Grid item lg={3}>
           <Box>
-            {MenuData.map((item) => (
-              <Box sx={{ display: "flex", flexDirection: "column" }}>
+            {MenuData.map((item, i) => (
+              <Box key={i} sx={{ display: "flex", flexDirection: "column" }}>
                 <Button
                   key={item.title}
                   sx={{

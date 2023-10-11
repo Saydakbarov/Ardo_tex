@@ -10,7 +10,7 @@ export default function SinglePage() {
     <Box>
       <HeaderMenu />
       <SingleMain />
-      <SingleProduct />
+      <SingleProduct  />
       <Footer />
     </Box>
   );

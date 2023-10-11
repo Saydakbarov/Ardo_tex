@@ -5,37 +5,53 @@ import SingleBox from "./SingleBox";
 import SingleImageBox from "./SingleImageBox";
 import InnerImageZoom from "react-inner-image-zoom";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.min.css";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { CategoryData } from "../../data";
 // import ReactImageMagnify from "react-image-magnify";
 // const ReactImageMagnify = lazy(() => import("react-image-magnify"))
 
 export default function SingleProduct() {
+  const { id } = useParams();
+
+  const [subCategoryData, setSubcategoryData] = useState([]);
+
+  const [secondId, setId] = useState(2);
+
+  const data = CategoryData.map((v) => v.subCategory);
+
+  useEffect(() => {
+    data.map((v) =>
+      v.filter((v) =>
+        v.id == id ? setSubcategoryData(v.secondSub2Category) : []
+      )
+    );
+  }, id);
+
+  const singleData = subCategoryData.filter((e) => e.id === secondId);
+
   return (
     <Box>
       <Grid container justifyContent={"center"} gap={4}>
         <Grid component={"div"} item lg={4}>
-          {/* <ReactImageMagnify
-            {...{
-              smallImage: {
-                alt: "Wristwatch by Ted Baker London",
-                isFluidWidth: true,
-                src: "https://www.davis.pl/wp-content/uploads/2023/01/retro-bliss-20_Retro_Bliss_20.jpg",
-              },
-              largeImage: {
-                src: "https://www.davis.pl/wp-content/uploads/2023/01/retro-bliss-20_Retro_Bliss_20.jpg",
-                width: 1200,
-                height: 899,
-              },
-            }}
-          /> */}
+          <Box sx={{ width: "100%" }}>
+            {singleData.map((v) => (
+              <InnerImageZoom src={v.img} zoomSrc={v.img} />
+            ))}
+          </Box>
 
-          <InnerImageZoom
-            src={
-              "https://www.davis.pl/wp-content/uploads/2023/01/retro-bliss-20_Retro_Bliss_20.jpg"
-            }
-            zoomSrc="https://www.davis.pl/wp-content/uploads/2023/01/retro-bliss-20_Retro_Bliss_20.jpg"
-          />
-
-          <SingleImageBox />
+          <Box sx={{ display: "flex", gap: "10px", flexWrap: "wrap", mt: 3 }}>
+            {subCategoryData.map((v, i) => (
+              <Box key={i} sx={{ width: "90px" }}>
+                <img
+                  style={{ width: "100%", borderRadius: "10px" }}
+                  src={v.img}
+                  alt=""
+                  onClick={() => setId(v.id)}
+                />
+              </Box>
+            ))}
+          </Box>
         </Grid>
         <Grid item lg={5}>
           <Typography sx={{ fontSize: "50px", fontFamily: "Inter" }}>
