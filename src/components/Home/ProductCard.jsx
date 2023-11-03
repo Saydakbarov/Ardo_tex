@@ -148,7 +148,7 @@ export default function ProductsCard() {
                       </Box>
                       <Box>
                         <Box
-                          sx={{ background: "#FAF1E4", borderRadius: "6px" }}
+                          sx={{ background: "#DEEAED", borderRadius: "6px" }}
                         >
                           <Box
                             sx={{
@@ -159,22 +159,17 @@ export default function ProductsCard() {
                               p: 1,
                             }}
                           >
-                            <Typography
-                              sx={{ fontSize: "18px", color: "black" }}
-                            >
-                              Decor
-                            </Typography>
                             <Rating
                               name="simple-controlled"
                               value={ratingValue}
                               onChange={(event, newValue) => {
                                 setRatingValue(newValue);
                               }}
-                              sx={{ fontSize: "16px" }}
+                              sx={{ fontSize: "22px" }}
                             />
                           </Box>
 
-                          <Box
+                          {/* <Box
                             sx={{ display: "flex", gap: "15px", mt: 1, p: 1 }}
                           >
                             <Typography
@@ -197,7 +192,7 @@ export default function ProductsCard() {
                             >
                               ${v.price}.00
                             </Typography>
-                          </Box>
+                          </Box> */}
                         </Box>
                       </Box>
                     </Box>

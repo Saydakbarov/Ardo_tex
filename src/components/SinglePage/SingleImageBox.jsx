@@ -4,6 +4,8 @@ import { PhotoSwipeGallery } from "react-photoswipe-2";
 
 import { SingleProductImageData } from "../../data";
 
+console.log(SingleProductImageData);
+
 export default function SingleImageBox({ img, title }) {
   return (
     <Box sx={{ display: "flex", gap: "10px", flexWrap: "wrap", mt: 3 }}>

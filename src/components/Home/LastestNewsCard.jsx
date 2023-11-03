@@ -152,7 +152,7 @@ export default function LastestNewsCard() {
                       </Box>
                       <Box>
                         <Box
-                          sx={{ background: "#FAF1E4", borderRadius: "6px" }}
+                          sx={{ background: "#DEEAED", borderRadius: "6px" }}
                         >
                           <Box
                             sx={{
@@ -163,19 +163,14 @@ export default function LastestNewsCard() {
                               p: 1,
                             }}
                           >
-                            <Typography
-                              sx={{ fontSize: "18px", color: "black" }}
-                            >
-                              Decor
-                            </Typography>
-                            {/* <Rating
+                            <Rating
                               name="simple-controlled"
                               value={ratingValue}
                               onChange={(event, newValue) => {
                                 setRatingValue(newValue);
                               }}
-                              sx={{ fontSize: "16px" }}
-                            /> */}
+                              sx={{ fontSize: "22px" }}
+                            />
                           </Box>
 
                           <Box
@@ -192,7 +187,7 @@ export default function LastestNewsCard() {
                                 Math.round((v.price * v.percentage) / 100)}
                               .00
                             </Typography> */}
-                            <Typography
+                            {/* <Typography
                               sx={{
                                 color: "red",
                                 // color: v.percentage === 0 ? "red" : "gray",
@@ -201,7 +196,7 @@ export default function LastestNewsCard() {
                               }}
                             >
                               ${v.price}.00
-                            </Typography>
+                            </Typography> */}
                           </Box>
                         </Box>
                       </Box>

@@ -11,6 +11,7 @@ export default function SinglePage() {
       <HeaderMenu />
       <SingleMain />
       <SingleProduct  />
+      
       <Footer />
     </Box>
   );

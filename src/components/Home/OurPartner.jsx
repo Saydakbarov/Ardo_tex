@@ -28,19 +28,19 @@ export default function OurPartner() {
           }}
           breakpoints={{
             640: {
-              slidesPerView: 2,
+              slidesPerView: 1,
               spaceBetween: 20,
             },
             768: {
-              slidesPerView: 4,
+              slidesPerView: 2,
               spaceBetween: 40,
             },
             1024: {
-              slidesPerView: 5,
+              slidesPerView: 3,
               spaceBetween: 30,
             },
             1500: {
-              slidesPerView: 5,
+              slidesPerView: 3,
               spaceBetween: 30,
             },
           }}
@@ -49,8 +49,20 @@ export default function OurPartner() {
           // style={{ marginTop: "50px" }}
         >
           {PartnerData.map((v, i) => (
-            <SwiperSlide key={i} style={{ width: "140px" }}>
-              <img style={{ width: "100px" }} src={v.img} alt="" />
+            <SwiperSlide
+              key={i}
+              style={{
+                width: "300px",
+                textAlign: "center",
+                height: "300px",
+                borderRight: "2px solid gray",
+              }}
+            >
+              <img
+                style={{ width: "200px", marginTop: "50px" }}
+                src={v.img}
+                alt=""
+              />
             </SwiperSlide>
           ))}
         </Swiper>

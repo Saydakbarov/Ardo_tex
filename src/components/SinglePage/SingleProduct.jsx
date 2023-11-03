@@ -26,7 +26,7 @@ export default function SingleProduct() {
         v.id == id ? setSubcategoryData(v.secondSub2Category) : []
       )
     );
-  }, id);
+  }, [id]);
 
   const singleData = subCategoryData.filter((e) => e.id === secondId);
 
