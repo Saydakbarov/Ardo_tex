@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 export default function HomeCategory() {
   return (
-    <Box sx={{ maxWidth: "1500px", margin: "0 auto",  mt: 14 }}>
+    <Box sx={{ maxWidth: "1500px", margin: "0 auto", mt: 14 }}>
       <Box
         sx={{
           display: "flex",
@@ -24,15 +24,15 @@ export default function HomeCategory() {
       >
         <img
           style={{
-            width: "100px",
+            width: "200px",
             cursor: "pointer",
           }}
           src={ArdoHomeLogo}
           alt=""
         />
-        <Typography sx={{ fontSize: "34px", color: "gold" }}>
+        {/* <Typography sx={{ fontSize: "34px", color: "gold" }}>
           Furniture
-        </Typography>
+        </Typography> */}
       </Box>
 
       <Grid container justifyContent={"center"} sx={{ mt: 8 }} gap={3}>
