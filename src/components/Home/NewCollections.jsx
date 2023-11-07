@@ -26,7 +26,6 @@ export default function NewCollections() {
               sx={{
                 fontSize: "30px",
                 textAlign: "center",
-                fontFamily: "Inter",
               }}
             >
               {v.title}

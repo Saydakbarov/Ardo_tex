@@ -27,20 +27,18 @@ export default function AboutCompany() {
           <Typography sx={{ fontSize: "34px", fontWeight: "600" }}>
             WELCOME TO <span style={{ color: "red" }}>Ardo Tex</span>.
           </Typography>
-          <Typography sx={{ color: "gray", mt: 5 }}>
-            Eposi provide how all this mistaken idea of denouncing pleasure and
-            sing pain was born an will give you a complete account of the
-            system, and expound the actual teachings of the eat explorer of the
-            truth, the mer of human.
+          <Typography sx={{ color: "gray", mt: 2 }}>
+            Двадцатилетняя деятельность компании, опыт, квалифицированный
+            персонал, высокое качество и широкий ассортимент позволяют
+            удерживать позицию одного из лидеров на рынке Узбекистана.
           </Typography>
           <Typography sx={{ fontSize: "22px", fontWeight: "550", mt: 4 }}>
             WIN BEST ONLINE SHOP AT 2019
           </Typography>
-          <Typography sx={{ color: "gray", mt: 3 }}>
-            Eposi provide how all this mistaken idea of denouncing pleasure and
-            sing pain was born an will give you a complete account of the
-            system, and expound the actual teachings of the eat explorer of the
-            truth, the mer of human.
+          <Typography sx={{ color: "gray", mt: 2 }}>
+            Для индивидуальных заказчиков - дизайн мебели и 3D визуализация. Для
+            производителей мебели и дизайнеров мы предлагаем специальные
+            условия.
           </Typography>
         </Grid>
       </Grid>

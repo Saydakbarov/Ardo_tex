@@ -56,7 +56,7 @@ export default function HeaderMain() {
                         xs: "350px",
                         sm: "400px",
                         md: "300px",
-                        lg: "400px",
+                        lg: "500px",
                       },
                     }}
                     className="animate__animated animate__backInLeft"
@@ -69,7 +69,6 @@ export default function HeaderMain() {
                           md: "36px",
                           lg: "54px",
                         },
-                        fontFamily: "Inter",
                         fontWeight: "600",
                       }}
                     >
@@ -82,7 +81,6 @@ export default function HeaderMain() {
                           md: "16px",
                           lg: "18px",
                         },
-                        fontFamily: "Inter",
                         fontWeight: "500",
                       }}
                     >

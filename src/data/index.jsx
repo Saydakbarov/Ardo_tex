@@ -215,19 +215,19 @@ export const PartnerData = [
 
 export const AboutPageProductData = [
   {
-    img: "https://htmldemo.net/eposi/eposi/assets/img/banners/banner7.webp",
-    title: "OUR VISSION",
-    text: "posi provide how all this mistaken idea of denouncing pleasure and sing pain was born an will give you a ete account of the system, and expound the actual teangs the eat explorer of the truth, the mer of human tas assumenda est, omnis dolor repellend",
+    img: "https://ukrlinen.com/modules/xipblog/img/large-about-advantages.jpg",
+    title: "ТКАНИ ДЛЯ МЕБЕЛИ",
+    text: "«Лицо» любого дивана, кресла или стула – его обивка. С её помощью можно придать предметам интерьера определённый стиль, сделать их более уютными или акцентировать их эксклюзивность. В нашем магазине вы можете купить ткань для обивки мебели той расцветки, фактуры, плотности, которая максимально гармонично впишется в ваш интерьер и вдохнёт новую жизнь в любимый диванчик.",
   },
   {
-    img: "https://htmldemo.net/eposi/eposi/assets/img/banners/banner8.webp",
-    title: "OUR MISSION",
-    text: "posi provide how all this mistaken idea of denouncing pleasure and sing pain was born an will give you a ete account of the system, and expound the actual teangs the eat explorer of the truth, the mer of human tas assumenda est, omnis dolor repellend",
+    img: "https://slavamebel.ru/images/page/78357836.jpg",
+    title: "МЕХАНИЗМЫ ДЛЯ МЕБЕЛИ",
+    text: "Представьте себе, что при правильном выборе мебели, вам достаточно сделать несколько нехитрых движений, и благодаря волшебному механизму, диван превратится в шикарное спальное место или место для отдыха. Мебель в квартире не должна быть сувениром, она должна использоваться и приносить комфорт в каждый дом, поэтому крайне важно уделять внимание использованию механизмов.",
   },
   {
-    img: "https://htmldemo.net/eposi/eposi/assets/img/banners/banner9.webp",
-    title: "OUR GOAL",
-    text: "posi provide how all this mistaken idea of denouncing pleasure and sing pain was born an will give you a ete account of the system, and expound the actual teangs the eat explorer of the truth, the mer of human tas assumenda est, omnis dolor repellend",
+    img: "https://www.angstrem-mebel.ru/upload/medialibrary/e21/o78ohc6d948jqwyimoja1jpxpu0k1lij.png",
+    title: "ФУРНИТУРА ДЛЯ МЕБЕЛИ",
+    text: "Когда мы приобретаем мебель, то, в первую очередь, оцениваем ее внешний вид. Но о том, как долго она может прослужить и насколько мебель будет практична, функциональна и надежна, покупатели задумываются гораздо реже. А ведь именно мебельная фурнитура хорошего качества является залогом продолжительного срока службы изделий.",
   },
 ];
 

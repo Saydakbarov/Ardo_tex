@@ -28,7 +28,7 @@ export default function ProductCategory() {
         <Grid
           item
           lg={2.5}
-          sx={{ border: "2px solid gray", p: 2, borderRadius: "4px" }}
+          sx={{ border: "2px solid gray", p: 2, borderRadius: "10px" }}
         >
           <Typography sx={{ fontSize: "22px", fontWeight: "bold" }}>
             Type
@@ -102,114 +102,6 @@ export default function ProductCategory() {
                   width: "25px",
                   height: "25px",
                   background: "yellow",
-                  borderRadius: "2px",
-                  margin: "0px",
-                }}
-              ></p>
-              <p
-                style={{
-                  width: "25px",
-                  height: "25px",
-                  background: "pink",
-                  borderRadius: "2px",
-                  margin: "0px",
-                }}
-              ></p>
-              <p
-                style={{
-                  width: "25px",
-                  height: "25px",
-                  background: "green",
-                  borderRadius: "2px",
-                  margin: "0px",
-                }}
-              ></p>
-              <p
-                style={{
-                  width: "25px",
-                  height: "25px",
-                  background: "orange",
-                  borderRadius: "2px",
-                  margin: "0px",
-                }}
-              ></p>
-              <p
-                style={{
-                  width: "25px",
-                  height: "25px",
-                  background: "purple",
-                  borderRadius: "2px",
-                  margin: "0px",
-                }}
-              ></p>
-              <p
-                style={{
-                  width: "25px",
-                  height: "25px",
-                  background: "red",
-                  borderRadius: "2px",
-                  margin: "0px",
-                }}
-              ></p>
-              <p
-                style={{
-                  width: "25px",
-                  height: "25px",
-                  background: "black",
-                  borderRadius: "2px",
-                  margin: "0px",
-                }}
-              ></p>
-              <p
-                style={{
-                  width: "25px",
-                  height: "25px",
-                  background: "green",
-                  borderRadius: "2px",
-                  margin: "0px",
-                }}
-              ></p>
-              <p
-                style={{
-                  width: "25px",
-                  height: "25px",
-                  background: "yellow",
-                  borderRadius: "2px",
-                  margin: "0px",
-                }}
-              ></p>
-              <p
-                style={{
-                  width: "25px",
-                  height: "25px",
-                  background: "pink",
-                  borderRadius: "2px",
-                  margin: "0px",
-                }}
-              ></p>
-              <p
-                style={{
-                  width: "25px",
-                  height: "25px",
-                  background: "green",
-                  borderRadius: "2px",
-                  margin: "0px",
-                }}
-              ></p>
-              <p
-                style={{
-                  width: "25px",
-                  height: "25px",
-                  background: "orange",
-                  borderRadius: "2px",
-                  margin: "0px",
-                }}
-              ></p>
-              <p
-                style={{
-                  width: "25px",
-                  height: "25px",
-                  background: "purple",
                   borderRadius: "2px",
                   margin: "0px",
                 }}

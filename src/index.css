@@ -7,12 +7,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+
 /* 
 .globalContainer{
   max-width: 1520px;
   margin: 0 auto;
 } */
+
+p{
+  font-family: monospace !important ;
+}

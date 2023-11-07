@@ -28,11 +28,11 @@ export default function LastestNews() {
             left: "5%",
           }}
         >
-          <Typography sx={{ fontSize: "34px", fontFamily: "Inter" }}>
+          <Typography sx={{ fontSize: "34px" }}>
             Pebble Ottoman
           </Typography>
           <Typography
-            sx={{ fontSize: "16px", fontFamily: "Inter", mt: 2, color: "gray" }}
+            sx={{ fontSize: "16px",  mt: 2, color: "gray" }}
           >
             Kiln-dried engineered wood frame with reinforced joinery. webbed
             seat support

@@ -109,7 +109,6 @@ export default function HeaderMenu() {
                       key={i}
                       sx={{
                         color: "black",
-                        fontFamily: "Barlow",
                         fontWeight: "500",
                         ml: 2,
                       }}

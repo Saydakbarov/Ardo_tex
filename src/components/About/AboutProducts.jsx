@@ -9,7 +9,11 @@ export default function AboutProduct() {
         {AboutPageProductData.map((v, i) => (
           <Grid key={i} item lg={3}>
             <Box sx={{ width: "100%", minHeight: "300px" }}>
-              <img style={{ width: "100%" }} src={v.img} alt="" />
+              <img
+                style={{ width: "100%", height: "400px", objectFit: "cover" }}
+                src={v.img}
+                alt=""
+              />
               <Typography sx={{ mt: 1, fontWeight: "bold" }}>
                 {v.title}
               </Typography>
