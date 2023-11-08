@@ -1,8 +1,16 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import { NewCollectionData } from "../../data";
+import { useSubCategories } from "../../query-data/data.service";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function NewCollections() {
+
+  const {data, isLoading, refetch} = useSubCategories("4")
+  console.log(data, "da");
+  
+  const navigate = useNavigate()
+
   return (
     <Box sx={{ maxWidth: "1500px", margin: "0 auto", mt: 8 }}>
       <Typography
@@ -12,23 +20,19 @@ export default function NewCollections() {
       </Typography>
 
       <Grid container justifyContent={"center"} gap={4} mt={5}>
-        {NewCollectionData.map((v, i) => (
+        {data?.data?.map((v, i) => (
           <Grid item lg={2.5} md={2.5} sm={5.3} xs={10} key={v.id}>
-            <video
-              style={{ width: "100%", borderRadius: "6px" }}
-              autoPlay
-              muted
-              loop
-            >
-              <source src={v.video} type="video/mp4" />
-            </video>
+            <img
+              style={{ width: "100%", borderRadius: "6px" }} src={v?.sub_link} />
             <Typography
               sx={{
                 fontSize: "30px",
                 textAlign: "center",
               }}
             >
-              {v.title}
+              <Link style={{textDecoration: "none", color: "inherit"}} to={`/product?category=${4}&subcategory=${v?.sub_category_id}`} >
+              {v.sub_category_name_uz}
+              </Link>
             </Typography>
           </Grid>
         ))}
@@ -37,6 +41,9 @@ export default function NewCollections() {
       <Box sx={{ textAlign: "end" }}>
         <Button
           variant="outlined"
+          onClick={() => {
+            navigate("/product?category=4")
+          } }
           sx={{
             background: "linear-gradient(270deg, #307bc4 0%, #274760 100%)",
             p: 1,
