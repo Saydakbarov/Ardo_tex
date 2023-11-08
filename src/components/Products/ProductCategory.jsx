@@ -16,29 +16,34 @@ import ProductCard from "./ProductCard";
 export default function ProductCategory() {
   const [categoryId, setCategoryId] = useState(1);
 
-  const [value, setValue] = React.useState([20000, 1000000]);
+  const [status, setStatus] = useState(false);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  // const [value, setValue] = React.useState([20000, 1000000]);
+
+  // const handleChange = (event, newValue) => {
+  //   setValue(newValue);
+  // };
+  console.log(categoryId);
 
   return (
     <Box>
       <Grid container justifyContent={"center"} gap={10}>
-        <Grid
-          item
-          lg={2.5}
-          sx={{ border: "2px solid gray", p: 2, borderRadius: "10px" }}
-        >
+        <Grid item lg={2.5} sx={{ p: 2, borderRadius: "10px" }}>
           <Typography sx={{ fontSize: "22px", fontWeight: "bold" }}>
             Type
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", mt: 2 }}>
             {CategoryData.map((v) => (
               <FormControlLabel
-                control={<Checkbox />}
+                control={
+                  <Checkbox
+                    onChange={(e) => {
+                      setStatus(e.target.checked);
+                      setCategoryId(v.id);
+                    }}
+                  />
+                }
                 label={v.title}
-                onChange={() => setCategoryId(v.id)}
               />
             ))}
           </Box>
@@ -128,10 +133,10 @@ export default function ProductCategory() {
           <TextField
             fullWidth
             id="filled-basic"
-            label="Filled"
-            variant="filled"
+            label="Search"
+            variant="standard"
           />
-          <ProductCard id={categoryId} />
+          <ProductCard id={categoryId} status={status} />
         </Grid>
       </Grid>
     </Box>

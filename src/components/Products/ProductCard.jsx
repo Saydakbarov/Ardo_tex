@@ -5,16 +5,22 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function ProductCard({ id }) {
+export default function ProductCard({ id, status }) {
   const [subcategory, setSubcategory] = useState([]);
 
   const navigate = useNavigate();
 
+  console.log(id);
+
   useEffect(() => {
     CategoryData.filter((e) =>
-      e.id == id ? setSubcategory(e.subCategory) : []
+      e.id == id
+        ? setSubcategory((prevData) => [...prevData, e.subCategory])
+        : []
     );
   }, [id]);
+
+  console.log(subcategory);
 
   return (
     <Box
@@ -26,23 +32,32 @@ export default function ProductCard({ id }) {
         mt: 4,
       }}
     >
-      {subcategory.map((v) => (
-        <Box
-          key={v.id}
-          sx={{ width: "323px", cursor: "pointer" }}
-          component={"div"}
-          onClick={() => navigate("/single/" + v.id)}
-        >
-          <img
-            style={{
-              width: "100%",
+      {subcategory.map((v) =>
+        v.map((v, i) => (
+          <Box
+            key={v.id}
+            sx={{
+              width: "300px",
+              cursor: "pointer",
+              border: "2px solid gray",
+              borderRadius: "6px",
+              boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
             }}
-            src={v.img}
-            alt=""
-          />
-          <Typography>{v.title}</Typography>
-        </Box>
-      ))}
+            component={"div"}
+            onClick={() => navigate("/single/" + v.id)}
+          >
+            <img
+              style={{
+                width: "100%",
+                height: "300px",
+              }}
+              src={v.img}
+              alt=""
+            />
+            <Typography sx={{ p: 1 }}>{v.title}</Typography>
+          </Box>
+        ))
+      )}
     </Box>
   );
 }
