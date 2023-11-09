@@ -1,8 +1,12 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import ProductsCard from "./ProductCard";
+import { useTranslation } from "react-i18next";
 
 export default function BestSeller() {
+
+  const {t} = useTranslation()
+
   return (
     <Box
       sx={{ textAlign: "center", maxWidth: "1500px", margin: "0 auto", mt: 12 }}
@@ -10,7 +14,7 @@ export default function BestSeller() {
       <Typography
         sx={{ fontSize: "34px", fontWeight: "600", textAlign: "center" }}
       >
-        Our Products
+        {t("our-products")}
       </Typography>
 
       <ProductsCard />

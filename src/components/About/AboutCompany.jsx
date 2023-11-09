@@ -1,7 +1,11 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function AboutCompany() {
+
+  const {t, i18n} = useTranslation()
+
   return (
     <Container
       sx={{
@@ -24,21 +28,17 @@ export default function AboutCompany() {
           }}
         ></Grid>
         <Grid item lg={7} md={7} sm={10} xs={12} sx={{ padding: "0px 20px" }}>
-          <Typography sx={{ fontSize: "34px", fontWeight: "600" }}>
-            WELCOME TO <span style={{ color: "red" }}>Ardo Tex</span>.
+          <Typography  sx={{ fontSize: "34px", fontWeight: "600" }}>
+            {i18n?.language == "ru" ? t("welcome-to") : ""} <span style={{ color: "red" }}>Ardo Tex</span> {i18n?.language == "uz" ? t("welcome-to") : ""}.
           </Typography>
           <Typography sx={{ color: "gray", mt: 2 }}>
-            Двадцатилетняя деятельность компании, опыт, квалифицированный
-            персонал, высокое качество и широкий ассортимент позволяют
-            удерживать позицию одного из лидеров на рынке Узбекистана.
+            {t("about-desc")}
           </Typography>
           <Typography sx={{ fontSize: "22px", fontWeight: "550", mt: 4 }}>
-            WIN BEST ONLINE SHOP AT 2019
+            {t("about-head-2")}
           </Typography>
           <Typography sx={{ color: "gray", mt: 2 }}>
-            Для индивидуальных заказчиков - дизайн мебели и 3D визуализация. Для
-            производителей мебели и дизайнеров мы предлагаем специальные
-            условия.
+            {t("about-desc-2")}
           </Typography>
         </Grid>
       </Grid>

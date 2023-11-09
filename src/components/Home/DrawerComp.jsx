@@ -12,6 +12,7 @@ import {
 import { Menu } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { MenuData } from "../../data";
+import { useTranslation } from "react-i18next";
 
 // import TamalLogo from "../../tamalLogo.png";
 // import SearchBox from "./SearchBox";
@@ -19,6 +20,7 @@ import { MenuData } from "../../data";
 export default function DrawerComp() {
   const navigate = useNavigate();
   const [openDrawer, setOpenDrawer] = useState(false);
+  const {t} = useTranslation()
   return (
     <React.Fragment>
       <Drawer
@@ -51,7 +53,7 @@ export default function DrawerComp() {
             <ListItemButton key={i} onClick={() => setOpenDrawer(false)}>
               <ListItemIcon onClick={() => navigate(page.path)}>
                 <ListItemText sx={{ color: "black !important" }}>
-                  {page.title}
+                  {t(page.title)}
                 </ListItemText>
               </ListItemIcon>
             </ListItemButton>

@@ -2,8 +2,12 @@ import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 import { HeaderBoxData } from "../../data";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function HeaderBox() {
+
+  const {t, i18n} = useTranslation()
+
   return (
     <Box sx={{ maxWidth: "1500px", margin: "0 auto", mt: 8 }}>
       <Grid container justifyContent={"center"} gap={4}>
@@ -28,7 +32,7 @@ export default function HeaderBox() {
           >
             <Box>
               <Typography sx={{ fontSize: "34px", fontWeight: "bold", mt: 5 }}>
-                {v.title}
+                {i18n?.language == "uz" ? v.title_uz : v.title_ru}
               </Typography>
               <Link
                 style={{
@@ -37,7 +41,7 @@ export default function HeaderBox() {
                   borderBottom: "1px solid red",
                 }}
               >
-                Show More
+                {t("show-more")}
               </Link>
             </Box>
             <Box>

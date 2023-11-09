@@ -1,9 +1,11 @@
 import { ArrowRight, KeyboardArrowRight } from "@mui/icons-material";
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 export default function NewsMain() {
+  const {t} = useTranslation()
   return (
     <Box
       sx={{
@@ -21,7 +23,7 @@ export default function NewsMain() {
         }}
       >
         <Typography sx={{ fontSize: "30px" }}>
-          News
+          {t("news")}
         </Typography>
         <Box
           sx={{
@@ -33,11 +35,11 @@ export default function NewsMain() {
           }}
         >
           <Link to="/" style={{ color: "gray", textDecoration: "none" }}>
-            Home
+            {t("home")}
           </Link>
           <KeyboardArrowRight />
           <Link to="/about" style={{ color: "red", textDecoration: "none" }}>
-            News
+            {t("news")}
           </Link>
         </Box>
       </Box>

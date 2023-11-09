@@ -8,13 +8,16 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination, Autoplay } from "swiper/modules";
 import { PartnerData } from "../../data";
+import { useTranslation } from "react-i18next";
 export default function OurPartner() {
+  
+  const {t} = useTranslation()
   return (
     <Box sx={{ maxWidth: "1500px", margin: "0 auto", mt: 8 }}>
       <Typography
         sx={{ fontSize: "34px", fontWeight: "bold", textAlign: "center" }}
       >
-        Our Partners
+        {t("our-partners")}
       </Typography>
 
       <Container sx={{ mt: 4 }}>

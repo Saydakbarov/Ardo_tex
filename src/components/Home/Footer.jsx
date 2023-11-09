@@ -15,9 +15,13 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../logo.png";
 import { MenuData } from "../../data";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
   const navigate = useNavigate();
+
+  const {t} = useTranslation()
+
   return (
     <Box
       sx={{
@@ -81,7 +85,7 @@ export default function Footer() {
                   }}
                   onClick={() => navigate(item.path)}
                 >
-                  {item.title}
+                  {t(item.title)}
                 </Button>
               </Box>
             ))}
@@ -119,7 +123,7 @@ export default function Footer() {
             <TextField
               fullWidth
               id="outlined-basic"
-              label="Name"
+              label={t("name")}
               variant="outlined"
             />
             <TextField
@@ -127,7 +131,7 @@ export default function Footer() {
               fullWidth
               type="number"
               id="outlined-basic"
-              label="Phone"
+              label={t("phone")}
               variant="outlined"
             />
 
@@ -150,7 +154,7 @@ export default function Footer() {
                 },
               }}
             >
-              Submit
+              {t("send")}
             </Button>
           </Box>
         </Grid>

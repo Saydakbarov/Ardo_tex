@@ -11,11 +11,12 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { MenuData } from "../../data";
+import { MenuData, languages } from "../../data";
 import DrawerComp from "./DrawerComp";
 import { Facebook, Instagram, Telegram, YouTube } from "@mui/icons-material";
 
 import Logo from "../../logo.png";
+import { useTranslation } from "react-i18next";
 
 export default function HeaderMenu() {
   const navigate = useNavigate();
@@ -23,6 +24,10 @@ export default function HeaderMenu() {
   //   Responsive Menu
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
+
+
+  const {t, i18n} = useTranslation()
+
   return (
     <Box
       sx={{
@@ -70,7 +75,21 @@ export default function HeaderMenu() {
                   onClick={() => navigate("/")}
                   alt=""
                 />
+                <div className="" style={{display: "flex", alignItems: "center", gap: "15px"}} >
+                <IconButton style={{display: "flex", alignItems : "center", gap : "8px"}} sx={{ color: "gray" }} onClick={() => {
+                    if(i18n?.language == "uz"){
+                      i18n.changeLanguage("ru")
+                      localStorage.setItem("lang", "ru")
+                    }else {
+                      i18n.changeLanguage("uz")
+                      localStorage.setItem("lang", "uz")
+                    }
+                  }} >
+                    <span style={{fontSize: "16px",textTransform: "uppercase"}} >{i18n?.language == "uz" ? languages[1]?.lang : languages[0]?.lang}</span>
+                    <img src={i18n?.language == "uz" ? languages[1]?.image : languages[0]?.image} style={{width: "30px", height : "30px", objectFit: "contain"}} alt="" className="" />
+                  </IconButton>
                 <DrawerComp />
+                </div>
               </Box>
             </>
           ) : (
@@ -114,11 +133,22 @@ export default function HeaderMenu() {
                       }}
                       onClick={() => navigate(item.path)}
                     >
-                      {item.title}
+                      {t(item.title)}
                     </Button>
                   ))}
                 </Box>
-
+                  <IconButton style={{display: "flex", alignItems : "center", gap : "8px"}} sx={{ color: "gray" }} onClick={() => {
+                    if(i18n?.language == "uz"){
+                      i18n.changeLanguage("ru")
+                      localStorage.setItem("lang", "ru")
+                    }else {
+                      i18n.changeLanguage("uz")
+                      localStorage.setItem("lang", "uz")
+                    }
+                  }} >
+                    <span style={{fontSize: "16px",textTransform: "uppercase"}} >{i18n?.language == "uz" ? languages[1]?.lang : languages[0]?.lang}</span>
+                    <img src={i18n?.language == "uz" ? languages[1]?.image : languages[0]?.image} style={{width: "30px", height : "30px", objectFit: "contain"}} alt="" className="" />
+                  </IconButton>
                 <Box sx={{ color: "gray" }}>
                   <IconButton sx={{ color: "gray" }}>
                     <Link

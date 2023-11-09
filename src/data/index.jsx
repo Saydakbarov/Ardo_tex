@@ -6,47 +6,47 @@ import Video4 from "../video/video4.mp4";
 export const HeaderCarousel = [
   {
     id: 1,
-    title: "New Arrivals Decorative Vases",
-    text: "Next generation LED lamp. A multi-function LED lamp that is environmentally friendly and soft on the eyes.",
+    title: "hero-slider-heading",
+    text: "hero-slider-description",
     img: "https://wpbingosite.com/wordpress/furety/wp-content/uploads/2023/06/img-15.png",
   },
   {
     id: 2,
-    title: "New Arrivals Decorative Vases",
-    text: "Next generation LED lamp. A multi-function LED lamp that is environmentally friendly and soft on the eyes.",
+    title: "hero-slider-heading",
+    text: "hero-slider-description",
     img: "https://wpbingosite.com/wordpress/furety/wp-content/uploads/2023/06/img-15.png",
   },
   {
     id: 3,
-    title: "New Arrivals Decorative Vases",
-    text: "Next generation LED lamp. A multi-function LED lamp that is environmentally friendly and soft on the eyes.",
+    title: "hero-slider-heading",
+    text: "hero-slider-description",
     img: "https://wpbingosite.com/wordpress/furety/wp-content/uploads/2023/06/img-19.png",
   },
 ];
 
 export const MenuData = [
   {
-    title: "Home",
+    title: "home",
     path: "/",
   },
   {
-    title: "About Us",
+    title: "about",
     path: "/about",
   },
   {
-    title: "Product",
+    title: "products",
     path: "/product",
   },
   {
-    title: "Vacancy",
+    title: "vacancy",
     path: "/vacancy",
   },
   {
-    title: "News",
+    title: "news",
     path: "/news",
   },
   {
-    title: "Contact",
+    title: "contact",
     path: "/contact",
   },
 ];
@@ -54,12 +54,14 @@ export const MenuData = [
 export const HeaderBoxData = [
   {
     id: 1,
-    title: "WALL PAINTING",
+    title_uz: "Devorlarni bo'yash",
+    title_ru: "Покраска стен",
     img: "https://emaks.com.tr/ref/class/mainimage/tbm/berva_20221104084002.jpg",
   },
   {
     id: 2,
-    title: "HANGING LIGHT",
+    title_uz: "Qandlillarni osish",
+    title_ru: "Зажгите люстры",
     img: "https://emaks.com.tr/index-slider/ay2.png",
   },
 ];
@@ -216,18 +218,30 @@ export const PartnerData = [
 export const AboutPageProductData = [
   {
     img: "https://ukrlinen.com/modules/xipblog/img/large-about-advantages.jpg",
-    title: "ТКАНИ ДЛЯ МЕБЕЛИ",
-    text: "«Лицо» любого дивана, кресла или стула – его обивка. С её помощью можно придать предметам интерьера определённый стиль, сделать их более уютными или акцентировать их эксклюзивность. В нашем магазине вы можете купить ткань для обивки мебели той расцветки, фактуры, плотности, которая максимально гармонично впишется в ваш интерьер и вдохнёт новую жизнь в любимый диванчик.",
+    title_uz: "Mebel uchun matolar",
+    title_ru: "ТКАНИ ДЛЯ МЕБЕЛИ",
+    text_uz:
+      "Har qanday divan, kreslo yoki stulning 'yuzi' uning qoplamasi hisoblanadi. Uning yordami bilan siz ichki buyumlarga ma'lum bir uslubni berishingiz, ularni yanada qulayroq qilishingiz yoki eksklyuzivligini ta'kidlashingiz mumkin. Bizning do'konimizda mebel qoplamasi uchun rang, tekstura, zichlikdagi matolarni xarid qilishingiz mumkin, ular sizning interyeringizga eng mos tushadi va sevimli divaningizga yangi hayot bag'ishlaydi.",
+    text_ru:
+      "«Лицо» любого дивана, кресла или стула – его обивка. С её помощью можно придать предметам интерьера определённый стиль, сделать их более уютными или акцентировать их эксклюзивность. В нашем магазине вы можете купить ткань для обивки мебели той расцветки, фактуры, плотности, которая максимально гармонично впишется в ваш интерьер и вдохнёт новую жизнь в любимый диванчик.",
   },
   {
     img: "https://slavamebel.ru/images/page/78357836.jpg",
-    title: "МЕХАНИЗМЫ ДЛЯ МЕБЕЛИ",
-    text: "Представьте себе, что при правильном выборе мебели, вам достаточно сделать несколько нехитрых движений, и благодаря волшебному механизму, диван превратится в шикарное спальное место или место для отдыха. Мебель в квартире не должна быть сувениром, она должна использоваться и приносить комфорт в каждый дом, поэтому крайне важно уделять внимание использованию механизмов.",
+    title_uz: "Mebellar uchun mexanizmlar",
+    title_ru: "МЕХАНИЗМЫ ДЛЯ МЕБЕЛИ",
+    text_uz:
+      "Tasavvur qiling-a, mebelni to'g'ri tanlash bilan siz bir nechta oddiy harakatlar qilishingiz kerak va sehrli mexanizm tufayli divan hashamatli uyqu yoki dam olish joyiga aylanadi. Kvartiradagi mebel esdalik sovg'asi bo'lmasligi kerak, u ishlatilishi va har bir uyga qulaylik keltirishi kerak, shuning uchun mexanizmlardan foydalanishga e'tibor berish juda muhimdir.",
+    text_ru:
+      "Представьте себе, что при правильном выборе мебели, вам достаточно сделать несколько нехитрых движений, и благодаря волшебному механизму, диван превратится в шикарное спальное место или место для отдыха. Мебель в квартире не должна быть сувениром, она должна использоваться и приносить комфорт в каждый дом, поэтому крайне важно уделять внимание использованию механизмов.",
   },
   {
     img: "https://www.angstrem-mebel.ru/upload/medialibrary/e21/o78ohc6d948jqwyimoja1jpxpu0k1lij.png",
-    title: "ФУРНИТУРА ДЛЯ МЕБЕЛИ",
-    text: "Когда мы приобретаем мебель, то, в первую очередь, оцениваем ее внешний вид. Но о том, как долго она может прослужить и насколько мебель будет практична, функциональна и надежна, покупатели задумываются гораздо реже. А ведь именно мебельная фурнитура хорошего качества является залогом продолжительного срока службы изделий.",
+    title_uz: "Mebel aksesuarlari",
+    title_ru: "ФУРНИТУРА ДЛЯ МЕБЕЛИ",
+    text_uz:
+      "Mebel sotib olayotganda, biz birinchi navbatda uning tashqi ko'rinishini baholaymiz. Ammo xaridorlar uning qancha davom etishi va mebel qanchalik amaliy, funktsional va ishonchli bo'lishi haqida kamroq o'ylashadi. Ammo bu sifatli mebel jihozlari mahsulotlarning uzoq umr ko'rishining kalitidir.",
+    text_ru:
+      "Когда мы приобретаем мебель, то, в первую очередь, оцениваем ее внешний вид. Но о том, как долго она может прослужить и насколько мебель будет практична, функциональна и надежна, покупатели задумываются гораздо реже. А ведь именно мебельная фурнитура хорошего качества является залогом продолжительного срока службы изделий.",
   },
 ];
 
@@ -1506,3 +1520,17 @@ export const CategoryData = [
     ],
   },
 ];
+
+
+export const languages = [
+  {
+    id:1,
+    lang: "ru",
+    image: "/img/ru.png"
+  },
+  {
+    id:2,
+    lang: "uz",
+    image: "/img/uz.png"
+  },
+]

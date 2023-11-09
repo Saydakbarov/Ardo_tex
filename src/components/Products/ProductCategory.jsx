@@ -23,11 +23,12 @@ import {
 import { Link, useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
-export default function ProductCategory() {
+export default function ProductCategory({categoryId, categories, subCategoryId, subcategories, secondSubCategoryId, secondsubcategories, brandId, brands, setBrandId, priceFrom, setPriceFrom, priceTo, setPriceTo, searchUz, setSearchUz, searchRu, setSearchRu, backLink, isFetching, data}) {
   // const [categoryId, setCategoryId] = useState(1);
 
-  const [status, setStatus] = useState(false);
+  
 
   // const [value, setValue] = React.useState([20000, 1000000]);
 
@@ -36,104 +37,21 @@ export default function ProductCategory() {
   // };
   // console.log(categoryId);
 
-  const [params, setParams] = useSearchParams();
+  const {t, i18n} = useTranslation()
 
-  const categoryId = params.get("category");
-  const subCategoryId = params.get("subcategory");
-  const secondSubCategoryId = params.get("secondsubcategory");
-  const [brandId, setBrandId] = useState("");
-  const [offset, setOffset] = useState(0);
-  const [limit, setLimit] = useState(20);
-  const [priceFrom, setPriceFrom] = useState(0);
-  const [priceTo, setPriceTo] = useState(10000000);
-  const [searchUz, setSearchUz] = useState("");
-  const [searchRu, setSearchRu] = useState("");
-  const [searchEn, setSearchEn] = useState("");
-  const [color, setColor] = useState("");
-
-  console.log(categoryId, "categoryId");
-  console.log(subCategoryId, "subCategoryId");
-  console.log(secondSubCategoryId, "secondSubCategoryId");
-
-  const { data, refetch, isFetching } = useFilteredProducts({
-    limit,
-    offset,
-    category_id: categoryId,
-    sub_category_id: subCategoryId,
-    second_sub_category_id: secondSubCategoryId,
-    price_from: priceFrom,
-    price_to: priceTo,
-    search_uz: searchUz,
-    search_ru: searchRu,
-    search_en: searchEn,
-    brand_id: brandId,
-    color,
-  });
-
-  useEffect(() => {
-    refetch();
-  }, [
-    categoryId,
-    subCategoryId,
-    secondSubCategoryId,
-    brandId,
-    offset,
-    priceFrom,
-    priceTo,
-    searchEn,
-    searchRu,
-    searchUz,
-    color,
-  ]);
-
-  console.log(data, "products");
-
-  const { data: categories, refetch: refetchCategory } = useCategories();
-  const { data: subcategories, refetch: refetchSubCategory } =
-    useSubCategories(categoryId);
-  const { data: secondsubcategories, refetch: refetchSecondSubcategory } =
-    useSecondSubCategories(subCategoryId);
-
-    const {data: brands} = useBrands()
-
-  useMemo(() => {
-    if (categoryId) {
-      refetchSubCategory();
-    }
-  }, [categoryId]);
-
-  useMemo(() => {
-    if (subCategoryId) {
-      console.log("sub Inner");
-      refetchSecondSubcategory();
-    }
-  }, [subCategoryId]);
-
-  const backLink = useMemo(() => {
-    if(secondSubCategoryId) {
-      return `/product?category=${categoryId}&subcategory=${subCategoryId}`
-    }else if(subCategoryId) {
-      return `/product?category=${categoryId}`
-    }else if(categoryId) {
-      return `/product`
-    }else {
-      return "/product"
-    }
-
-  }, [categoryId, subCategoryId, secondSubCategoryId])
 
   return (
     <Box>
       <Grid container justifyContent={"center"} gap={10}>
         <Grid item lg={2.5} sx={{ p: 2, borderRadius: "10px" }}>
-          <Typography sx={{ fontSize: "18px", fontWeight: "bold", marginBottom: "20px" }}>
+          <Typography sx={{ display: categoryId ? "block" : "none", fontSize: "18px", fontWeight: "bold", marginBottom: "20px" }}>
            <Link style={{textDecoration: "none", color: "inherit"}} to={backLink} >
-           {"< Back"}
+           {`< ${t("back")}`}
            </Link>
           </Typography>
 
           <Typography sx={{ fontSize: "22px", fontWeight: "bold" }}>
-            Categories
+            {t("categories")}
           </Typography>
           <Box
             sx={{
@@ -149,7 +67,7 @@ export default function ProductCategory() {
                 to={`/product?category=${v?.category_id}`}
               >
                 <Typography style={{ fontSize: "18px" }}>
-                  {v.category_name_uz}
+                  { i18n?.language == "uz" ? v.category_name_uz : v.category_name_ru}
                 </Typography>
               </Link>
             ))}
@@ -168,7 +86,7 @@ export default function ProductCategory() {
                 to={`/product?category=${categoryId}&subcategory=${v.sub_category_id}`}
               >
                 <Typography style={{ fontSize: "18px" }}>
-                  {v.sub_category_name_uz}
+                  { i18n?.language == "uz" ? v.sub_category_name_uz : v.sub_category_name_ru}
                 </Typography>
               </Link>
             ))}
@@ -193,7 +111,7 @@ export default function ProductCategory() {
                 to={`/product?category=${categoryId}&subcategory=${subCategoryId}&secondsubcategory=${v.second_sub_category_id}`}
               >
                 <Typography style={{ fontSize: "18px" }}>
-                  {v.second_sub_category_name_uz}
+                  { i18n?.language == "uz" ? v.second_sub_category_name_uz : v.second_sub_category_name_ru}
                 </Typography>
               </Link>
             ))}
@@ -201,7 +119,7 @@ export default function ProductCategory() {
 
           <Box sx={{ mt: 3 }}>
             <Typography sx={{ fontSize: "20px", fontWeight: "bold" }}>
-              Brands
+              {t("brands")}
             </Typography>
             <Box sx={{}}>
              
@@ -219,12 +137,12 @@ export default function ProductCategory() {
           </Box>
 
           <div style={{display: "flex", alignItems : "center", gap: "16px", margin: "40px 0"}} >
-            <TextField label="Price from" value={priceFrom} onChange={(e) => setPriceFrom(e.target.value)} type="number" fullWidth />
-            <TextField label="Price to" value={priceTo} onChange={(e) => setPriceTo(e.target.value)} type="number" fullWidth />
+            <TextField label={t("price-from")} value={priceFrom} onChange={(e) => setPriceFrom(e.target.value)} type="number" fullWidth />
+            <TextField label={t("price-to")} value={priceTo} onChange={(e) => setPriceTo(e.target.value)} type="number" fullWidth />
           </div>
           <Box sx={{ mt: 3 }}>
             <Typography sx={{ fontSize: "20px", fontWeight: "bold" }}>
-              Colors
+              {t("colors")}
             </Typography>
             <Box sx={{ display: "flex", gap: "10px", flexWrap: "wrap", mt: 1 }}>
               <p
@@ -285,12 +203,16 @@ export default function ProductCategory() {
           <TextField
             fullWidth
             id="filled-basic"
-            label="Search"
+            label={t("search")}
             variant="standard"
 
-            value={searchUz}
+            value={i18n?.language == "uz" ?  searchUz : searchRu}
             onChange={(e) => {
-              setSearchUz(e.target.value)
+              if(i18n?.language == "uz") {
+                setSearchUz(e.target.value)
+              }else {
+                setSearchRu(e.target.value)
+              }
             }}
 
           />

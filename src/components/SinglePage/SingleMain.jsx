@@ -1,9 +1,14 @@
 import { ArrowRight, KeyboardArrowRight } from "@mui/icons-material";
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-export default function SingleMain() {
+export default function SingleMain({data}) {
+
+
+  const {t, i18n} = useTranslation()
+
   return (
     <Box
       sx={{
@@ -20,7 +25,7 @@ export default function SingleMain() {
           textAlign: "center",
         }}
       >
-        <Typography sx={{ fontSize: "30px" }}>Single Product</Typography>
+        <Typography sx={{ fontSize: "30px" }}>{ i18n?.language == "uz" ? data?.data?.product_title_uz : data?.data?.product_title_ru}</Typography>
         <Box
           sx={{
             display: "flex",
@@ -31,11 +36,19 @@ export default function SingleMain() {
           }}
         >
           <Link to="/" style={{ color: "gray", textDecoration: "none" }}>
-            Home
+            {t("home")}
           </Link>
           <KeyboardArrowRight />
-          <Link to="/contact" style={{ color: "red", textDecoration: "none" }}>
-            Single Product
+          <Link to={`/product?category=${data?.data?.category_id}`} style={{color: "black", textDecoration: "none" }}>
+            {i18n?.language == "uz" ? data?.data?.category_name_uz : data?.data?.category_name_ru}
+          </Link>
+          <KeyboardArrowRight />
+          <Link to={`/product?category=${data?.data?.category_id}&subcategory=${data?.data?.sub_category_id}`} style={{ color: "black", textDecoration: "none" }}>
+            {i18n?.language == "uz" ? data?.data?.sub_category_name_uz : data?.data?.sub_category_name_ru}
+          </Link>
+          <KeyboardArrowRight />
+          <Link to={`/single/${data?.data?.product_id}`} style={{ color: "red", textDecoration: "none" }}>
+            {i18n?.language == "uz" ? data?.data?.product_title_uz : data?.data?.product_title_ru}
           </Link>
         </Box>
       </Box>

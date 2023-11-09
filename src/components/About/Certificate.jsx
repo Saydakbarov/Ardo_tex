@@ -7,14 +7,18 @@ import Certificate3 from "../../images/certificate3.jpg";
 import Certificate4 from "../../images/certificate4.jpg";
 import Certificate5 from "../../images/certificate5.jpg";
 import Certificate6 from "../../images/certificate6.jpg";
+import { useTranslation } from "react-i18next";
 
 export default function Certificate() {
+
+  const {t} = useTranslation()
+
   return (
     <Box sx={{ mt: 10 }}>
       <Typography
         sx={{ fontSize: "36px", textAlign: "center", fontWeight: "bold" }}
       >
-        Sertifikatlar
+        {t("certificates")}
       </Typography>
       <Grid container justifyContent={"center"} gap={4} mt={5}>
         <Grid item lg={3}>

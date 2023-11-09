@@ -2,16 +2,17 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { useTranslation } from "react-i18next";
 
 export default function FormContact() {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     phone: "",
+    message: "",
   });
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.phone) {
+    if (formData.name && formData.message && formData.phone) {
       // Ma'lumotlarni yuborishni bajarish
       console.log("Data submitted:", formData);
     } else {
@@ -27,11 +28,13 @@ export default function FormContact() {
     }));
   };
 
+  const {t} = useTranslation()
+
   return (
     <Box>
       <form onSubmit={handleSubmit}>
         <TextField
-          label="Name"
+          label={t("name")}
           name="name"
           value={formData.name}
           onChange={handleInputChange}
@@ -40,17 +43,7 @@ export default function FormContact() {
           sx={{ mt: 2 }}
         />
         <TextField
-          label="Email"
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleInputChange}
-          fullWidth
-          required
-          sx={{ mt: 2 }}
-        />
-        <TextField
-          label="Phone Number"
+          label={t("phone")}
           name="phone"
           value={formData.phone}
           onChange={handleInputChange}
@@ -58,6 +51,18 @@ export default function FormContact() {
           required
           sx={{ mt: 2 }}
           type="number"
+        />
+        <TextField
+          label={t("message")}
+          type="text"
+          name="message"
+          multiline
+          rows={3}
+          value={formData.message}
+          onChange={handleInputChange}
+          fullWidth
+          required
+          sx={{ mt: 2 }}
         />
         <Button
           type="submit"
@@ -80,7 +85,7 @@ export default function FormContact() {
           }}
           fullWidth
         >
-          Send
+          {t("send")}
         </Button>
       </form>
     </Box>

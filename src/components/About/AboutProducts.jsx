@@ -1,8 +1,12 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 import { AboutPageProductData } from "../../data";
+import { useTranslation } from "react-i18next";
 
 export default function AboutProduct() {
+
+  const {i18n} = useTranslation()
+
   return (
     <Box sx={{ mt: 3 }}>
       <Grid container justifyContent={"center"} gap={5}>
@@ -15,9 +19,9 @@ export default function AboutProduct() {
                 alt=""
               />
               <Typography sx={{ mt: 1, fontWeight: "bold" }}>
-                {v.title}
+                {i18n?.language == "uz" ?  v.title_uz : v.title_ru}
               </Typography>
-              <Typography sx={{ mt: 2, color: "gray" }}>{v.text}</Typography>
+              <Typography sx={{ mt: 2, color: "gray" }}>{i18n?.language == "uz" ? v.text_uz : v.text_ru}</Typography>
             </Box>
           </Grid>
         ))}

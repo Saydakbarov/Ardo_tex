@@ -11,7 +11,11 @@ import "swiper/css/navigation";
 // import required modules
 import { Navigation, Autoplay } from "swiper/modules";
 import { HeaderCarousel } from "../../data";
+import { useTranslation } from "react-i18next";
 export default function HeaderMain() {
+
+
+  const {t} = useTranslation()
   return (
     <Box sx={{ background: "linear-gradient( #DCE9EC, #E8F0F3)" }}>
       <Grid
@@ -72,7 +76,7 @@ export default function HeaderMain() {
                         fontWeight: "600",
                       }}
                     >
-                      {v.title}
+                      {t(v.title)}
                     </Typography>
                     <Typography
                       sx={{
@@ -84,7 +88,7 @@ export default function HeaderMain() {
                         fontWeight: "500",
                       }}
                     >
-                      {v.text}
+                      {t(v.text)}
                     </Typography>
 
                     <Button
@@ -92,7 +96,7 @@ export default function HeaderMain() {
                       sx={{ borderColor: "black", color: "black", mt: 5 }}
                       className="animate__animated animate__bounceInUp"
                     >
-                      + Shop Now
+                      + {t("shop-now")}
                     </Button>
                   </Box>
 

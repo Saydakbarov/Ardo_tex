@@ -6,8 +6,20 @@ import ContactPage from "./pages/ContactPage";
 import ProductsPage from "./pages/ProductsPage";
 import VacancyPage from "./pages/VacancyPage";
 import SinglePage from "./pages/SinglePage";
+import "./i18n"
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 function App() {
+
+
+  const {i18n, t} = useTranslation()
+  useEffect(() => {
+    if(localStorage.getItem("lang")) {
+      i18n.changeLanguage(localStorage.getItem("lang"))
+    }
+  },[])
+
   return (
     <div className="globalContainer">
       <BrowserRouter>

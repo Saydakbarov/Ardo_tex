@@ -10,8 +10,12 @@ import Img4 from "../../ArdoHomeImages/img4.JPG";
 import Img5 from "../../ArdoHomeImages/img5.JPG";
 import Img6 from "../../ArdoHomeImages/img6.JPG";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function HomeCategory() {
+
+  const {t} = useTranslation()
+
   return (
     <Box sx={{ maxWidth: "1500px", margin: "0 auto", mt: 14 }}>
       <Box
@@ -159,7 +163,7 @@ export default function HomeCategory() {
             to="https://ardohome.netlify.app"
             style={{ textDecoration: "none", color: "white" }}
           >
-            See all
+            {t("see-all")}
           </Link>
         </Button>
       </Box>

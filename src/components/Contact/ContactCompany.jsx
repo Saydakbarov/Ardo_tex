@@ -2,8 +2,12 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import FormContact from "./FormContact";
 import { Business, Email, Phone } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 export default function ContactCompany() {
+
+  const {t} = useTranslation()
+
   return (
     <Container
       sx={{
@@ -41,14 +45,14 @@ export default function ContactCompany() {
           sx={{ background: "#F2F2F2", borderRadius: "4px" }}
         >
           <Box sx={{ p: 3 }}>
-            <Typography sx={{ fontSize: "24px" }}>Contact Us</Typography>
+            <Typography sx={{ fontSize: "24px" }}>{t("contact-us")}</Typography>
             <Typography sx={{ color: "gray", fontSize: "14px", mt: 3 }}>
-              Reliable Qualitatively For all!
+              {t("quality-for-all")}
             </Typography>
             <Box sx={{ mt: 3 }}>
               <Box sx={{ display: "flex", gap: "15px", alignItems: "center" }}>
                 <Business sx={{ color: "#337DC5" }} />
-                <Typography sx={{ fontWeight: "600" }}>Address</Typography>
+                <Typography sx={{ fontWeight: "600" }}>{t("address")}</Typography>
               </Box>
               <Typography sx={{ mt: 2, color: "gray", fontSize: "14px" }}>
                 Узбекистан, г. Ташкент, Кичик Халка Йули (Улугбек),
@@ -58,7 +62,7 @@ export default function ContactCompany() {
             <Box sx={{ mt: 3 }}>
               <Box sx={{ display: "flex", gap: "15px" }}>
                 <Phone sx={{ color: "#337DC5" }} />
-                <Typography sx={{ fontWeight: "600" }}>Phone</Typography>
+                <Typography sx={{ fontWeight: "600" }}>{t("phone")}</Typography>
               </Box>
               <Typography sx={{ mt: 2, color: "gray", fontSize: "14px" }}>
                 (+998) 95 145 1000

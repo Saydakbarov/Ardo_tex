@@ -9,14 +9,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { CategoryData } from "../../data";
 import { useOneProduct } from "../../query-data/data.service";
+import { useTranslation } from "react-i18next";
 // import ReactImageMagnify from "react-image-magnify";
 // const ReactImageMagnify = lazy(() => import("react-image-magnify"))
 
-export default function SingleProduct() {
-  const { id } = useParams();
-
-  const {data, isLoading, isError} = useOneProduct(id)
-
+export default function SingleProduct({data, isLoading}) {
+ 
 
   const [mainImage, setMainImage] = useState(data?.data?.product_image_url[0])
 
@@ -25,6 +23,8 @@ export default function SingleProduct() {
       setMainImage(data?.data?.product_image_url[0])
     }
   }, [data])
+
+  const {t, i18n} = useTranslation()
 
   return (
     <Box>
@@ -62,10 +62,10 @@ export default function SingleProduct() {
               </Grid>
               <Grid item  sm={6}>
                 <Typography sx={{ fontSize: "50px", fontFamily: "Inter" }}>
-                  {data?.data?.product_title_uz}
+                  {i18n?.language == "uz" ? data?.data?.product_title_uz : data?.data?.product_title_ru}
                 </Typography>
       
-                <div dangerouslySetInnerHTML={{__html: data?.data?.product_model_uz}} className="single-product-model"></div>
+                <div dangerouslySetInnerHTML={{__html: i18n?.language == "uz" ? data?.data?.product_model_uz : data?.data?.product_model_ru}} className="single-product-model"></div>
       
                 {/* <SingleBox text={"Grammage m2"} title={"310 g/m² +/-5%"} />
                 <SingleBox text={"Composition"} title={"100% Polyester"} />

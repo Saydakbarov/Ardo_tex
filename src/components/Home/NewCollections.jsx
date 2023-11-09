@@ -3,6 +3,7 @@ import React from "react";
 import { NewCollectionData } from "../../data";
 import { useSubCategories } from "../../query-data/data.service";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function NewCollections() {
 
@@ -11,12 +12,14 @@ export default function NewCollections() {
   
   const navigate = useNavigate()
 
+  const {t, i18n} = useTranslation()
+
   return (
     <Box sx={{ maxWidth: "1500px", margin: "0 auto", mt: 8 }}>
       <Typography
         sx={{ fontSize: "34px", fontWeight: "bold", textAlign: "center" }}
       >
-        New Collections
+        {t("new-collections")}
       </Typography>
 
       <Grid container justifyContent={"center"} gap={4} mt={5}>
@@ -31,7 +34,7 @@ export default function NewCollections() {
               }}
             >
               <Link style={{textDecoration: "none", color: "inherit"}} to={`/product?category=${4}&subcategory=${v?.sub_category_id}`} >
-              {v.sub_category_name_uz}
+              {i18n?.language == "uz" ? v.sub_category_name_uz : v.sub_category_name_ru}
               </Link>
             </Typography>
           </Grid>
@@ -61,7 +64,7 @@ export default function NewCollections() {
             },
           }}
         >
-          See all
+          {t("see-all")}
         </Button>
       </Box>
     </Box>

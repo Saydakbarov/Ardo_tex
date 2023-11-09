@@ -4,6 +4,7 @@ import { CategoryData } from "../../data";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function ProductCard({ data }) {
   const [subcategory, setSubcategory] = useState([]);
@@ -21,6 +22,8 @@ export default function ProductCard({ data }) {
   // }, [id]);
 
   console.log(subcategory);
+
+  const {i18n} = useTranslation()
 
   return (
     <Box
@@ -53,7 +56,7 @@ export default function ProductCard({ data }) {
               src={v?.product_image_url[0]}
               alt=""
             />
-            <Typography sx={{ p: 1 }}>{v?.product_title_uz}</Typography>
+            <Typography sx={{ p: 1 }}>{ i18n?.language == "uz" ? v?.product_title_uz : v?.product_title_ru}</Typography>
           </Box>
         )
       )}
