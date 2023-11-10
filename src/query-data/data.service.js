@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getBrands, getCategories, getFilteredProducts, getOneProduct, getSecondSubCategories, getSubCategories } from "./data.fn";
+import { getBrands, getCategories, getFilteredProducts, getNews, getOneProduct, getSecondSubCategories, getSubCategories } from "./data.fn";
 
 //  CATEGORIES
 
@@ -25,3 +25,9 @@ export const useOneProduct = (id) => useQuery({queryFn: () => getOneProduct(id),
 //  BRANDS
 
 export const useBrands = () => useQuery({queryFn: getBrands, queryKey: ["brands"]})
+
+
+
+//  NEWS
+
+export const useNews = (params) => useQuery({queryFn: () => getNews(params), queryKey: ["news"]})

@@ -16,33 +16,30 @@ import "./styles/ProductCard.scss";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-import { Favorite, IosShare, ShoppingBag } from "@mui/icons-material";
-// import { useDispatch, useSelector } from "react-redux";
-// import { addProduct } from "../../redux/ProductReducer";
-import { LastestNewsCardData } from "../../data";
+import { useTranslation } from "react-i18next";
+import { useNews } from "../../query-data/data.service";
+import { Link } from "react-router-dom";
 
 export default function LastestNewsCard() {
-  const [ratingValue, setRatingValue] = useState(0);
+  const { t, i18n } = useTranslation();
 
-  const [hoverImg, setHoverImg] = useState();
+  const [offset, setOffset] = useState(0);
+  const [limit, setLimit] = useState(20);
 
-  const [id, setId] = useState();
+  const { data, isFetching, refetch } = useNews({ limit, offset });
 
-  const [hover, setHover] = useState(false);
+  console.log(data, "news");
 
   //   const dispatch = useDispatch();
   //   const getProductData = (v) => {
   //     dispatch(addProduct(v));
   //   };
 
-  console.log(id);
   return (
     <Box sx={{ mt: 4 }}>
       <Grid container justifyContent={"center"} gap={4}>
         <Grid item lg={11} md={11} sm={11} xs={11}>
           <Swiper
-            slidesPerView={1}
-            spaceBetween={10}
             loop={true}
             pagination={{
               clickable: true,
@@ -74,47 +71,39 @@ export default function LastestNewsCard() {
             style={{ paddingBottom: "50px" }}
           >
             <Grid justifyContent={"center"}>
-              {LastestNewsCardData.map((v, i) => (
-                <Grid item key={v.id} sx={{ borderRadius: "6px" }}>
-                  <SwiperSlide
-                    className="swiperSlideBox"
-                    style={{ width: "300px !important" }}
-                  >
-                    <Box
-                      sx={{
-                        boxShadow: "0px 5px 10px 0px gray",
-                        borderRadius: "6px",
-                      }}
-                    >
+              {data?.data?.map((v, i) => (
+                <SwiperSlide
+                  key={v.new_id}
+                  className="swiperSlideBox"
+                  style={{ width: "100%" }}
+                >
+                  <Grid item sx={{ borderRadius: "6px" }}>
+                    <Link style={{display: "block", textDecoration: "none", color: "black"}} to={`/news/${v?.new_id}`} >
                       <Box
-                        component={"div"}
                         sx={{
-                          p: 3,
-                          backgroundImage: `url(${
-                            hover === true && v.id === id ? hoverImg : v.img
-                          })`,
-                          height: "300px",
-                          backgroundRepeat: "no-repeat",
-                          backgroundPosition: "center",
-                          backgroundSize: "60%",
-                        }}
-                        onMouseMove={() => {
-                          setHover(true);
-                          setId(v.id);
-                          setHoverImg(v.hoverImg);
-                        }}
-                        onMouseLeave={() => {
-                          setHover(false);
+                          boxShadow: "0px 5px 10px 0px gray",
+                          borderRadius: "6px",
                         }}
                       >
                         <Box
+                          component={"div"}
                           sx={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignitems: "center",
+                            p: 3,
+                            backgroundImage: `url(${v?.new_img})`,
+                            height: "300px",
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "center",
+                            backgroundSize: "60%",
                           }}
                         >
-                          {/* <Box
+                          <Box
+                            sx={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                              alignitems: "center",
+                            }}
+                          >
+                            {/* <Box
                               sx={{
                                 width: "50px",
                                 height: "50px",
@@ -128,8 +117,8 @@ export default function LastestNewsCard() {
                             >
                               -{v.percentage}%
                             </Box> */}
-                        </Box>
-                        {/* <Box className="changeCard" sx={{ p: 2 }}>
+                          </Box>
+                          {/* <Box className="changeCard" sx={{ p: 2 }}>
                             <Box
                               sx={{
                                 display: "flex",
@@ -149,12 +138,12 @@ export default function LastestNewsCard() {
                               </Button>
                             </Box>
                           </Box> */}
-                      </Box>
-                      <Box>
-                        <Box
-                          sx={{ background: "#DEEAED", borderRadius: "6px" }}
-                        >
+                        </Box>
+                        <Box>
                           <Box
+                            sx={{ background: "#DEEAED", borderRadius: "6px" }}
+                          >
+                            {/* <Box
                             sx={{
                               display: "flex",
                               justifyContent: "space-between",
@@ -171,23 +160,21 @@ export default function LastestNewsCard() {
                               }}
                               sx={{ fontSize: "22px" }}
                             />
-                          </Box>
+                          </Box> */}
 
-                          <Box
-                            sx={{ display: "flex", gap: "15px", mt: 1, p: 1 }}
-                          >
-                            {/* <Typography
-                              sx={{
-                                color: "red",
-                                display: v.percentage === 0 ? "none" : "block",
-                              }}
+                            <Box
+                              sx={{ display: "flex", gap: "15px", mt: 1, p: 1 }}
                             >
-                              $
-                              {v.price -
-                                Math.round((v.price * v.percentage) / 100)}
-                              .00
-                            </Typography> */}
-                            {/* <Typography
+                              <Typography
+                                style={{
+                                  color: "black",
+                                }}
+                              >
+                                {i18n?.language == "uz"
+                                  ? v?.new_title_uz
+                                  : v?.new_title_ru}
+                              </Typography>
+                              {/* <Typography
                               sx={{
                                 color: "red",
                                 // color: v.percentage === 0 ? "red" : "gray",
@@ -197,12 +184,13 @@ export default function LastestNewsCard() {
                             >
                               ${v.price}.00
                             </Typography> */}
+                            </Box>
                           </Box>
                         </Box>
                       </Box>
-                    </Box>
-                  </SwiperSlide>
-                </Grid>
+                    </Link>
+                  </Grid>
+                </SwiperSlide>
               ))}
             </Grid>
           </Swiper>

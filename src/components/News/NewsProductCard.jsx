@@ -9,51 +9,63 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { NewsPageProduct } from "../../data";
+import { useTranslation } from "react-i18next";
+import { useNews } from "../../query-data/data.service";
 
-export default function NewsProductCard({ lang }) {
+export default function NewsProductCard() {
+
+  const {t, i18n} = useTranslation()
+
+  const [offset, setOffset] = useState(0)
+  const [limit, setLimit] = useState(20)
+
+  const {data, isFetching, refetch} = useNews({limit, offset})
+
+  console.log(data, "news");
+
+
+
   return (
     <Box sx={{ mt: 4 }}>
-      <Grid container justifyContent={"center"} gap={4}>
-        {NewsPageProduct?.map((v, i) => (
-          <Grid item lg={2.5} md={3} sm={5} xs={10}>
+     {
+      isFetching ? (
+        <Typography style={{fontSize: "25px", display: "block" , textAlign: "center", margin: "40px 0"}} >{i18n?.language == "uz" ? "Yuklanmoqda..." : "Загрузка..."}</Typography>
+      ) : (
+        <Grid container justifyContent={"center"} gap={4}>
+        {data?.data?.map((v, i) => (
+          <Grid key={v?.new_id} item lg={2.5} md={3} sm={5} xs={10}>
             <Box>
               <Box
                 sx={{
                   p: 3,
-                  backgroundImage: `url(${v.img})`,
+                  backgroundImage: `url(${v.new_img})`,
+                  backgroundPosition: "center",
+                  
                   height: "260px",
                   backgroundRepeat: "no-repeat",
                   borderTopRightRadius: "8px",
                   borderBottomLeftRadius: "8px",
-                  backgroundSize: "100%",
+                  backgroundSize: "contain",
                 }}
               ></Box>
               <Box>
                 <Typography sx={{ fontWeight: "600", fontSize: "18px" }}>
-                  {/* {lang == "ru"
-                    ? v.new_title_ru
-                    : lang == "uz"
-                    ? v.new_title_uz
-                    : lang == "en"
-                    ? v.new_title_en
-                    : ""} */}
-                  {v.title}
+                 
+                  {
+                    i18n?.language == "uz" ? v?.new_title_uz : v?.new_title_ru
+                  }
                 </Typography>
-                <Typography sx={{ mt: 2, fontSize: "14px" }}>
-                  {/* {lang == "ru"
-                    ? v.new_description_ru
-                    : lang == "uz"
-                    ? v.new_description_uz
-                    : lang == "en"
-                    ? v.new_description_en
-                    : ""} */}
+                {/* <Typography sx={{ mt: 2, fontSize: "14px" }}>
+                  
                   {v.desciption}
-                </Typography>
+                </Typography> */}
               </Box>
             </Box>
           </Grid>
         ))}
       </Grid>
+      )
+     }
     </Box>
   );
 }
