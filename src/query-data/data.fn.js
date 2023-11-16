@@ -5,7 +5,6 @@ import axios from "../utils/axios";
 export const getCategories = async () => {
   try {
     const res = await axios.get("tex/categories");
-    console.log(res.data);
 
     return res.data;
   } catch (error) {
@@ -20,7 +19,6 @@ export const getSubCategories = async (id) => {
         categoryId: id,
       },
     });
-    console.log(res.data);
 
     return res.data;
   } catch (error) {
@@ -28,46 +26,38 @@ export const getSubCategories = async (id) => {
   }
 };
 
-
 export const getSecondSubCategories = async (id) => {
-    try {
-      const res = await axios.get("tex/second-subcategories", {
-        params: {
-            subcategoryId: id,
-        },
-      });
-      console.log(res.data);
-  
-      return res.data;
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  
+  try {
+    const res = await axios.get("tex/second-subcategories", {
+      params: {
+        subcategoryId: id,
+      },
+    });
+
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 //   BRANDS
-  
-export const getBrands = async () => {
-    try {
-      const res = await axios.get("tex/brands/list", {
-        params: {
-            limit: 20,
-            offset: 0
-        }
-      });
-      console.log(res.data, "brands");
-  
-      return res.data;
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  
 
+export const getBrands = async () => {
+  try {
+    const res = await axios.get("tex/brands/list", {
+      params: {
+        limit: 20,
+        offset: 0,
+      },
+    });
+
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 //   PRODUCTS
-
-
 
 export const getFilteredProducts = async ({
   limit,
@@ -107,30 +97,25 @@ export const getFilteredProducts = async ({
   }
 };
 
-
 export const getOneProduct = async (id) => {
-    try {
-        const res = await axios.get(`tex/product/${id}`)
+  try {
+    const res = await axios.get(`tex/product/${id}`);
 
-        return res.data
-
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-
-
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 //   NEWS
-  
-export const getNews = async ({limit, offset}) => {
+
+export const getNews = async ({ limit, offset }) => {
   try {
     const res = await axios.get("tex/news/list", {
       params: {
-          limit,
-          offset
-      }
+        limit,
+        offset,
+      },
     });
     console.log(res.data, "news");
 
@@ -139,4 +124,3 @@ export const getNews = async ({limit, offset}) => {
     console.error(error);
   }
 };
-

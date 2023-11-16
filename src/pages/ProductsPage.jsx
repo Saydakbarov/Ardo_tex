@@ -18,7 +18,7 @@ import { useTranslation } from "react-i18next";
 export default function ProductsPage() {
   const [params, setParams] = useSearchParams();
 
-  const {t, i18n} = useTranslation()
+  const { t, i18n } = useTranslation();
 
   const categoryId = params.get("category");
   const subCategoryId = params.get("subcategory");
@@ -32,10 +32,6 @@ export default function ProductsPage() {
   const [searchRu, setSearchRu] = useState("");
   const [searchEn, setSearchEn] = useState("");
   const [color, setColor] = useState("");
-
-  console.log(categoryId, "categoryId");
-  console.log(subCategoryId, "subCategoryId");
-  console.log(secondSubCategoryId, "secondSubCategoryId");
 
   const { data, refetch, isFetching } = useFilteredProducts({
     limit,
@@ -68,7 +64,7 @@ export default function ProductsPage() {
     color,
   ]);
 
-  console.log(data, "products");
+  // console.log(data, "products");
 
   const { data: categories, refetch: refetchCategory } = useCategories();
   const { data: subcategories, refetch: refetchSubCategory } =
@@ -86,7 +82,7 @@ export default function ProductsPage() {
 
   useMemo(() => {
     if (subCategoryId) {
-      console.log("sub Inner");
+      // console.log("sub Inner");
       refetchSecondSubcategory();
     }
   }, [subCategoryId]);
@@ -115,22 +111,29 @@ export default function ProductsPage() {
         (item) => item.second_sub_category_id == secondSubCategoryId
       );
 
-      console.log(secondSub);
-
       return [
         {
           id: 1,
-          name: i18n?.language == "uz" ? category?.category_name_uz : category?.category_name_ru,
+          name:
+            i18n?.language == "uz"
+              ? category?.category_name_uz
+              : category?.category_name_ru,
           url: `/product?category=${category?.category_id}`,
         },
         {
           id: 2,
-          name: i18n?.language == "uz" ? subcategory?.sub_category_name_uz : subcategory?.sub_category_name_ru,
+          name:
+            i18n?.language == "uz"
+              ? subcategory?.sub_category_name_uz
+              : subcategory?.sub_category_name_ru,
           url: `/product?category=${category?.category_id}&subcategory=${subcategory?.sub_category_id}`,
         },
         {
           id: 3,
-          name: i18n?.language == "uz" ? secondSub?.second_sub_category_name_uz : secondSub?.second_sub_category_name_ru,
+          name:
+            i18n?.language == "uz"
+              ? secondSub?.second_sub_category_name_uz
+              : secondSub?.second_sub_category_name_ru,
           url: `/product?category=${category?.category_id}&subcategory=${subcategory?.sub_category_id}&secondsubcategory=${secondSub?.second_sub_category_id}`,
         },
       ];
@@ -145,12 +148,18 @@ export default function ProductsPage() {
       return [
         {
           id: 1,
-          name: i18n?.language == "uz" ? category?.category_name_uz : category?.category_name_ru,
+          name:
+            i18n?.language == "uz"
+              ? category?.category_name_uz
+              : category?.category_name_ru,
           url: `/product?category=${category?.category_id}`,
         },
         {
           id: 2,
-          name: i18n?.language == "uz" ? subcategory?.sub_category_name_uz : subcategory?.sub_category_name_ru,
+          name:
+            i18n?.language == "uz"
+              ? subcategory?.sub_category_name_uz
+              : subcategory?.sub_category_name_ru,
           url: `/product?category=${category?.category_id}&subcategory=${subcategory?.sub_category_id}`,
         },
       ];
@@ -162,14 +171,25 @@ export default function ProductsPage() {
       return [
         {
           id: 1,
-          name: i18n?.language == "uz" ? category?.category_name_uz : category?.category_name_ru,
+          name:
+            i18n?.language == "uz"
+              ? category?.category_name_uz
+              : category?.category_name_ru,
           url: `/product?category=${category?.category_id}`,
         },
       ];
-    }else {
-      return []
+    } else {
+      return [];
     }
-  }, [categoryId, subCategoryId, secondSubCategoryId, subcategories, categories, secondsubcategories, i18n]);
+  }, [
+    categoryId,
+    subCategoryId,
+    secondSubCategoryId,
+    subcategories,
+    categories,
+    secondsubcategories,
+    i18n,
+  ]);
 
   return (
     <Box>

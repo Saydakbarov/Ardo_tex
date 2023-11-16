@@ -13,8 +13,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 export default function HomeCategory() {
-
-  const {t} = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <Box sx={{ maxWidth: "1500px", margin: "0 auto", mt: 14 }}>
@@ -145,14 +144,14 @@ export default function HomeCategory() {
             background: "linear-gradient(270deg, #307bc4 0%, #274760 100%)",
             p: 1,
             borderRadius: "30px",
-            width: "150px",
+            width: "180px",
             mt: 8,
             transition: " 0.5s linear",
             color: "white",
 
             "&:hover": {
               transition: " 0.5s linear",
-              width: "180px",
+              width: "200px",
               background: "linear-gradient(270deg, #307bc4 0%, #274760 100%)",
             },
             mr: 10,

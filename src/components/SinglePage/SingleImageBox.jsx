@@ -4,7 +4,6 @@ import { PhotoSwipeGallery } from "react-photoswipe-2";
 
 import { SingleProductImageData } from "../../data";
 
-console.log(SingleProductImageData);
 
 export default function SingleImageBox({ img, title }) {
   return (

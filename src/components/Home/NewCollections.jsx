@@ -6,13 +6,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 export default function NewCollections() {
-
-  const {data, isLoading, refetch} = useSubCategories("4")
+  const { data, isLoading, refetch } = useSubCategories("4");
   console.log(data, "da");
-  
-  const navigate = useNavigate()
 
-  const {t, i18n} = useTranslation()
+  const navigate = useNavigate();
+
+  const { t, i18n } = useTranslation();
 
   return (
     <Box sx={{ maxWidth: "1500px", margin: "0 auto", mt: 8 }}>
@@ -26,15 +25,22 @@ export default function NewCollections() {
         {data?.data?.map((v, i) => (
           <Grid item lg={2.5} md={2.5} sm={5.3} xs={10} key={v.id}>
             <img
-              style={{ width: "100%", borderRadius: "6px" }} src={v?.sub_link} />
+              style={{ width: "100%", borderRadius: "6px" }}
+              src={v?.sub_link}
+            />
             <Typography
               sx={{
                 fontSize: "30px",
                 textAlign: "center",
               }}
             >
-              <Link style={{textDecoration: "none", color: "inherit"}} to={`/product?category=${4}&subcategory=${v?.sub_category_id}`} >
-              {i18n?.language == "uz" ? v.sub_category_name_uz : v.sub_category_name_ru}
+              <Link
+                style={{ textDecoration: "none", color: "inherit" }}
+                to={`/product?category=${4}&subcategory=${v?.sub_category_id}`}
+              >
+                {i18n?.language == "uz"
+                  ? v.sub_category_name_uz
+                  : v.sub_category_name_ru}
               </Link>
             </Typography>
           </Grid>
@@ -45,8 +51,8 @@ export default function NewCollections() {
         <Button
           variant="outlined"
           onClick={() => {
-            navigate("/product?category=4")
-          } }
+            navigate("/product?category=4");
+          }}
           sx={{
             background: "linear-gradient(270deg, #307bc4 0%, #274760 100%)",
             p: 1,
