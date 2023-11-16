@@ -55,9 +55,10 @@ export default function NewCollections() {
           }}
           sx={{
             background: "linear-gradient(270deg, #307bc4 0%, #274760 100%)",
-            p: 1,
+            
             borderRadius: "30px",
-            width: "150px",
+            padding: "8px 14px",
+            width: "fit-content",
             mt: 4,
             transition: " 0.5s linear",
             mr: 8,
@@ -65,7 +66,7 @@ export default function NewCollections() {
 
             "&:hover": {
               transition: " 0.5s linear",
-              width: "180px",
+              padding: "8px 25px",
               background: "linear-gradient(270deg, #307bc4 0%, #274760 100%)",
             },
           }}

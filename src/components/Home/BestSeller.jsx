@@ -2,10 +2,14 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 import ProductsCard from "./ProductCard";
 import { useTranslation } from "react-i18next";
+import { useFilteredProducts } from "../../query-data/data.service";
 
 export default function BestSeller() {
 
   const {t} = useTranslation()
+
+  const {data, isLoading, isError} = useFilteredProducts({limit: 10, offset: 0})
+  console.log(data, "sda");
 
   return (
     <Box
@@ -17,7 +21,7 @@ export default function BestSeller() {
         {t("our-products")}
       </Typography>
 
-      <ProductsCard />
+      <ProductsCard data={data?.data ?? []} />
     </Box>
   );
 }

@@ -48,3 +48,34 @@ p{
     gap: 10px;
   }
 }
+
+.iiz__img {
+  width: 100%;
+  height: 450px !important;
+  object-fit: contain;
+}
+
+.product-description {
+  font-size: 20px;
+  margin: 20px 50px;
+}
+
+@media (max-width: 750px) {
+  .iiz__img {
+    height: 350px !important;
+  }
+  .product-description {
+    font-size: 17px;
+    margin: 20px 20px;
+  }
+}
+
+
+@media (max-width: 450px) {
+ 
+  .product-description {
+    
+    margin: 20px 0px;
+  }
+}
+

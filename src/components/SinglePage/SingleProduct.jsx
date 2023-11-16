@@ -34,13 +34,15 @@ export default function SingleProduct({data, isLoading}) {
             <Typography style={{display: "block", fontSize: "23px" , textAlign: "center", margin: "30px"}} >Not found</Typography>
           ) : (
             <Grid container justifyContent={"center"} style={{
-              padding: "20px"
+              padding: "20px",
+              
+
             }} gap={4}>
-              <Grid component={"div"} item  sm={5}>
-                <Box sx={{ width: "100%" }}>
+              <Grid   component={"div"} item  sm={5}>
+                <Box  sx={{ width: "100%", height: "fit-content" }}>
                   {data?.data?.product_image_url?.map((v) => (
-                  <div key={v} style={{width: "100%", display: mainImage == v ?  "block" : "none"}}>
-                    <InnerImageZoom  zoomScale={6} height={400} width={"100%"} src={v} zoomSrc={v} />
+                  <div  key={v} style={{width: "100%", height: "fit-content", display: mainImage == v ?  "block" : "none"}}>
+                    <InnerImageZoom  zoomScale={6} height={"200px"}  width={"100%"} src={v} zoomSrc={v} />
                   </div>
                   ))}
                 </Box>
@@ -92,6 +94,9 @@ export default function SingleProduct({data, isLoading}) {
                   Buy Now
                 </Button> */}
               </Grid>
+              <p className="product-description" style={{ fontFamily: "Inter",  }}>
+                  {i18n?.language == "uz" ? data?.data?.product_desc_uz : data?.data?.product_desc_ru}
+              </p>
             </Grid>
           )
         )
