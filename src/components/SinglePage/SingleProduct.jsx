@@ -42,7 +42,7 @@ export default function SingleProduct({data, isLoading}) {
                 <Box  sx={{ width: "100%", height: "fit-content" }}>
                   {data?.data?.product_image_url?.map((v) => (
                   <div  key={v} style={{width: "100%", height: "fit-content", display: mainImage == v ?  "block" : "none"}}>
-                    <InnerImageZoom  zoomScale={6} height={"200px"}  width={"100%"} src={v} zoomSrc={v} />
+                    <InnerImageZoom  zoomScale={4} height={"200px"}  width={"100%"} src={v} zoomSrc={v} />
                   </div>
                   ))}
                 </Box>
