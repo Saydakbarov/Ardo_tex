@@ -38,6 +38,7 @@ export default function ProductCard({ data }) {
             style={{
               width: "100%",
               height: "300px",
+              objectFit: "contain"
             }}
             src={v?.product_image_url[0]}
             alt=""
