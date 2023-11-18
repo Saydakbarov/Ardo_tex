@@ -11,12 +11,77 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 
 export default function VacancyForm() {
+  // const [family, setFamily] = useState("");
+
+  // const [languages, setLanguages] = useState({
+  //   english: true,
+  //   uzbek: false,
+  //   russian: false,
+  // });
+
+  // const [busy, setBusy] = useState("");
+
+  // const handleCheckboxChange = (event) => {
+  //   setLanguages({ ...languages, [event.target.name]: event.target.checked });
+  // };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   const selectedLanguages = Object.keys(languages).filter(
+  //     (lang) => languages[lang]
+  //   );
+
+  //   const selectedLanguagesString = selectedLanguages.join(", ");
+
+  //   const {
+  //     name,
+  //     age,
+  //     address,
+  //     reference,
+  //     baby,
+  //     live,
+  //     work,
+  //     health,
+  //     hobby,
+  //     salary,
+  //     phone,
+  //   } = e.target.elements;
+  //   const token = "6889465570:AAHaWvdhdb7Y0LT9fK3jd-YbQ9mzj6Ormuc";
+  //   const chat_id =  "-4063476415";
+  //   let text = "";
+
+  //   text =
+  //     text +
+  //     ` %0A Анкета для нового сотрудника: %0A Имя клиента: ${name.value} %0A Возраст клиента: ${age.value} %0A Адрес клиента: ${address.value} %0A Информация: ${reference.value} %0A Количество детей: ${baby.value} %0A С кем ты живешь?: ${live.value} %0A Работал: ${work.value}  %0A Здоровье: ${health.value} %0A Интерес: ${hobby.value} %0A Зарплата: ${salary.value}  %0A Номер телефона: ${phone.value}  %0A Семейное положение: ${family} %0A Какие языки ты знаешь?: ${selectedLanguagesString} %0A Чем ты сейчас занят?: ${busy} ;`;
+
+  //   const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${text}`;
+
+  //   let api = new XMLHttpRequest();
+  //   api.open("GET", url, true);
+  //   api.send();
+
+  //   name.value = "";
+  //   age.value = "";
+  //   address.value = "";
+  //   reference.value = "";
+  //   baby.value = "";
+  //   live.value = "";
+  //   work.value = "";
+  //   health.value = "";
+  //   hobby.value = "";
+  //   salary.value = "";
+  //   phone.value = "";
+  // };
+
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+    e.preventDefault()
+  }
+
   return (
     <Box>
       <Typography

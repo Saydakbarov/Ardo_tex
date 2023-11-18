@@ -67,20 +67,18 @@ export default function ProductsPage() {
   // console.log(data, "products");
 
   const { data: categories, refetch: refetchCategory } = useCategories();
-  const { data: subcategories, refetch: refetchSubCategory } =
-    useSubCategories(categoryId);
-  const { data: secondsubcategories, refetch: refetchSecondSubcategory } =
-    useSecondSubCategories(subCategoryId);
+  const { data: subcategories, refetch: refetchSubCategory } = useSubCategories(categoryId);
+  const { data: secondsubcategories, refetch: refetchSecondSubcategory } = useSecondSubCategories(subCategoryId);
 
   const { data: brands } = useBrands();
 
-  useMemo(() => {
+  useEffect(() => {
     if (categoryId) {
       refetchSubCategory();
     }
   }, [categoryId]);
 
-  useMemo(() => {
+  useEffect(() => {
     if (subCategoryId) {
       // console.log("sub Inner");
       refetchSecondSubcategory();

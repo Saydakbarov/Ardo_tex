@@ -61,7 +61,7 @@ export default function ProductCategory({categoryId, categories, subCategoryId, 
               gap: "10px",
             }}
           >
-            {categories?.data?.map((v) => (
+            {categories && categories?.data?.map((v) => (
               <Link
                 style={{ textDecoration: "none", color: "inherit" }}
                 to={`/product?category=${v?.category_id}`}
@@ -80,7 +80,7 @@ export default function ProductCategory({categoryId, categories, subCategoryId, 
               gap: "10px",
             }}
           >
-            {subcategories?.data?.map((v) => (
+            {subcategories && subcategories?.data?.map((v) => (
               <Link
                 style={{ textDecoration: "none", color: "inherit" }}
                 to={`/product?category=${categoryId}&subcategory=${v.sub_category_id}`}
@@ -99,7 +99,7 @@ export default function ProductCategory({categoryId, categories, subCategoryId, 
               gap: "10px",
             }}
           >
-            {secondsubcategories?.data?.map((v) => (
+            { secondsubcategories && secondsubcategories?.data?.map((v) => (
               <Link
                 style={{
                   textDecoration:
