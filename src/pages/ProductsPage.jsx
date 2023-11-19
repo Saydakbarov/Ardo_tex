@@ -14,6 +14,8 @@ import {
 import { useSearchParams } from "react-router-dom";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import { useMutation } from "@tanstack/react-query";
+import { postFilteredProducts } from "../query-data/data.fn";
 
 export default function ProductsPage() {
   const [params, setParams] = useSearchParams();
@@ -23,7 +25,7 @@ export default function ProductsPage() {
   const categoryId = params.get("category");
   const subCategoryId = params.get("subcategory");
   const secondSubCategoryId = params.get("secondsubcategory");
-  const [brandId, setBrandId] = useState("");
+  const [brandId, setBrandId] = useState([]);
   const [offset, setOffset] = useState(0);
   const [limit, setLimit] = useState(20);
   const [priceFrom, setPriceFrom] = useState(0);
@@ -31,25 +33,88 @@ export default function ProductsPage() {
   const [searchUz, setSearchUz] = useState("");
   const [searchRu, setSearchRu] = useState("");
   const [searchEn, setSearchEn] = useState("");
-  const [color, setColor] = useState("");
+  const [color, setColor] = useState(null);
+  const [technology, setTechnology] = useState([]);
 
-  const { data, refetch, isFetching } = useFilteredProducts({
-    limit,
-    offset,
-    category_id: categoryId,
-    sub_category_id: subCategoryId,
-    second_sub_category_id: secondSubCategoryId,
-    price_from: priceFrom,
-    price_to: priceTo,
-    search_uz: searchUz,
-    search_ru: searchRu,
-    search_en: searchEn,
-    brand_id: brandId,
-    color,
-  });
+  // const { data, refetch, isFetching } = useFilteredProducts({
+  //   limit,
+  //   offset,
+  //   category_id: categoryId,
+  //   sub_category_id: subCategoryId,
+  //   second_sub_category_id: secondSubCategoryId,
+  //   price_from: priceFrom,
+  //   price_to: priceTo,
+  //   search_uz: searchUz,
+  //   search_ru: searchRu,
+  //   search_en: searchEn,
+  //   brand_id: brandId,
+  //   color,
+  // });
+
+
+  // const {mutate, data, isPending} = useMutation({
+  //   mutationFn: postFilteredProducts,
+  //   mutationKey: ["post/filtered/products"],
+  //   onSuccess: (data) => {
+  //     console.log(data, "asd");
+  //   }
+  // })
+
+  const [data, setData] = useState(null)
+
+
+  console.log(data, "datat");
 
   useEffect(() => {
-    refetch();
+
+    const fetchData = async () => {
+
+    //   const formData = new FormData()
+    //   formData.append("category_id", categoryId)
+    //   formData.append("sub_category_id", subCategoryId)
+    //   formData.append("second_sub_category_id", secondSubCategoryId)
+    //   formData.append("price_from", priceFrom)
+    //   formData.append("price_to", priceTo)
+    //   formData.append("search_uz", searchUz)
+    //   formData.append("search_ru", searchRu)
+    //   formData.append("search_en", searchEn)
+    //   formData.append("color", color)
+    //  formData.append("brand_id", brandId)
+    //   // for(let i = 0; i < brandId?.length; i++) {
+    //   //   formData.append("brand_id", brandId[i])
+    //   // }
+    //  formData.append("technology", technology)
+      // for(let i = 0; i < technology?.length; i++) {
+      //   formData.append("technology", technology[i])
+      // }
+
+      const query = {
+        params: {
+          limit,
+          offset
+        },
+        body: {
+          category_id: categoryId,
+          sub_category_id: subCategoryId,
+          second_sub_category_id: secondSubCategoryId,
+          price_from: priceFrom,
+          price_to: priceTo,
+          search_uz: searchUz,
+          search_ru: searchRu,
+          search_en: searchEn,
+          color: color,
+          brand_id: brandId,
+          technology: technology,
+        }
+      }
+
+      const res = await postFilteredProducts(query)
+      console.log(res, "asd");
+      setData(res)
+    }
+    fetchData()
+
+    
   }, [
     categoryId,
     subCategoryId,
@@ -62,13 +127,16 @@ export default function ProductsPage() {
     searchRu,
     searchUz,
     color,
+    technology
   ]);
 
   // console.log(data, "products");
 
   const { data: categories, refetch: refetchCategory } = useCategories();
-  const { data: subcategories, refetch: refetchSubCategory } = useSubCategories(categoryId);
-  const { data: secondsubcategories, refetch: refetchSecondSubcategory } = useSecondSubCategories(subCategoryId);
+  const { data: subcategories, refetch: refetchSubCategory } =
+    useSubCategories(categoryId);
+  const { data: secondsubcategories, refetch: refetchSecondSubcategory } =
+    useSecondSubCategories(subCategoryId);
 
   const { data: brands } = useBrands();
 
@@ -201,7 +269,7 @@ export default function ProductsPage() {
         categories={categories}
         categoryId={categoryId}
         data={data}
-        isFetching={isFetching}
+       
         priceFrom={priceFrom}
         priceTo={priceTo}
         searchRu={searchRu}
@@ -214,6 +282,10 @@ export default function ProductsPage() {
         setPriceTo={setPriceTo}
         subCategoryId={subCategoryId}
         subcategories={subcategories}
+        color={color}
+        setColor={setColor}
+        technology={technology}
+        setTechnology={setTechnology}
       />
       <Footer />
     </Box>

@@ -97,6 +97,18 @@ export const getFilteredProducts = async ({
   }
 };
 
+export const postFilteredProducts = async ({ params, body }) => {
+  try {
+    const res = await axios.post("tex/products/list", body, {
+      params,
+    });
+
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const getOneProduct = async (id) => {
   try {
     const res = await axios.get(`tex/product/${id}`);

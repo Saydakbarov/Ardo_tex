@@ -1534,3 +1534,67 @@ export const languages = [
     image: "/img/uz.png"
   },
 ]
+
+
+
+export const colorsData = [
+  {
+      id: 1,
+      name: "Синий",
+      image: "/img/colors/blue.webp"
+  },
+  {
+      id: 2,
+      name: "Черный",
+      image: "/img/colors/black.webp"
+  },
+  {
+      id: 3,
+      name: "Золотой",
+      image: "/img/colors/gold.webp"
+  },
+  {
+      id: 4,
+      name: "Зеленый",
+      image: "/img/colors/green.webp"
+  },
+  {
+      id: 5,
+      name: "Красный",
+      image: "/img/colors/red.webp"
+  },
+  {
+      id: 6,
+      name: "Фиолетовый",
+      image: "/img/colors/violet.webp"
+  },
+  {
+      id: 7,
+      name: "Белый",
+      image: "/img/colors/white.webp"
+  },
+]
+
+
+export const technologiesData = [
+  {
+      id: 1,
+      name: "Легко чистить",
+  },
+  {
+      id: 2,
+      name: "Водоотталкивающий",
+  },
+  {
+      id: 3,
+      name: "Допускается размещение животных",
+  },
+  {
+      id: 4,
+      name: "Переработанный полиэстер",
+  },
+  {
+      id: 5,
+      name: "Базовый Дэвис",
+  },
+]

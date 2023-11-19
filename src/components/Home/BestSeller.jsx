@@ -1,14 +1,29 @@
 import { Box, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductsCard from "./ProductCard";
 import { useTranslation } from "react-i18next";
 import { useFilteredProducts } from "../../query-data/data.service";
+import { postFilteredProducts } from "../../query-data/data.fn";
 
 export default function BestSeller() {
+  const { t } = useTranslation();
 
-  const {t} = useTranslation()
+  const [data, setData] = useState(null);
 
-  const {data, isLoading, isError} = useFilteredProducts({limit: 10, offset: 0})
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await postFilteredProducts({
+        params: {
+          limit: 15,
+          offset: 0,
+        },
+        body: {},
+      });
+
+      setData(res);
+    };
+    fetchData();
+  }, []);
   console.log(data, "sda");
 
   return (
