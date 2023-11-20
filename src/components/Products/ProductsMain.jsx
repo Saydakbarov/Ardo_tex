@@ -13,11 +13,12 @@ export default function ProductsMain({ breadcrumpData }) {
     <Box
       sx={{
         backgroundImage:
-          "url('https://htmldemo.net/eposi/eposi/assets/img/backgrounds/category-image-1820x400.webp')",
-        height: "400px",
-        pt: 10,
+        "url('/img/page-header/product.jpg')",
+        pt: 20,
+        pb: 45,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
+        backgroundSize: "cover"
       }}
     >
       <Box

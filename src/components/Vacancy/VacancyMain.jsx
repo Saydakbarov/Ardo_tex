@@ -12,11 +12,12 @@ export default function VacancyMain() {
     <Box
       sx={{
         backgroundImage:
-          "url('https://htmldemo.net/eposi/eposi/assets/img/backgrounds/category-image-1820x400.webp')",
+          "url('/img/page-header/vacancy.webp')",
         height: "400px",
         pt: 10,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
+        backgroundSize: "cover"
       }}
     >
       <Box

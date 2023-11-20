@@ -12,11 +12,13 @@ export default function AboutMain() {
     <Box
       sx={{
         backgroundImage:
-          "url('https://htmldemo.net/eposi/eposi/assets/img/backgrounds/category-image-1820x400.webp')",
-        height: "400px",
-        pt: 10,
+          "url('/img/page-header/about.jpg')",
+        
+        pt: 25,
+        pb: 35,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
+        backgroundSize: "cover"
       }}
     >
       <Box
