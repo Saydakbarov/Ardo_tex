@@ -80,15 +80,12 @@ export default function ProductsCard({data}) {
               {data?.map((v, i) => (
                 <Grid   item key={v?.product_id} sx={{ borderRadius: "6px" }}>
                   <SwiperSlide className="swiperSlideBox">
-                   <Link style={{textDecoration: "none", color: "inherit"}} to={`/single/${v?.product_id}`} >
+                   <Link className="product-card" style={{textDecoration: "none", color: "inherit"}} to={`/single/${v?.product_id}`} >
                    <Box
                     
-                    sx={{
-                      boxShadow: "0px 5px 10px 0px gray",
-                      borderRadius: "6px",
-                    }}
+                    
                   >
-                    <Box
+                    {/* <Box
                       component={"div"}
                       sx={{
                         p: 3,
@@ -109,7 +106,7 @@ export default function ProductsCard({data}) {
                       //   setHover(false);
                       // }}
                     >
-                      {/* <Box
+                      <Box
                         sx={{
                           display: "flex",
                           justifyContent: "space-between",
@@ -150,19 +147,23 @@ export default function ProductsCard({data}) {
                             Add To Card
                           </Button>
                         </Box>
-                      </Box> */}
-                    </Box>
+                      </Box>
+                    </Box> */}
+                    <img src={v?.product_image_url[0]}  style={{
+                      width: "100%",
+                      height: "300px",
+                      objectFit: "contain",
+                      borderRadius: "6px"
+                    }} />
                     <Box>
                       <Box
-                        sx={{ background: "#DEEAED", borderRadius: "6px" }}
+                      
                       >
                         <Box
                           sx={{
                             display: "flex",
                             justifyContent: "space-between",
                             alignItems: "center",
-                            mt: 2,
-                            p: 1,
                           }}
                         >
                           {/* <Rating
@@ -174,6 +175,7 @@ export default function ProductsCard({data}) {
                             sx={{ fontSize: "22px" }}
                           /> */}
                            <Typography
+                           sx={{p: 1}}
                            
                           >
                             {i18n?.language == "uz" ? v?.product_title_uz : v?.product_title_ru}

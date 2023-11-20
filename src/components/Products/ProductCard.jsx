@@ -23,6 +23,7 @@ export default function ProductCard({ data }) {
     >
       {data?.data?.map((v) => (
         <Box
+        className="product-card"
           key={v.id}
           sx={{
             width: "300px",
