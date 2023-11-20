@@ -1,13 +1,10 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React, { lazy, useState } from "react";
 // import Video4 from "../../video/video4.mp4";
-import SingleBox from "./SingleBox";
-import SingleImageBox from "./SingleImageBox";
 import InnerImageZoom from "react-inner-image-zoom";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.min.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { CategoryData } from "../../data";
 import { useOneProduct } from "../../query-data/data.service";
 import { useTranslation } from "react-i18next";
 // import ReactImageMagnify from "react-image-magnify";

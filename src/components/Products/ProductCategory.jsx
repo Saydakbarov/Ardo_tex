@@ -25,10 +25,29 @@ import { useEffect } from "react";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
-export default function ProductCategory({categoryId, categories, subCategoryId, subcategories, secondSubCategoryId, secondsubcategories, brandId, brands, setBrandId, priceFrom, setPriceFrom, priceTo, setPriceTo, searchUz, setSearchUz, searchRu, setSearchRu, backLink, isFetching, data}) {
+export default function ProductCategory({
+  categoryId,
+  categories,
+  subCategoryId,
+  subcategories,
+  secondSubCategoryId,
+  secondsubcategories,
+  brandId,
+  brands,
+  setBrandId,
+  priceFrom,
+  setPriceFrom,
+  priceTo,
+  setPriceTo,
+  searchUz,
+  setSearchUz,
+  searchRu,
+  setSearchRu,
+  backLink,
+  isFetching,
+  data,
+}) {
   // const [categoryId, setCategoryId] = useState(1);
-
-  
 
   // const [value, setValue] = React.useState([20000, 1000000]);
 
@@ -37,17 +56,33 @@ export default function ProductCategory({categoryId, categories, subCategoryId, 
   // };
   // console.log(categoryId);
 
-  const {t, i18n} = useTranslation()
-
+  const { t, i18n } = useTranslation();
 
   return (
     <Box>
       <Grid container justifyContent={"center"} gap={10}>
-        <Grid item lg={2.5} sx={{ p: 2, borderRadius: "10px" }}>
-          <Typography sx={{ display: categoryId ? "block" : "none", fontSize: "18px", fontWeight: "bold", marginBottom: "20px" }}>
-           <Link style={{textDecoration: "none", color: "inherit"}} to={backLink} >
-           {`< ${t("back")}`}
-           </Link>
+        <Grid
+          item
+          lg={2.5}
+          md={2.5}
+          sm={8}
+          xs={11}
+          sx={{ p: 2, borderRadius: "10px" }}
+        >
+          <Typography
+            sx={{
+              display: categoryId ? "block" : "none",
+              fontSize: "18px",
+              fontWeight: "bold",
+              marginBottom: "20px",
+            }}
+          >
+            <Link
+              style={{ textDecoration: "none", color: "inherit" }}
+              to={backLink}
+            >
+              {`< ${t("back")}`}
+            </Link>
           </Typography>
 
           <Typography sx={{ fontSize: "22px", fontWeight: "bold" }}>
@@ -67,7 +102,9 @@ export default function ProductCategory({categoryId, categories, subCategoryId, 
                 to={`/product?category=${v?.category_id}`}
               >
                 <Typography style={{ fontSize: "18px" }}>
-                  { i18n?.language == "uz" ? v.category_name_uz : v.category_name_ru}
+                  {i18n?.language == "uz"
+                    ? v.category_name_uz
+                    : v.category_name_ru}
                 </Typography>
               </Link>
             ))}
@@ -86,7 +123,9 @@ export default function ProductCategory({categoryId, categories, subCategoryId, 
                 to={`/product?category=${categoryId}&subcategory=${v.sub_category_id}`}
               >
                 <Typography style={{ fontSize: "18px" }}>
-                  { i18n?.language == "uz" ? v.sub_category_name_uz : v.sub_category_name_ru}
+                  {i18n?.language == "uz"
+                    ? v.sub_category_name_uz
+                    : v.sub_category_name_ru}
                 </Typography>
               </Link>
             ))}
@@ -111,7 +150,9 @@ export default function ProductCategory({categoryId, categories, subCategoryId, 
                 to={`/product?category=${categoryId}&subcategory=${subCategoryId}&secondsubcategory=${v.second_sub_category_id}`}
               >
                 <Typography style={{ fontSize: "18px" }}>
-                  { i18n?.language == "uz" ? v.second_sub_category_name_uz : v.second_sub_category_name_ru}
+                  {i18n?.language == "uz"
+                    ? v.second_sub_category_name_uz
+                    : v.second_sub_category_name_ru}
                 </Typography>
               </Link>
             ))}
@@ -122,23 +163,48 @@ export default function ProductCategory({categoryId, categories, subCategoryId, 
               {t("brands")}
             </Typography>
             <Box sx={{}}>
-             
-             {
-              brands?.data?.map(item => (
+              {brands?.data?.map((item) => (
                 <FormControlLabel
-                key={item.brand_id}
-                control={<Radio value={item.brand_id} checked={brandId} onChange={(e) => {setBrandId(prevstate => prevstate == e.target.value ? null : e.target.value)}} />}
-                label={item.brand_name}
-              />
-              ))
-             }
-             
+                  key={item.brand_id}
+                  control={
+                    <Radio
+                      value={item.brand_id}
+                      checked={brandId}
+                      onChange={(e) => {
+                        setBrandId((prevstate) =>
+                          prevstate == e.target.value ? null : e.target.value
+                        );
+                      }}
+                    />
+                  }
+                  label={item.brand_name}
+                />
+              ))}
             </Box>
           </Box>
 
-          <div style={{display: "flex", alignItems : "center", gap: "16px", margin: "40px 0"}} >
-            <TextField label={t("price-from")} value={priceFrom} onChange={(e) => setPriceFrom(e.target.value)} type="number" fullWidth />
-            <TextField label={t("price-to")} value={priceTo} onChange={(e) => setPriceTo(e.target.value)} type="number" fullWidth />
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "16px",
+              margin: "40px 0",
+            }}
+          >
+            <TextField
+              label={t("price-from")}
+              value={priceFrom}
+              onChange={(e) => setPriceFrom(e.target.value)}
+              type="number"
+              fullWidth
+            />
+            <TextField
+              label={t("price-to")}
+              value={priceTo}
+              onChange={(e) => setPriceTo(e.target.value)}
+              type="number"
+              fullWidth
+            />
           </div>
           <Box sx={{ mt: 3 }}>
             <Typography sx={{ fontSize: "20px", fontWeight: "bold" }}>
@@ -183,42 +249,32 @@ export default function ProductCategory({categoryId, categories, subCategoryId, 
               ></p>
             </Box>
           </Box>
-
-          {/* <Box sx={{ mt: 3 }}>
-            <Typography sx={{ fontSize: "20px", fontWeight: "bold" }}>
-              Filters
-            </Typography>
-            <Box sx={{ display: "flex", gap: "10px", flexWrap: "wrap", mt: 1 }}>
-              <Slider
-                getAriaLabel={() => "Temperature range"}
-                value={value}
-                onChange={handleChange}
-                valueLabelDisplay="auto"
-              />
-            </Box>
-          </Box> */}
         </Grid>
 
-        <Grid item lg={8} mt={2}>
+        <Grid item lg={8} md={8} sm={10} xs={11} mt={2}>
           <TextField
             fullWidth
             id="filled-basic"
             label={t("search")}
             variant="standard"
-
-            value={i18n?.language == "uz" ?  searchUz : searchRu}
+            value={i18n?.language == "uz" ? searchUz : searchRu}
             onChange={(e) => {
-              if(i18n?.language == "uz") {
-                setSearchUz(e.target.value)
-              }else {
-                setSearchRu(e.target.value)
+              if (i18n?.language == "uz") {
+                setSearchUz(e.target.value);
+              } else {
+                setSearchRu(e.target.value);
               }
             }}
-
           />
-          {
-            isFetching ? (<Typography style={{textAlign: "center", margin: "30px", fontSize: "23px"}} >Loading...</Typography>) : (<ProductCard data={data} />)
-          }
+          {isFetching ? (
+            <Typography
+              style={{ textAlign: "center", margin: "30px", fontSize: "23px" }}
+            >
+              Loading...
+            </Typography>
+          ) : (
+            <ProductCard data={data} />
+          )}
         </Grid>
       </Grid>
     </Box>

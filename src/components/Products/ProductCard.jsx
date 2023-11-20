@@ -19,6 +19,7 @@ export default function ProductCard({ data }) {
         gap: "20px",
         flexWrap: "wrap",
         mt: 4,
+        justifyContent: "center",
       }}
     >
       {data?.data?.map((v) => (
@@ -27,7 +28,7 @@ export default function ProductCard({ data }) {
           sx={{
             width: "300px",
             cursor: "pointer",
-            border: "2px solid gray",
+            // border: "2px solid gray",
             borderRadius: "6px",
             boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
           }}
@@ -47,6 +48,7 @@ export default function ProductCard({ data }) {
           </Typography>
         </Box>
       ))}
+
     </Box>
   );
 }
