@@ -45,16 +45,11 @@ export default function ProductCategory({
   searchRu,
   setSearchRu,
   backLink,
-<<<<<<< HEAD
-  isFetching,
-  data,
-=======
   data,
   color,
   setColor,
   technology,
 setTechnology
->>>>>>> 8e0cc2c40168880ae40381cd878da3991d715124
 }) {
   // const [categoryId, setCategoryId] = useState(1);
 
@@ -66,8 +61,6 @@ setTechnology
   // console.log(categoryId);
 
   const { t, i18n } = useTranslation();
-<<<<<<< HEAD
-=======
 
   const handleCheckboxChange = (state, setState, id) => {
     if(state?.includes(id)) {
@@ -78,24 +71,12 @@ setTechnology
     }
   }
 
->>>>>>> 8e0cc2c40168880ae40381cd878da3991d715124
 
   console.log(technology);
   return (
     <Box>
       <Grid container justifyContent={"center"} gap={10}>
-<<<<<<< HEAD
-        <Grid
-          item
-          lg={2.5}
-          md={2.5}
-          sm={8}
-          xs={11}
-          sx={{ p: 2, borderRadius: "10px" }}
-        >
-=======
         <Grid item lg={2.5} sx={{ p: 2, borderRadius: "10px" }}>
->>>>>>> 8e0cc2c40168880ae40381cd878da3991d715124
           <Typography
             sx={{
               display: categoryId ? "block" : "none",
@@ -123,20 +104,6 @@ setTechnology
               gap: "10px",
             }}
           >
-<<<<<<< HEAD
-            {categories?.data?.map((v) => (
-              <Link
-                style={{ textDecoration: "none", color: "inherit" }}
-                to={`/product?category=${v?.category_id}`}
-              >
-                <Typography style={{ fontSize: "18px" }}>
-                  {i18n?.language == "uz"
-                    ? v.category_name_uz
-                    : v.category_name_ru}
-                </Typography>
-              </Link>
-            ))}
-=======
             {categories &&
               categories?.data?.map((v) => (
                 <Link
@@ -150,7 +117,6 @@ setTechnology
                   </Typography>
                 </Link>
               ))}
->>>>>>> 8e0cc2c40168880ae40381cd878da3991d715124
           </Box>
           <Box
             sx={{
@@ -160,20 +126,6 @@ setTechnology
               gap: "10px",
             }}
           >
-<<<<<<< HEAD
-            {subcategories?.data?.map((v) => (
-              <Link
-                style={{ textDecoration: "none", color: "inherit" }}
-                to={`/product?category=${categoryId}&subcategory=${v.sub_category_id}`}
-              >
-                <Typography style={{ fontSize: "18px" }}>
-                  {i18n?.language == "uz"
-                    ? v.sub_category_name_uz
-                    : v.sub_category_name_ru}
-                </Typography>
-              </Link>
-            ))}
-=======
             {subcategories &&
               subcategories?.data?.map((v) => (
                 <Link
@@ -187,7 +139,6 @@ setTechnology
                   </Typography>
                 </Link>
               ))}
->>>>>>> 8e0cc2c40168880ae40381cd878da3991d715124
           </Box>
           <Box
             sx={{
@@ -197,26 +148,6 @@ setTechnology
               gap: "10px",
             }}
           >
-<<<<<<< HEAD
-            {secondsubcategories?.data?.map((v) => (
-              <Link
-                style={{
-                  textDecoration:
-                    secondSubCategoryId == v.second_sub_category_id
-                      ? "underline"
-                      : "none",
-                  color: "inherit",
-                }}
-                to={`/product?category=${categoryId}&subcategory=${subCategoryId}&secondsubcategory=${v.second_sub_category_id}`}
-              >
-                <Typography style={{ fontSize: "18px" }}>
-                  {i18n?.language == "uz"
-                    ? v.second_sub_category_name_uz
-                    : v.second_sub_category_name_ru}
-                </Typography>
-              </Link>
-            ))}
-=======
             {secondsubcategories &&
               secondsubcategories?.data?.map((v) => (
                 <Link
@@ -236,7 +167,6 @@ setTechnology
                   </Typography>
                 </Link>
               ))}
->>>>>>> 8e0cc2c40168880ae40381cd878da3991d715124
           </Box>
 
           <Box sx={{ mt: 3 }}>
@@ -244,9 +174,6 @@ setTechnology
               {t("brands")}
             </Typography>
             <Box sx={{}}>
-<<<<<<< HEAD
-              {brands?.data?.map((item) => (
-=======
             <FormGroup>
                {
                 brands?.data?.map(item => (
@@ -259,7 +186,6 @@ setTechnology
                
               </FormGroup>
               {/* {brands?.data?.map((item) => (
->>>>>>> 8e0cc2c40168880ae40381cd878da3991d715124
                 <FormControlLabel
                   key={item.brand_id}
                   control={
@@ -275,11 +201,7 @@ setTechnology
                   }
                   label={item.brand_name}
                 />
-<<<<<<< HEAD
-              ))}
-=======
               ))} */}
->>>>>>> 8e0cc2c40168880ae40381cd878da3991d715124
             </Box>
           </Box>
 
@@ -384,11 +306,7 @@ setTechnology
               }
             }}
           />
-<<<<<<< HEAD
-          {isFetching ? (
-=======
           {!data ? (
->>>>>>> 8e0cc2c40168880ae40381cd878da3991d715124
             <Typography
               style={{ textAlign: "center", margin: "30px", fontSize: "23px" }}
             >
