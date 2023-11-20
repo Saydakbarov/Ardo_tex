@@ -3,6 +3,7 @@ import {
   Button,
   Checkbox,
   FormControlLabel,
+  FormGroup,
   Grid,
   Radio,
   Slider,
@@ -10,7 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import { CategoryData } from "../../data";
+import { CategoryData, colorsData, technologiesData } from "../../data";
 import { useState } from "react";
 import ProductCard from "./ProductCard";
 import {
@@ -44,8 +45,16 @@ export default function ProductCategory({
   searchRu,
   setSearchRu,
   backLink,
+<<<<<<< HEAD
   isFetching,
   data,
+=======
+  data,
+  color,
+  setColor,
+  technology,
+setTechnology
+>>>>>>> 8e0cc2c40168880ae40381cd878da3991d715124
 }) {
   // const [categoryId, setCategoryId] = useState(1);
 
@@ -57,10 +66,25 @@ export default function ProductCategory({
   // console.log(categoryId);
 
   const { t, i18n } = useTranslation();
+<<<<<<< HEAD
+=======
 
+  const handleCheckboxChange = (state, setState, id) => {
+    if(state?.includes(id)) {
+      setState(state?.filter(item => item != id))
+    }else {
+      setState([...state, id])
+
+    }
+  }
+
+>>>>>>> 8e0cc2c40168880ae40381cd878da3991d715124
+
+  console.log(technology);
   return (
     <Box>
       <Grid container justifyContent={"center"} gap={10}>
+<<<<<<< HEAD
         <Grid
           item
           lg={2.5}
@@ -69,6 +93,9 @@ export default function ProductCategory({
           xs={11}
           sx={{ p: 2, borderRadius: "10px" }}
         >
+=======
+        <Grid item lg={2.5} sx={{ p: 2, borderRadius: "10px" }}>
+>>>>>>> 8e0cc2c40168880ae40381cd878da3991d715124
           <Typography
             sx={{
               display: categoryId ? "block" : "none",
@@ -96,6 +123,7 @@ export default function ProductCategory({
               gap: "10px",
             }}
           >
+<<<<<<< HEAD
             {categories?.data?.map((v) => (
               <Link
                 style={{ textDecoration: "none", color: "inherit" }}
@@ -108,6 +136,21 @@ export default function ProductCategory({
                 </Typography>
               </Link>
             ))}
+=======
+            {categories &&
+              categories?.data?.map((v) => (
+                <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to={`/product?category=${v?.category_id}`}
+                >
+                  <Typography style={{ fontSize: "18px" }}>
+                    {i18n?.language == "uz"
+                      ? v.category_name_uz
+                      : v.category_name_ru}
+                  </Typography>
+                </Link>
+              ))}
+>>>>>>> 8e0cc2c40168880ae40381cd878da3991d715124
           </Box>
           <Box
             sx={{
@@ -117,6 +160,7 @@ export default function ProductCategory({
               gap: "10px",
             }}
           >
+<<<<<<< HEAD
             {subcategories?.data?.map((v) => (
               <Link
                 style={{ textDecoration: "none", color: "inherit" }}
@@ -129,6 +173,21 @@ export default function ProductCategory({
                 </Typography>
               </Link>
             ))}
+=======
+            {subcategories &&
+              subcategories?.data?.map((v) => (
+                <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to={`/product?category=${categoryId}&subcategory=${v.sub_category_id}`}
+                >
+                  <Typography style={{ fontSize: "18px" }}>
+                    {i18n?.language == "uz"
+                      ? v.sub_category_name_uz
+                      : v.sub_category_name_ru}
+                  </Typography>
+                </Link>
+              ))}
+>>>>>>> 8e0cc2c40168880ae40381cd878da3991d715124
           </Box>
           <Box
             sx={{
@@ -138,6 +197,7 @@ export default function ProductCategory({
               gap: "10px",
             }}
           >
+<<<<<<< HEAD
             {secondsubcategories?.data?.map((v) => (
               <Link
                 style={{
@@ -156,6 +216,27 @@ export default function ProductCategory({
                 </Typography>
               </Link>
             ))}
+=======
+            {secondsubcategories &&
+              secondsubcategories?.data?.map((v) => (
+                <Link
+                  style={{
+                    textDecoration:
+                      secondSubCategoryId == v.second_sub_category_id
+                        ? "underline"
+                        : "none",
+                    color: "inherit",
+                  }}
+                  to={`/product?category=${categoryId}&subcategory=${subCategoryId}&secondsubcategory=${v.second_sub_category_id}`}
+                >
+                  <Typography style={{ fontSize: "18px" }}>
+                    {i18n?.language == "uz"
+                      ? v.second_sub_category_name_uz
+                      : v.second_sub_category_name_ru}
+                  </Typography>
+                </Link>
+              ))}
+>>>>>>> 8e0cc2c40168880ae40381cd878da3991d715124
           </Box>
 
           <Box sx={{ mt: 3 }}>
@@ -163,7 +244,22 @@ export default function ProductCategory({
               {t("brands")}
             </Typography>
             <Box sx={{}}>
+<<<<<<< HEAD
               {brands?.data?.map((item) => (
+=======
+            <FormGroup>
+               {
+                brands?.data?.map(item => (
+                  <FormControlLabel
+                  control={<Checkbox value={item.brand_id} checked={brandId?.includes(item.brand_id)} onChange={() => handleCheckboxChange(brandId, setBrandId, item?.brand_id)} />}
+                  label={item?.brand_name}
+                />
+                ))
+               }
+               
+              </FormGroup>
+              {/* {brands?.data?.map((item) => (
+>>>>>>> 8e0cc2c40168880ae40381cd878da3991d715124
                 <FormControlLabel
                   key={item.brand_id}
                   control={
@@ -179,7 +275,11 @@ export default function ProductCategory({
                   }
                   label={item.brand_name}
                 />
+<<<<<<< HEAD
               ))}
+=======
+              ))} */}
+>>>>>>> 8e0cc2c40168880ae40381cd878da3991d715124
             </Box>
           </Box>
 
@@ -211,43 +311,61 @@ export default function ProductCategory({
               {t("colors")}
             </Typography>
             <Box sx={{ display: "flex", gap: "10px", flexWrap: "wrap", mt: 1 }}>
-              <p
-                style={{
-                  width: "25px",
-                  height: "25px",
-                  background: "red",
-                  borderRadius: "2px",
-                  margin: "0px",
-                }}
-              ></p>
-              <p
-                style={{
-                  width: "25px",
-                  height: "25px",
-                  background: "black",
-                  borderRadius: "2px",
-                  margin: "0px",
-                }}
-              ></p>
-              <p
-                style={{
-                  width: "25px",
-                  height: "25px",
-                  background: "green",
-                  borderRadius: "2px",
-                  margin: "0px",
-                }}
-              ></p>
-              <p
-                style={{
-                  width: "25px",
-                  height: "25px",
-                  background: "yellow",
-                  borderRadius: "2px",
-                  margin: "0px",
-                }}
-              ></p>
+              {colorsData?.map((item) => (
+                <button
+                  style={{
+                    width: "30px",
+                    height: "30px",
+                    borderRadius: "4px",
+                    overflow: "hidden",
+                    margin: "0px",
+                    padding: 0,
+                    border: color == item?.id ? "2.5px solid black" : 0,
+                    cursor: "pointer",
+                  }}
+                  onClick={() => {
+                    if(item?.id == color){
+                      setColor(null)
+                    }else {
+                      setColor(item?.id);
+                    }
+                  }}
+                >
+                  <img
+                    src={item.image}
+                    alt={item?.name}
+                    className=""
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
+                </button>
+              ))}
             </Box>
+
+            
+          </Box>
+          <Box sx={{ mt: 3 }}>
+            <Typography sx={{ fontSize: "20px", fontWeight: "bold" }}>
+              {t("Технология")}
+            </Typography>
+           
+
+            <div className="">
+              <FormGroup>
+               {
+                technologiesData?.map(item => (
+                  <FormControlLabel
+                  control={<Checkbox value={item.id} checked={technology?.includes(item.id)} onChange={() => handleCheckboxChange(technology, setTechnology, item?.id)} />}
+                  label={item?.name}
+                />
+                ))
+               }
+               
+              </FormGroup>
+            </div>
           </Box>
         </Grid>
 
@@ -266,7 +384,11 @@ export default function ProductCategory({
               }
             }}
           />
+<<<<<<< HEAD
           {isFetching ? (
+=======
+          {!data ? (
+>>>>>>> 8e0cc2c40168880ae40381cd878da3991d715124
             <Typography
               style={{ textAlign: "center", margin: "30px", fontSize: "23px" }}
             >

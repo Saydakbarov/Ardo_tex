@@ -11,8 +11,9 @@ export default function ContactMain() {
     <Box
       sx={{
         backgroundImage:
-          "url('https://htmldemo.net/eposi/eposi/assets/img/backgrounds/category-image-1820x400.webp')",
+          "url('/img/page-header/contact.webp')",
         height: "400px",
+        backgroundSize: "cover",
         pt: 10,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",

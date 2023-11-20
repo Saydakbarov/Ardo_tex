@@ -1,18 +1,23 @@
 import { ArrowRight, KeyboardArrowRight } from "@mui/icons-material";
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 export default function VacancyMain() {
+
+  const {t} = useTranslation()
+
   return (
     <Box
       sx={{
         backgroundImage:
-          "url('https://htmldemo.net/eposi/eposi/assets/img/backgrounds/category-image-1820x400.webp')",
+          "url('/img/page-header/vacancy.webp')",
         height: "400px",
         pt: 10,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
+        backgroundSize: "cover"
       }}
     >
       <Box
@@ -20,7 +25,7 @@ export default function VacancyMain() {
           textAlign: "center",
         }}
       >
-        <Typography sx={{ fontSize: "30px" }}>Vacancy</Typography>
+        <Typography sx={{ fontSize: "30px" }}>{t("vacancy")}</Typography>
         <Box
           sx={{
             display: "flex",
@@ -31,11 +36,11 @@ export default function VacancyMain() {
           }}
         >
           <Link to="/" style={{ color: "gray", textDecoration: "none" }}>
-            Home
+            {t("home")}
           </Link>
           <KeyboardArrowRight />
           <Link to="/about" style={{ color: "red", textDecoration: "none" }}>
-            Vacancy
+            {t("vacancy")}
           </Link>
         </Box>
       </Box>
