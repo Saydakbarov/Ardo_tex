@@ -12,6 +12,7 @@ export default function ProductsMain({ breadcrumpData }) {
   return (
     <Box
       sx={{
+        
         backgroundImage:
         "url('/img/page-header/product.jpg')",
         pt: 20,
