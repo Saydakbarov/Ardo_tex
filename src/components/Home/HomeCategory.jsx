@@ -142,6 +142,7 @@ export default function HomeCategory() {
           textAlign: { xs: "center", sm: "center", md: "center", lg: "end" },
         }}
       >
+      
         <Button
           variant="contained"
           sx={{
