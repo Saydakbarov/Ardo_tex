@@ -26,6 +26,7 @@ p{
   white-space: pre-line;
 }
 .single-product-model > * {
+  white-space: pre-line;
   display: flex;
   align-items: center;
   justify-content: space-between;
