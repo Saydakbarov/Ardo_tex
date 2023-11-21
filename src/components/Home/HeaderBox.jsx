@@ -27,7 +27,8 @@ export default function HeaderBox() {
               background: "#F0F0F0",
               display: "flex",
               flexWrap: "wrap",
-              justifyContent: "space-between",
+              justifyContent: {xs:"center", sm:"center", md:"center", lg:"space-between"},
+              gap:"20px"
             }}
           >
             <Box>
@@ -46,7 +47,7 @@ export default function HeaderBox() {
             </Box>
             <Box>
               <img
-                style={{ width: "300px", height: "200px" }}
+                style={{ width: {xs:"300px", sm:"300px", md:"300px", lg:"290px", xl:"300px"}, height: "200px" }}
                 src={v.img}
                 alt=""
               />

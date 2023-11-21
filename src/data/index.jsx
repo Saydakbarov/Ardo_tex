@@ -1,4 +1,4 @@
-
+// import HeaderBoxCard from "/im"
 
 export const HeaderCarousel = [
   {
@@ -53,13 +53,13 @@ export const HeaderBoxData = [
     id: 1,
     title_uz: "Devorlarni bo'yash",
     title_ru: "Покраска стен",
-    img: "https://emaks.com.tr/ref/class/mainimage/tbm/berva_20221104084002.jpg",
+    img: "/img/homeCard/1.jpg",
   },
   {
     id: 2,
     title_uz: "Qandlillarni osish",
     title_ru: "Зажгите люстры",
-    img: "https://emaks.com.tr/index-slider/ay2.png",
+    img: "/img/homeCard/2.jpg",
   },
 ];
 

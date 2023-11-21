@@ -216,7 +216,7 @@ export default function ProductsCard({data}) {
             </Grid>
           </Swiper>
         </Grid>
-        <Box sx={{ textAlign: "end" }}>
+        <Box sx={{ textAlign: {xs:"center", sm:"center", md:"center", lg:"end"} }}>
         <Button
           variant="outlined"
           onClick={() => {
@@ -230,7 +230,7 @@ export default function ProductsCard({data}) {
             mt: 4,
             transition: " 0.5s linear",
             padding: "8px 14px",
-            mr: 8,
+            mr: {xs:0, sm:0, md:4, lg:8},
             color: "white",
 
             "&:hover": {

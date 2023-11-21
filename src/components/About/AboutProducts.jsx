@@ -8,7 +8,7 @@ export default function AboutProduct() {
   const {i18n} = useTranslation()
 
   return (
-    <Box sx={{ mt: 3 }}>
+    <Box sx={{ mt: 3 , p:2}}>
       <Grid container justifyContent={"center"} gap={5}>
         {AboutPageProductData.map((v, i) => (
           <Grid key={i} item lg={3}>

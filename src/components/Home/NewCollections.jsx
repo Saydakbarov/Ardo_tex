@@ -47,7 +47,7 @@ export default function NewCollections() {
         ))}
       </Grid>
 
-      <Box sx={{ textAlign: "end" }}>
+      <Box  sx={{ textAlign: {xs:"center", sm:"center", md:"center", lg:"end"} }}>
         <Button
           variant="outlined"
           onClick={() => {
@@ -61,7 +61,7 @@ export default function NewCollections() {
             width: "fit-content",
             mt: 4,
             transition: " 0.5s linear",
-            mr: 8,
+            mr: {xs:0, sm:0, md:4, lg:8},
             color: "white",
 
             "&:hover": {
