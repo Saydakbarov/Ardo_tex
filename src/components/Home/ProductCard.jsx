@@ -23,7 +23,7 @@ import { BestSellerData } from "../../data";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function ProductsCard({data}) {
+export default function ProductsCard({ data }) {
   const [ratingValue, setRatingValue] = useState(0);
 
   const [hoverImg, setHoverImg] = useState();
@@ -31,8 +31,8 @@ export default function ProductsCard({data}) {
   const [id, setId] = useState();
 
   const [hover, setHover] = useState(false);
-  const {t, i18n} = useTranslation()
-  const navigate = useNavigate()
+  const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
 
   //   const dispatch = useDispatch();
   //   const getProductData = (v) => {
@@ -78,14 +78,15 @@ export default function ProductsCard({data}) {
           >
             <Grid justifyContent={"center"}>
               {data?.map((v, i) => (
-                <Grid   item key={v?.product_id} sx={{ borderRadius: "6px" }}>
+                <Grid item key={v?.product_id} sx={{ borderRadius: "6px" }}>
                   <SwiperSlide className="swiperSlideBox">
-                   <Link className="product-card" style={{textDecoration: "none", color: "inherit"}} to={`/single/${v?.product_id}`} >
-                   <Box
-                    
-                    
-                  >
-                    {/* <Box
+                    <Link
+                      className="product-card"
+                      style={{ textDecoration: "none", color: "inherit" }}
+                      to={`/single/${v?.product_id}`}
+                    >
+                      <Box>
+                        {/* <Box
                       component={"div"}
                       sx={{
                         p: 3,
@@ -149,24 +150,25 @@ export default function ProductsCard({data}) {
                         </Box>
                       </Box>
                     </Box> */}
-                    <img src={v?.product_image_url[0]}  style={{
-                      width: "100%",
-                      height: "300px",
-                      objectFit: "contain",
-                      borderRadius: "6px"
-                    }} />
-                    <Box>
-                      <Box
-                      
-                      >
-                        <Box
-                          sx={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
+                        <img
+                          src={v?.product_image_url[0]}
+                          style={{
+                            width: "100%",
+                            height: "300px",
+                            objectFit: "contain",
+                            borderRadius: "6px",
                           }}
-                        >
-                          {/* <Rating
+                        />
+                        <Box>
+                          <Box>
+                            <Box
+                              sx={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                              }}
+                            >
+                              {/* <Rating
                             name="simple-controlled"
                             value={ratingValue}
                             onChange={(event, newValue) => {
@@ -174,15 +176,14 @@ export default function ProductsCard({data}) {
                             }}
                             sx={{ fontSize: "22px" }}
                           /> */}
-                           <Typography
-                           sx={{p: 1}}
-                           
-                          >
-                            {i18n?.language == "uz" ? v?.product_title_uz : v?.product_title_ru}
-                          </Typography>
-                        </Box>
+                              <Typography sx={{ p: 1 }}>
+                                {i18n?.language == "uz"
+                                  ? v?.product_title_uz
+                                  : v?.product_title_ru}
+                              </Typography>
+                            </Box>
 
-                        {/* <Box
+                            {/* <Box
                           sx={{ display: "flex", gap: "15px", mt: 1, p: 1 }}
                         >
                           <Typography
@@ -206,43 +207,47 @@ export default function ProductsCard({data}) {
                             ${v.price}.00
                           </Typography>
                         </Box> */}
+                          </Box>
+                        </Box>
                       </Box>
-                    </Box>
-                  </Box>
-                   </Link>
+                    </Link>
                   </SwiperSlide>
                 </Grid>
               ))}
             </Grid>
           </Swiper>
         </Grid>
-        <Box sx={{ textAlign: {xs:"center", sm:"center", md:"center", lg:"end"} }}>
-        <Button
-          variant="outlined"
-          onClick={() => {
-            navigate("/product");
-          }}
+        <Box
           sx={{
-            background: "linear-gradient(270deg, #307bc4 0%, #274760 100%)",
-            p: 1,
-            borderRadius: "30px",
-            width: "fit-content",
-            mt: 4,
-            transition: " 0.5s linear",
-            padding: "8px 14px",
-            mr: {xs:0, sm:0, md:4, lg:8},
-            color: "white",
-
-            "&:hover": {
-              transition: " 0.5s linear",
-              background: "linear-gradient(270deg, #307bc4 0%, #274760 100%)",
-              padding: "8px 25px",
-            },
+            textAlign: { xs: "center", sm: "center", md: "center", lg: "end" },
           }}
         >
-          {t("see-all")}
-        </Button>
-      </Box>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              navigate("/product");
+            }}
+            sx={{
+              background: "linear-gradient(270deg, #307bc4 0%, #274760 100%)",
+              p: 1,
+              borderRadius: "30px",
+              width: "fit-content",
+              mt: 4,
+              transition: " 0.5s linear",
+              padding: "8px 14px",
+              mr: { xs: 0, sm: 0, md: 4, lg: 8 },
+              color: "white",
+
+              "&:hover": {
+                transition: " 0.5s linear",
+                background: "linear-gradient(270deg, #307bc4 0%, #274760 100%)",
+                padding: "8px 25px",
+              },
+            }}
+          >
+            {t("see-all")}
+          </Button>
+        </Box>
       </Grid>
     </Box>
   );

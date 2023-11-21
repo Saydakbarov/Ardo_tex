@@ -137,7 +137,12 @@ export default function HomeCategory() {
         </Grid>
       </Grid>
 
-      <Box sx={{ textAlign: "end" }}>
+      <Box
+        sx={{
+          textAlign: { xs: "center", sm: "center", md: "center", lg: "end" },
+        }}
+      >
+      
         <Button
           variant="contained"
           sx={{
@@ -154,7 +159,7 @@ export default function HomeCategory() {
               width: "200px",
               background: "linear-gradient(270deg, #307bc4 0%, #274760 100%)",
             },
-            mr: 10,
+            mr: { xs: 0, sm: 0, md: 4, lg: 8 },
           }}
         >
           <Link

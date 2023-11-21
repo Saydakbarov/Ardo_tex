@@ -29,7 +29,7 @@ p{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 1rem;
+  font-size: 1rem !important;
   margin: 0;
   padding: 0;
   gap: 14px;
@@ -37,13 +37,14 @@ p{
 
 @media (max-width: 800px) {
   .single-product-model > * {
-    font-size: 14px;
+    font-size: 14px !important
+    ;
   }
 }
 
 @media (max-width: 500px) {
   .single-product-model > * {
-    font-size: 12px;
+    font-size: 12px !important;
   }
   .single-product-model {
     gap: 10px;

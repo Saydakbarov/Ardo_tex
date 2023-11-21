@@ -47,7 +47,11 @@ export default function NewCollections() {
         ))}
       </Grid>
 
-      <Box  sx={{ textAlign: {xs:"center", sm:"center", md:"center", lg:"end"} }}>
+      <Box
+        sx={{
+          textAlign: { xs: "center", sm: "center", md: "center", lg: "end" },
+        }}
+      >
         <Button
           variant="outlined"
           onClick={() => {
@@ -55,13 +59,13 @@ export default function NewCollections() {
           }}
           sx={{
             background: "linear-gradient(270deg, #307bc4 0%, #274760 100%)",
-            
+
             borderRadius: "30px",
             padding: "8px 14px",
             width: "fit-content",
             mt: 4,
             transition: " 0.5s linear",
-            mr: {xs:0, sm:0, md:4, lg:8},
+            mr: { xs: 0, sm: 0, md: 4, lg: 8 },
             color: "white",
 
             "&:hover": {

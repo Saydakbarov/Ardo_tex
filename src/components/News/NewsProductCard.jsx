@@ -47,9 +47,9 @@ export default function NewsProductCard() {
 
   const [modalData, setModalData] = useState([]);
 
-  // console.log(data, "news");
+  console.log(data, "news");
 
-  console.log(modalData);
+  // console.log(modalData);
   return (
     <Box sx={{ mt: 4 }}>
       {isFetching ? (
