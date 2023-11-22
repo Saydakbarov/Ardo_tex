@@ -25,6 +25,11 @@ export default function FormContact() {
     api.open("GET", url, true);
     api.send();
     alert("Заявка принята")
+    setFormData({
+      name: "",
+      phone: "",
+      message: "",
+    })
 
     } else {
       alert("Заполните все поля");
