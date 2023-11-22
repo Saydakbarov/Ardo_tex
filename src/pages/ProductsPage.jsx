@@ -269,7 +269,8 @@ export default function ProductsPage() {
         categories={categories}
         categoryId={categoryId}
         data={data}
-       
+        offset={offset}
+        setOffset={setOffset}
         priceFrom={priceFrom}
         priceTo={priceTo}
         searchRu={searchRu}

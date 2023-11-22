@@ -14,6 +14,7 @@ import React from "react";
 import { CategoryData, colorsData, technologiesData } from "../../data";
 import { useState } from "react";
 import ProductCard from "./ProductCard";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import {
   useBrands,
   useCategories,
@@ -49,7 +50,9 @@ export default function ProductCategory({
   color,
   setColor,
   technology,
-setTechnology
+setTechnology,
+offset,
+ setOffset
 }) {
   // const [categoryId, setCategoryId] = useState(1);
 
@@ -71,6 +74,9 @@ setTechnology
     }
   }
 
+
+
+  const [offsetNum, setOffsetNum] = useState(1)
 
   console.log(technology);
   return (
@@ -307,7 +313,8 @@ setTechnology
               }
             }}
           />
-          {!data ? (
+         <div className="">
+         {!data ? (
             <Typography
               style={{ textAlign: "center", margin: "30px", fontSize: "23px" }}
             >
@@ -316,6 +323,32 @@ setTechnology
           ) : (
             <ProductCard data={data} />
           )}
+         </div>
+         <div className="flex justify-center items-center gap-4 mt-[30px] md:mt-[40px]">
+            <Button
+              variant="outlined"
+              onClick={() => {
+                setOffset((e) => e - 20);
+                setOffsetNum((e) => e - 1);
+                
+              }}
+              disabled={offsetNum == 1}
+            >
+              <NavigateNextIcon className="rotate-180" />
+            </Button>
+            <Typography style={{fontSize: "20px"}} >{offsetNum}</Typography>
+            <Button
+              variant="outlined"
+              disabled={data?.data?.length  < 20}
+              onClick={() => {
+                setOffset((e) => e + 20);
+                setOffsetNum((e) => e + 1);
+                
+              }}
+            >
+              <NavigateNextIcon />
+            </Button>
+          </div>
         </Grid>
       </Grid>
     </Box>
