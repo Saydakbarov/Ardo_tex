@@ -139,10 +139,10 @@ export default function NewsProductCard() {
                   ? modalData?.new_title_uz
                   : modalData?.new_title_ru}
               </Typography>
-              <Typography sx={{ mt: 2, fontSize: "14px" }}>
-                {i18n?.language == "uz"
+              <Typography  dangerouslySetInnerHTML={{__html: i18n?.language == "uz"
                   ? modalData?.new_description_uz
-                  : modalData?.new_description_ru}
+                  : modalData?.new_description_ru}} sx={{ mt: 2, fontSize: "14px" }}>
+               
               </Typography>
             </Box>
           </Box>

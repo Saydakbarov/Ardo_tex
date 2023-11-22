@@ -7,9 +7,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 // import { useOneProduct } from "../../query-data/data.service";
 import { useTranslation } from "react-i18next";
-// import Magnifier from "react-magnifier";
+import Magnifier from "react-magnifier";
 
-const Magnifier = lazy(() => import("react-magnifier"))
+// const Magnifier = lazy(() => import("react-magnifier"))
 // import ReactImageMagnify from "react-image-magnify";
 // const ReactImageMagnify = lazy(() => import("react-image-magnify"))
 
