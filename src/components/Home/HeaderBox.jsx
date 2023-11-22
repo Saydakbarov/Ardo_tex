@@ -1,18 +1,23 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 import { HeaderBoxData } from "../../data";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 export default function HeaderBox() {
 
   const {t, i18n} = useTranslation()
 
+  const navigate = useNavigate()
+
   return (
     <Box sx={{ maxWidth: "1500px", margin: "0 auto", mt: 8 }}>
       <Grid container justifyContent={"center"} gap={4}>
         {HeaderBoxData.map((v, i) => (
           <Grid
+          onClick={() => {
+            navigate("/product")
+          }}
             item
             xl={5.3}
             lg={5.3}
@@ -36,6 +41,7 @@ export default function HeaderBox() {
                 {i18n?.language == "uz" ? v.title_uz : v.title_ru}
               </Typography>
               <Link
+              to={"/product"}
                 style={{
                   textDecoration: "none",
                   color: "gray",
