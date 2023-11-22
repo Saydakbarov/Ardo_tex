@@ -16,6 +16,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../logo.png";
 import { MenuData } from "../../data";
 import { useTranslation } from "react-i18next";
+import FormContact from "../Contact/FormContact";
 
 export default function Footer() {
   const navigate = useNavigate();
@@ -78,7 +79,7 @@ export default function Footer() {
                   key={item.title}
                   sx={{
                     color: "#274760",
-                    fontFamily: "Barlow",
+                    // fontFamily: "Barlow",
                     fontWeight: "500",
                     ml: 4,
                     fontSize: "18px",
@@ -119,44 +120,7 @@ export default function Footer() {
         </Grid>
 
         <Grid item lg={4}>
-          <Box component={"form"}>
-            <TextField
-              fullWidth
-              id="outlined-basic"
-              label={t("name")}
-              variant="outlined"
-            />
-            <TextField
-              sx={{ mt: 3 }}
-              fullWidth
-              type="number"
-              id="outlined-basic"
-              label={t("phone")}
-              variant="outlined"
-            />
-
-            <Button
-              variant="contained"
-              fullWidth
-              sx={{
-                background: "linear-gradient(270deg, #307bc4 0%, #274760 100%)",
-                p: 1,
-                borderRadius: "30px",
-                width: "150px",
-                mt: 3,
-                transition: " 0.5s linear",
-
-                "&:hover": {
-                  transition: " 0.5s linear",
-                  width: "180px",
-                  background:
-                    "linear-gradient(270deg, #307bc4 0%, #274760 100%)",
-                },
-              }}
-            >
-              {t("send")}
-            </Button>
-          </Box>
+          <FormContact />
         </Grid>
       </Grid>
     </Box>

@@ -10,15 +10,13 @@ export default function SingleMain({data}) {
   const {t, i18n} = useTranslation()
 
   return (
-    <Box
-      sx={{
-        backgroundImage:
-          "url('https://htmldemo.net/eposi/eposi/assets/img/backgrounds/category-image-1820x400.webp')",
-        height: "400px",
-        pt: 10,
+    <div
+      style={{
+        backgroundImage: "url('https://htmldemo.net/eposi/eposi/assets/img/backgrounds/category-image-1820x400.webp')",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
       }}
+      className="py-[50px] md:py-[100px]"
     >
       <Box
         sx={{
@@ -53,6 +51,6 @@ export default function SingleMain({data}) {
           </Link>
         </Box>
       </Box>
-    </Box>
+    </div>
   );
 }

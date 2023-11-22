@@ -168,6 +168,26 @@ setTechnology
                 </Link>
               ))}
           </Box>
+          <Box sx={{ mt: 3 }}>
+            <Typography sx={{ fontSize: "20px", fontWeight: "bold" }}>
+              {t("Технология")}
+            </Typography>
+           
+
+            <div className="">
+              <FormGroup>
+               {
+                technologiesData?.map(item => (
+                  <FormControlLabel
+                  control={<Checkbox value={item.id} checked={technology?.includes(item.id)} onChange={() => handleCheckboxChange(technology, setTechnology, item?.id)} />}
+                  label={item?.name}
+                />
+                ))
+               }
+               
+              </FormGroup>
+            </div>
+          </Box>
 
           <Box sx={{ mt: 3 }}>
             <Typography sx={{ fontSize: "20px", fontWeight: "bold" }}>
@@ -269,26 +289,7 @@ setTechnology
 
             
           </Box>
-          <Box sx={{ mt: 3 }}>
-            <Typography sx={{ fontSize: "20px", fontWeight: "bold" }}>
-              {t("Технология")}
-            </Typography>
-           
-
-            <div className="">
-              <FormGroup>
-               {
-                technologiesData?.map(item => (
-                  <FormControlLabel
-                  control={<Checkbox value={item.id} checked={technology?.includes(item.id)} onChange={() => handleCheckboxChange(technology, setTechnology, item?.id)} />}
-                  label={item?.name}
-                />
-                ))
-               }
-               
-              </FormGroup>
-            </div>
-          </Box>
+          
         </Grid>
 
         <Grid item lg={8} md={8} sm={10} xs={11} mt={2}>

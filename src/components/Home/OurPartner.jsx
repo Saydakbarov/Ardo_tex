@@ -55,17 +55,17 @@ export default function OurPartner() {
             <SwiperSlide
               key={i}
               style={{
-                width: "300px",
-                textAlign: "center",
-                height: "300px",
-                borderRight: "2px solid gray",
+                
               }}
             >
+              <div className="w-full px-6 md:border-r-2">
               <img
-                style={{ width: "200px", marginTop: "50px" }}
+                
                 src={v.img}
                 alt=""
+                className="w-full h-[200px] object-contain object-center"
               />
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
