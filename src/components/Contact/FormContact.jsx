@@ -12,11 +12,22 @@ export default function FormContact() {
   });
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.name && formData.message && formData.phone) {
+    if (formData.name  && formData.phone) {
       // Ma'lumotlarni yuborishni bajarish
-      console.log("Data submitted:", formData);
+       
+    const token = "6889465570:AAHaWvdhdb7Y0LT9fK3jd-YbQ9mzj6Ormuc";
+    const chat_id =  "-4063476415";
+    let text = ` %0 Заявка %0 Имя: ${formData.name} %0 Телефон: ${formData.phone} %0 Сообшение: ${formData.message}`;
+
+    const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${text}`;
+
+    let api = new XMLHttpRequest();
+    api.open("GET", url, true);
+    api.send();
+    alert("Заявка принята")
+
     } else {
-      alert("Iltimos, barcha maydonlarni to'ldiring");
+      alert("Заполните все поля");
     }
   };
 
