@@ -143,19 +143,19 @@ export default function SingleProduct({ data, isLoading }) {
         //   </Grid>
         // </Grid>
 
-        <div className="md:py-[40px]">
+        <div className="py-[40px]">
           <div className="max-w-[1200px] mx-auto px-4 w-full">
             <div className="flex flex-col md:flex-row items-start gap-[40px]">
               <div className=" w-full md:w-1/2">
-                <div className="">
+                <div className="mb-3">
                   {data?.data?.product_image_url?.map((v) => (
                     <div
                       key={v}
                       className={`${
                         mainImage == v ? "block" : "hidden"
-                      } w-full h-fit`}
+                      } w-full h-fit rounded-md overflow-hidden`}
                     >
-                      <Magnifier  src={v} />
+                      <Magnifier className="rounded-md"  src={v} />
                     </div>
                   ))}
                 </div>
