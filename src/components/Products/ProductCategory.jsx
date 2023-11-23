@@ -99,7 +99,8 @@ offset,
             </Link>
           </Typography>
 
-          <Typography sx={{ fontSize: "22px", fontWeight: "bold" }}>
+          <Typography sx={{ fontSize: "22px", fontWeight: "bold"
+        , textTransform: "uppercase" }}>
             {t("categories")}
           </Typography>
           <Box
@@ -116,7 +117,7 @@ offset,
                   style={{ textDecoration: "none", color: "inherit" }}
                   to={`/product?category=${v?.category_id}`}
                 >
-                  <Typography style={{ fontSize: "18px" }}>
+                  <Typography style={{ fontSize: "18px", fontWeight: 300  }}>
                     {i18n?.language == "uz"
                       ? v.category_name_uz
                       : v.category_name_ru}
@@ -138,7 +139,7 @@ offset,
                   style={{ textDecoration: "none", color: "inherit" }}
                   to={`/product?category=${categoryId}&subcategory=${v.sub_category_id}`}
                 >
-                  <Typography style={{ fontSize: "18px" }}>
+                  <Typography style={{ fontSize: "18px", fontWeight: 300 }}>
                     {i18n?.language == "uz"
                       ? v.sub_category_name_uz
                       : v.sub_category_name_ru}
@@ -166,7 +167,7 @@ offset,
                   }}
                   to={`/product?category=${categoryId}&subcategory=${subCategoryId}&secondsubcategory=${v.second_sub_category_id}`}
                 >
-                  <Typography style={{ fontSize: "18px" }}>
+                  <Typography style={{ fontSize: "18px", fontWeight: 300 }}>
                     {i18n?.language == "uz"
                       ? v.second_sub_category_name_uz
                       : v.second_sub_category_name_ru}
@@ -175,7 +176,8 @@ offset,
               ))}
           </Box>
           <Box sx={{ mt: 3 }}>
-            <Typography sx={{ fontSize: "20px", fontWeight: "bold" }}>
+            <Typography sx={{ fontSize: "20px", fontWeight: "bold"
+          , textTransform: "uppercase" }}>
               {t("Технология")}
             </Typography>
            
@@ -185,6 +187,7 @@ offset,
                {
                 technologiesData?.map(item => (
                   <FormControlLabel
+                  style={{fontWeight: 300}}
                   control={<Checkbox value={item.id} checked={technology?.includes(item.id)} onChange={() => handleCheckboxChange(technology, setTechnology, item?.id)} />}
                   label={item?.name}
                 />
@@ -196,7 +199,8 @@ offset,
           </Box>
 
           <Box sx={{ mt: 3 }}>
-            <Typography sx={{ fontSize: "20px", fontWeight: "bold" }}>
+            <Typography sx={{ fontSize: "20px", fontWeight: "bold"
+          , textTransform: "uppercase" }}>
               {t("brands")}
             </Typography>
             <Box sx={{}}>
@@ -204,6 +208,7 @@ offset,
                {
                 brands?.data?.map(item => (
                   <FormControlLabel
+                  style={{fontWeight: 300}}
                   control={<Checkbox value={item.brand_id} checked={brandId?.includes(item.brand_id)} onChange={() => handleCheckboxChange(brandId, setBrandId, item?.brand_id)} />}
                   label={item?.brand_name}
                 />
@@ -255,7 +260,7 @@ offset,
             />
           </div>
           <Box sx={{ mt: 3 }}>
-            <Typography sx={{ fontSize: "20px", fontWeight: "bold" }}>
+            <Typography sx={{ fontSize: "20px", fontWeight: "bold", textTransform: "uppercase" }}>
               {t("colors")}
             </Typography>
             <Box sx={{ display: "flex", gap: "10px", flexWrap: "wrap", mt: 1 }}>
