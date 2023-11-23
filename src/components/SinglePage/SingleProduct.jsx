@@ -159,11 +159,11 @@ export default function SingleProduct({ data, isLoading }) {
                     </div>
                   ))}
                 </div>
-                <div className="flex items-stretch gap-4 flex-wrap">
+                <div className="grid grid-cols-6 gap-3">
                   {data?.data?.product_image_url?.map((v, i) => (
                     <button
                       key={v}
-                      className="w-[90px] h-[90px]"
+                      className="w-full h-[90px]"
                       onClick={() => setMainImage(v)}
                     >
                       <img
