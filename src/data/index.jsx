@@ -1,23 +1,41 @@
 // import HeaderBoxCard from "/im"
 
+import Carousel1 from "../images/headerCarousel/Carousel1.jpg";
+import Carousel2 from "../images/headerCarousel/Carousel2.jpg";
+import Carousel3 from "../images/headerCarousel/Carousel3.jpg";
+import Carousel4 from "../images/headerCarousel/Carousel4.jpg";
+import Carousel5 from "../images/headerCarousel/Carousel5.jpg";
+
 export const HeaderCarousel = [
   {
-    id: 1,
-    title: "hero-slider-heading",
-    text: "hero-slider-description",
-    img: "https://wpbingosite.com/wordpress/furety/wp-content/uploads/2023/06/img-15.png",
+    // id: 1,
+    // title: "hero-slider-heading",
+    // text: "hero-slider-description",
+    img: Carousel1,
   },
   {
-    id: 2,
-    title: "hero-slider-heading",
-    text: "hero-slider-description",
-    img: "https://wpbingosite.com/wordpress/furety/wp-content/uploads/2023/06/img-15.png",
+    // id: 1,
+    // title: "hero-slider-heading",
+    // text: "hero-slider-description",
+    img: Carousel2,
   },
   {
-    id: 3,
-    title: "hero-slider-heading",
-    text: "hero-slider-description",
-    img: "https://wpbingosite.com/wordpress/furety/wp-content/uploads/2023/06/img-19.png",
+    // id: 1,
+    // title: "hero-slider-heading",
+    // text: "hero-slider-description",
+    img: Carousel3,
+  },
+  {
+    // id: 1,
+    // title: "hero-slider-heading",
+    // text: "hero-slider-description",
+    img: Carousel4,
+  },
+  {
+    // id: 1,
+    // title: "hero-slider-heading",
+    // text: "hero-slider-description",
+    img: Carousel5,
   },
 ];
 
@@ -1518,80 +1536,76 @@ export const AboutPageProductData = [
 //   },
 // ];
 
-
 export const languages = [
   {
-    id:1,
+    id: 1,
     lang: "ru",
-    image: "/img/ru.png"
+    image: "/img/ru.png",
   },
   {
-    id:2,
+    id: 2,
     lang: "uz",
-    image: "/img/uz.png"
+    image: "/img/uz.png",
   },
-]
-
-
+];
 
 export const colorsData = [
   {
-      id: 1,
-      name: "Синий",
-      image: "/img/colors/blue.webp"
+    id: 1,
+    name: "Синий",
+    image: "/img/colors/blue.webp",
   },
   {
-      id: 2,
-      name: "Черный",
-      image: "/img/colors/black.webp"
+    id: 2,
+    name: "Черный",
+    image: "/img/colors/black.webp",
   },
   {
-      id: 3,
-      name: "Золотой",
-      image: "/img/colors/gold.webp"
+    id: 3,
+    name: "Золотой",
+    image: "/img/colors/gold.webp",
   },
   {
-      id: 4,
-      name: "Зеленый",
-      image: "/img/colors/green.webp"
+    id: 4,
+    name: "Зеленый",
+    image: "/img/colors/green.webp",
   },
   {
-      id: 5,
-      name: "Красный",
-      image: "/img/colors/red.webp"
+    id: 5,
+    name: "Красный",
+    image: "/img/colors/red.webp",
   },
   {
-      id: 6,
-      name: "Фиолетовый",
-      image: "/img/colors/violet.webp"
+    id: 6,
+    name: "Фиолетовый",
+    image: "/img/colors/violet.webp",
   },
   {
-      id: 7,
-      name: "Белый",
-      image: "/img/colors/white.webp"
+    id: 7,
+    name: "Белый",
+    image: "/img/colors/white.webp",
   },
-]
-
+];
 
 export const technologiesData = [
   {
-      id: 1,
-      name: "Легко чистить",
+    id: 1,
+    name: "Легко чистить",
   },
   {
-      id: 2,
-      name: "Водоотталкивающий",
+    id: 2,
+    name: "Водоотталкивающий",
   },
   {
-      id: 3,
-      name: "Допускается размещение животных",
+    id: 3,
+    name: "Допускается размещение животных",
   },
   {
-      id: 4,
-      name: "Переработанный полиэстер",
+    id: 4,
+    name: "Переработанный полиэстер",
   },
   {
-      id: 5,
-      name: "Базовый Дэвис",
+    id: 5,
+    name: "Базовый Дэвис",
   },
-]
+];

@@ -13,9 +13,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 import { HeaderCarousel } from "../../data";
 import { useTranslation } from "react-i18next";
 export default function HeaderMain() {
-
-
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   return (
     <Box sx={{ background: "linear-gradient( #DCE9EC, #E8F0F3)" }}>
       <Grid
@@ -50,11 +48,15 @@ export default function HeaderMain() {
                     },
                     flexWrap: "wrap",
                     alignItems: "center",
-                    p: { xs: 3, sm: 4, md: 8, lg: 10 },
                     gap: 2,
                   }}
                 >
-                  <Box
+                  <img
+                    src={v.img}
+                    style={{ width: "100%", height: "auto" }}
+                    alt=""
+                  />
+                  {/* <Box
                     sx={{
                       width: {
                         xs: "350px",
@@ -117,7 +119,7 @@ export default function HeaderMain() {
                       src={v.img}
                       alt=""
                     />
-                  </Box>
+                  </Box> */}
                 </Box>
               </SwiperSlide>
             ))}
