@@ -163,7 +163,7 @@ export default function SingleProduct({ data, isLoading }) {
                   {data?.data?.product_image_url?.map((v, i) => (
                     <button
                       key={v}
-                      className="w-full h-[90px]"
+                      className="w-full h-[40px] sm:h-[70px] md:h-[90px]"
                       onClick={() => setMainImage(v)}
                     >
                       <img
