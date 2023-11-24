@@ -32,8 +32,7 @@ const style = {
   boxShadow: 24,
   p: 4,
   backgroundColor: "white",
-  overflowX: "scroll",
-  height: "70vh",
+  overflowY: "scroll",
   borderRadius: "10px",
 };
 
@@ -58,9 +57,9 @@ export default function SearchComponent() {
 
   return (
     <div>
-      <Button onClick={handleOpen}>
+      <IconButton onClick={handleOpen}>
         <Search sx={{ color: "black" }} />
-      </Button>
+      </IconButton>
       <Modal
         open={open}
         onClose={handleClose}
@@ -73,8 +72,8 @@ export default function SearchComponent() {
               <Close />
             </IconButton>
           </Box>
-          <Grid container justifyContent={"center"} gap={10} mt={8}>
-            <Grid item lg={3} md={3} sm={3} xs={10}>
+          <Grid container justifyContent={"center"} gap={10}>
+            <Grid item lg={3} md={3} sm={3} xs={10} sx={{ mt: 6 }}>
               <Box sx={{ mt: 3 }}>
                 <Typography
                   sx={{
@@ -233,7 +232,27 @@ export default function SearchComponent() {
               </Box>
             </Grid>
           </Grid>
-          ;
+
+          <Box sx={{ textAlign: "center" }}>
+            <Button
+              sx={{
+                background: "black",
+                color: "white",
+                width: "280px",
+                transition: "all 0.4s linear",
+
+                "&:hover": {
+                  transition: "all 0.4s linear",
+                  background: "black",
+                  color: "white",
+                  width: "320px",
+                },
+                mt: 5,
+              }}
+            >
+              Search
+            </Button>
+          </Box>
         </Box>
       </Modal>
     </div>

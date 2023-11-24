@@ -173,7 +173,7 @@ export default function HeaderMenu() {
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
                   <SearchComponent />
-                  <IconButton
+                  {/* <IconButton
                     style={{
                       display: "flex",
                       alignItems: "center",
@@ -211,7 +211,20 @@ export default function HeaderMenu() {
                       alt=""
                       className=""
                     />
-                  </IconButton>
+                  </IconButton> */}
+
+                  <select
+                    style={{
+                      padding: "0px 20px 0px 10px",
+                      border: "1px solid",
+                    }}
+                    name=""
+                    id=""
+                  >
+                    <option value="ru">Ru</option>
+                    <option value="uz">Uz</option>
+                    <option value="en">En</option>
+                  </select>
                 </Box>
 
                 <Box sx={{ color: "gray" }}>

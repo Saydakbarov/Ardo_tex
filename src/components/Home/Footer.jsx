@@ -21,7 +21,7 @@ import FormContact from "../Contact/FormContact";
 export default function Footer() {
   const navigate = useNavigate();
 
-  const {t} = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <Box
@@ -114,6 +114,22 @@ export default function Footer() {
                 style={{ textDecoration: "none", color: "#274760" }}
               >
                 <Telegram />
+              </Link>
+
+              <Link
+                target="blank"
+                to="https://www.youtube.com/@ardotex"
+                style={{ textDecoration: "none", color: "#274760" }}
+              >
+                <YouTube />
+              </Link>
+
+              <Link
+                target="blank"
+                to="https://m.facebook.com/ardotex.uz"
+                style={{ textDecoration: "none", color: "#274760" }}
+              >
+                <Facebook />
               </Link>
             </Box>
           </Box>
