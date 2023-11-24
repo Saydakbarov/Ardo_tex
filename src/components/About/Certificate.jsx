@@ -1,17 +1,14 @@
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 
-import Certificate1 from "../../images/certificate1.jpg";
-import Certificate2 from "../../images/certificate2.jpg";
-import Certificate3 from "../../images/certificate3.jpg";
-import Certificate4 from "../../images/certificate4.jpg";
-import Certificate5 from "../../images/certificate5.jpg";
-import Certificate6 from "../../images/certificate6.jpg";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+
 import { useTranslation } from "react-i18next";
+import { CertificateData } from "../../data";
 
 export default function Certificate() {
-
-  const {t} = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <Box sx={{ mt: 10 }}>
@@ -21,23 +18,47 @@ export default function Certificate() {
         {t("certificates")}
       </Typography>
       <Grid container justifyContent={"center"} gap={4} mt={5}>
-        <Grid item lg={3}>
-          <img style={{ width: "100%" }} src={Certificate1} alt="" />
-        </Grid>
-        <Grid item lg={3}>
-          <img style={{ width: "100%" }} src={Certificate2} alt="" />
-        </Grid>
-        <Grid item lg={3}>
-          <img style={{ width: "100%" }} src={Certificate3} alt="" />
-        </Grid>
-        <Grid item lg={3}>
-          <img style={{ width: "100%" }} src={Certificate4} alt="" />
-        </Grid>
-        <Grid item lg={3}>
-          <img style={{ width: "100%" }} src={Certificate5} alt="" />
-        </Grid>
-        <Grid item lg={3}>
-          <img style={{ width: "100%" }} src={Certificate6} alt="" />
+        <Grid item lg={11}>
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={10}
+            pagination={{
+              clickable: true,
+            }}
+            breakpoints={{
+              300: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 40,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 60,
+              },
+              1500: {
+                slidesPerView: 4,
+                spaceBetween: 60,
+              },
+            }}
+            modules={[Pagination]}
+            className="mySwiper"
+            style={{ paddingBottom: "50px" }}
+          >
+            {CertificateData.map((v, i) => (
+              <SwiperSlide>
+                <a href={v} target="blank_">
+                  <img style={{ width: "100%" }} src={v} alt="" />
+                </a>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </Grid>
       </Grid>
     </Box>
