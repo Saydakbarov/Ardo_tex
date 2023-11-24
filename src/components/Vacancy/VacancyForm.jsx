@@ -122,9 +122,9 @@ export default function VacancyForm() {
     const chat_id =  "-4063476415";
     let text = "";
 
-    text = text + ` %0A Анкета для нового сотрудника: %0A **Имя клиента: ${name}** %0A Возраст клиента: ${age} %0A Адрес клиента: ${address} %0A Информация: ${degree} %0A Количество детей: ${children} %0A С кем ты живешь?: ${livesWith} %0A Работал: ${whereWorked}  %0A Здоровье: ${health} %0A Интерес: ${interests} %0A Зарплата: ${salary}  %0A Номер телефона: ${phone}  %0A Семейное положение: ${familyState} %0A Какие языки ты знаешь?: ${languages?.join(", ")} %0A Чем ты сейчас занят?: ${currentWork} ;`;
+    text = text + ` %0A Анкета для нового сотрудника: %0A *Имя клиента: ${name}* %0A Возраст клиента: ${age} %0A Адрес клиента: ${address} %0A Информация: ${degree} %0A Количество детей: ${children} %0A С кем ты живешь?: ${livesWith} %0A Работал: ${whereWorked}  %0A Здоровье: ${health} %0A Интерес: ${interests} %0A Зарплата: ${salary}  %0A Номер телефона: ${phone}  %0A Семейное положение: ${familyState} %0A Какие языки ты знаешь?: ${languages?.join(", ")} %0A Чем ты сейчас занят?: ${currentWork} ;`;
 
-    const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${text}`;
+    const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${text}&parse_mode=MarkdownV2`;
 
     let api = new XMLHttpRequest();
     api.open("GET", url, true);
@@ -164,6 +164,7 @@ export default function VacancyForm() {
       </Typography>
       <Grid container justifyContent={"center"} p={3}>
         <Grid item lg={8} md={8}>
+         
           <Box component={"form"} onSubmit={handleSubmit}>
             <TextField
               required
