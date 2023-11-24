@@ -126,7 +126,7 @@ export default function NewsProductCard() {
             </IconButton>
           </Box>
           <Box>
-           <img src={modalData.new_img} alt="" className="w-full h-[280px] object-cover" />
+           <img src={modalData.new_img} alt="" className="w-full h-[280px] md:h-[350px] object-cover" />
             <Box>
               <Typography sx={{ fontWeight: "600", fontSize: "18px" }}>
                 {i18n?.language == "uz"
