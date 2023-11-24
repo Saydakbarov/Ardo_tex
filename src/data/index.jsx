@@ -6,6 +6,13 @@ import Carousel3 from "../images/headerCarousel/Carousel3.jpg";
 import Carousel4 from "../images/headerCarousel/Carousel4.jpg";
 import Carousel5 from "../images/headerCarousel/Carousel5.jpg";
 
+import Certificate1 from "../images/certificate1.jpg";
+import Certificate2 from "../images/certificate2.jpg";
+import Certificate3 from "../images/certificate3.jpg";
+import Certificate4 from "../images/certificate4.jpg";
+import Certificate5 from "../images/certificate5.jpg";
+import Certificate6 from "../images/certificate6.jpg";
+
 export const HeaderCarousel = [
   {
     // id: 1,
@@ -1608,4 +1615,13 @@ export const technologiesData = [
     id: 5,
     name: "Базовый Дэвис",
   },
+];
+
+export const CertificateData = [
+  Certificate1,
+  Certificate2,
+  Certificate3,
+  Certificate4,
+  Certificate5,
+  Certificate6,
 ];

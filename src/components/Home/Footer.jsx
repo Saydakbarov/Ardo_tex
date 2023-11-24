@@ -102,7 +102,7 @@ export default function Footer() {
             >
               <Link
                 target="blank"
-                to="https://www.instagram.com/nss_medical_center/"
+                to="https://www.instagram.com/ardotex/"
                 style={{ textDecoration: "none", color: "#274760" }}
               >
                 <Instagram />
@@ -110,7 +110,7 @@ export default function Footer() {
 
               <Link
                 target="blank"
-                to="https://t.me/nssmed"
+                to="https://t.me/ardotex"
                 style={{ textDecoration: "none", color: "#274760" }}
               >
                 <Telegram />
