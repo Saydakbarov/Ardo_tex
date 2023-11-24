@@ -190,6 +190,12 @@ export default function SingleProduct({ data, isLoading }) {
                   }}
                   className="single-product-model"
                 ></div>
+                <div  dangerouslySetInnerHTML={{
+                    __html:
+                      i18n?.language == "uz"
+                        ? data?.data?.product_desc_uz
+                        : data?.data?.product_desc_ru,
+                  }} className=""></div>
               </div>
             </div>
           </div>

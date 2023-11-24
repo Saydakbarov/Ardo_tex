@@ -24,25 +24,27 @@ export default function NewCollections() {
       <Grid container justifyContent={"center"} gap={4} mt={5}>
         {data?.data?.map((v, i) => (
           <Grid item lg={2.5} md={2.5} sm={5.3} xs={10} key={v.id}>
-            <img
-              style={{ width: "100%", borderRadius: "6px" }}
-              src={v?.sub_link}
-            />
-            <Typography
-              sx={{
-                fontSize: "30px",
-                textAlign: "center",
-              }}
+            <Link
+            className="w-full"
+              to={`/product?category=${4}&subcategory=${v?.sub_category_id}`}
             >
-              <Link
-                style={{ textDecoration: "none", color: "inherit" }}
-                to={`/product?category=${4}&subcategory=${v?.sub_category_id}`}
+              <img
+                style={{ width: "100%", borderRadius: "6px" }}
+                src={v?.sub_link}
+              />
+              <Typography
+                sx={{
+                  fontSize: "30px",
+                  textAlign: "center",
+                }}
               >
-                {i18n?.language == "uz"
-                  ? v.sub_category_name_uz
-                  : v.sub_category_name_ru}
-              </Link>
-            </Typography>
+                <p style={{ textDecoration: "none", color: "inherit" }}>
+                  {i18n?.language == "uz"
+                    ? v.sub_category_name_uz
+                    : v.sub_category_name_ru}
+                </p>
+              </Typography>
+            </Link>
           </Grid>
         ))}
       </Grid>

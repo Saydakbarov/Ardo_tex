@@ -1,5 +1,7 @@
 import {
   Box,
+  Dialog,
+  DialogContent,
   Grid,
   IconButton,
   Modal,
@@ -109,30 +111,22 @@ export default function NewsProductCard() {
         </Grid>
       )}
 
-      <Modal
+      <Dialog
         open={open}
         onClose={handleClose}
+        fullWidth
+        maxWidth={"lg"}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <Box sx={{ textAlign: "end" }}>
+        <DialogContent>
+        <Box sx={{ textAlign: "end" }}>
             <IconButton onClick={handleClose}>
               <Close sx={{ color: "black" }} />
             </IconButton>
           </Box>
           <Box>
-            <Box
-              sx={{
-                p: 3,
-                backgroundImage: `url(${modalData.new_img})`,
-                backgroundPosition: "center",
-
-                height: "260px",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "contain",
-              }}
-            ></Box>
+           <img src={modalData.new_img} alt="" className="w-full h-[280px] object-cover" />
             <Box>
               <Typography sx={{ fontWeight: "600", fontSize: "18px" }}>
                 {i18n?.language == "uz"
@@ -146,8 +140,8 @@ export default function NewsProductCard() {
               </Typography>
             </Box>
           </Box>
-        </Box>
-      </Modal>
+        </DialogContent>
+      </Dialog>
     </Box>
   );
 }

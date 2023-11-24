@@ -78,7 +78,7 @@ export default function LastestNewsCard() {
                   style={{ width: "100%" }}
                 >
                   <Grid item sx={{ borderRadius: "6px" }}>
-                    <Link style={{display: "block", textDecoration: "none", color: "black"}} to={`/news/${v?.new_id}`} >
+                    <Link style={{display: "block", textDecoration: "none", color: "black"}} to={`/news`} >
                       <Box
                         sx={{
                           boxShadow: "0px 5px 10px 0px gray",
