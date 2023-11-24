@@ -17,7 +17,7 @@ export default function FormContact() {
        
     const token = "6889465570:AAHaWvdhdb7Y0LT9fK3jd-YbQ9mzj6Ormuc";
     const chat_id =  "-4063476415";
-    let text = ` %0A Заявка %0A *Имя: ${formData.name}* %0A Телефон: ${formData.phone} %0A Сообшение: ${formData.message}`;
+    let text = ` %0A *Заявка* %0A *Имя:* ${formData.name} %0A *Телефон:* ${formData.phone} %0A *Сообшение:* ${formData.message}`;
 
     const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${text}&parse_mode=MarkdownV2`;
 
