@@ -119,6 +119,7 @@ export default function NewsProductCard() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
+        
         <DialogContent>
         <Box sx={{ textAlign: "end" }}>
             <IconButton onClick={handleClose}>
