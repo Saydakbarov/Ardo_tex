@@ -22,7 +22,7 @@ export default function NewCollections() {
       </Typography>
 
       <Grid container justifyContent={"center"} gap={4} mt={5}>
-        {data?.data?.map((v, i) => (
+        {data?.data?.slice(0, 8)?.map((v, i) => (
           <Grid item lg={2.5} md={2.5} sm={5.3} xs={10} key={v.id}>
             <Link
             className="w-full"

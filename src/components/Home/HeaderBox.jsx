@@ -3,6 +3,7 @@ import React from "react";
 import { HeaderBoxData } from "../../data";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useAds } from "../../query-data/data.service";
 
 export default function HeaderBox() {
 
@@ -10,57 +11,23 @@ export default function HeaderBox() {
 
   const navigate = useNavigate()
 
+  const {data, isLoading} = useAds()
+
   return (
     <Box sx={{ maxWidth: "1500px", margin: "0 auto", mt: 8 }}>
-      <Grid container justifyContent={"center"} gap={4}>
-        {HeaderBoxData.map((v, i) => (
-          <Grid
-          onClick={() => {
-            navigate("/product")
-          }}
-            item
-            xl={5.3}
-            lg={5.3}
-            md={5.3}
-            sm={10}
-            xs={11}
-            key={v.id}
-            sx={{
-              p: 4,
-              minHeight: "270px",
-
-              background: "#F0F0F0",
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: {xs:"center", sm:"center", md:"center", lg:"space-between"},
-              gap:"20px"
-            }}
-          >
-            <Box>
-              <Typography sx={{ fontSize: "34px", fontWeight: "bold", mt: 5 }}>
-                {i18n?.language == "uz" ? v.title_uz : v.title_ru}
-              </Typography>
-              <Link
-              to={"/product"}
-                style={{
-                  textDecoration: "none",
-                  color: "gray",
-                  borderBottom: "1px solid red",
-                }}
-              >
-                {t("show-more")}
-              </Link>
-            </Box>
-            <Box>
-              <img
-                style={{ width: {xs:"300px", sm:"300px", md:"300px", lg:"290px", xl:"300px"}, height: "200px" }}
-                src={v.img}
-                alt=""
-              />
-            </Box>
-          </Grid>
+     <div className="w-full grid grid-cols-1 smd:grid-cols-2 gap-[30px] px-5">
+     {data?.data?.map((v, i) => (
+         <div className="flex gap-2 items-center flex-row  px-2 smd:px-4 py-4 smd:py-8 bg-gray-100">
+          <div className="w-3/5">
+            <p className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-5">{v?.ads_title}</p>
+            <Link className="font-medium hover:underline transition-all duration-300 text-base smd:text-lg" to={v?.ads_link} >{t("show-more")}</Link>
+          </div>
+          <div className="w-2/5">
+            <img src={v?.ads_image_link} alt="" className="w-full h-[150px] object-contain rounded-md" />
+          </div>
+         </div>
         ))}
-      </Grid>
+     </div>
     </Box>
   );
 }

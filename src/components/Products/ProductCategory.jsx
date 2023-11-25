@@ -5,8 +5,6 @@ import {
   FormControlLabel,
   FormGroup,
   Grid,
-  Radio,
-  Slider,
   TextField,
   Typography,
 } from "@mui/material";
@@ -15,17 +13,9 @@ import { CategoryData, colorsData, technologiesData } from "../../data";
 import { useState } from "react";
 import ProductCard from "./ProductCard";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import {
-  useBrands,
-  useCategories,
-  useFilteredProducts,
-  useSecondSubCategories,
-  useSubCategories,
-} from "../../query-data/data.service";
-import { Link, useSearchParams } from "react-router-dom";
-import { useEffect } from "react";
-import { useMemo } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { handleCheckboxChange } from "../../utils/functions";
 
 export default function ProductCategory({
   categoryId,
@@ -43,17 +33,20 @@ export default function ProductCategory({
   setPriceTo,
   searchUz,
   setSearchUz,
-  searchRu,
-  setSearchRu,
+  searchRu,  
+  searchEn,
+  setSearchRu,  
+  setSearchEn,
   backLink,
   data,
-  color,
-  setColor,
   technology,
-setTechnology,
-offset,
- setOffset
+  setOffset,
+  technologies,
+  types,
+  type,
+  colorId
 }) {
+  
   // const [categoryId, setCategoryId] = useState(1);
 
   // const [value, setValue] = React.useState([20000, 1000000]);
@@ -63,20 +56,13 @@ offset,
   // };
   // console.log(categoryId);
 
+  
+  const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
-  const handleCheckboxChange = (state, setState, id) => {
-    if(state?.includes(id)) {
-      setState(state?.filter(item => item != id))
-    }else {
-      setState([...state, id])
+  
 
-    }
-  }
-
-
-
-  const [offsetNum, setOffsetNum] = useState(1)
+  const [offsetNum, setOffsetNum] = useState(1);
 
   console.log(technology);
   return (
@@ -99,8 +85,14 @@ offset,
             </Link>
           </Typography>
 
-          <Typography sx={{ fontSize: "22px", fontWeight: "bold"
-        , textTransform: "uppercase", fontFamily: "Gilroy" }}>
+          <Typography
+            sx={{
+              fontSize: "22px",
+              fontWeight: "bold",
+              textTransform: "uppercase",
+              fontFamily: "Gilroy",
+            }}
+          >
             {t("categories")}
           </Typography>
           <Box
@@ -115,9 +107,15 @@ offset,
               categories?.data?.map((v) => (
                 <Link
                   style={{ textDecoration: "none", color: "inherit" }}
-                  to={`/product?category=${v?.category_id}`}
+                  to={`/product?category=${v?.category_id}${technology?.length ? ("&tech=" + technology?.join(",")) : ""}${type?.length ? ("&type=" + type?.join(",")) : ""}${colorId ? ("&color=" + colorId) : ""}`}
                 >
-                  <Typography style={{ fontSize: "18px", fontWeight: 300, fontFamily: "Gilroy"  }}>
+                  <Typography
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: 300,
+                      fontFamily: "Gilroy",
+                    }}
+                  >
                     {i18n?.language == "uz"
                       ? v.category_name_uz
                       : v.category_name_ru}
@@ -137,9 +135,15 @@ offset,
               subcategories?.data?.map((v) => (
                 <Link
                   style={{ textDecoration: "none", color: "inherit" }}
-                  to={`/product?category=${categoryId}&subcategory=${v.sub_category_id}`}
+                  to={`/product?category=${categoryId}&subcategory=${v.sub_category_id}${technology?.length ? ("&tech=" + technology?.join(",")) : ""}${type?.length ? ("&type=" + type?.join(",")) : ""}${colorId ? ("&color=" + colorId) : ""}`}
                 >
-                  <Typography style={{ fontSize: "18px", fontWeight: 300, fontFamily: "Gilroy" }}>
+                  <Typography
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: 300,
+                      fontFamily: "Gilroy",
+                    }}
+                  >
                     {i18n?.language == "uz"
                       ? v.sub_category_name_uz
                       : v.sub_category_name_ru}
@@ -165,9 +169,15 @@ offset,
                         : "none",
                     color: "inherit",
                   }}
-                  to={`/product?category=${categoryId}&subcategory=${subCategoryId}&secondsubcategory=${v.second_sub_category_id}`}
+                  to={`/product?category=${categoryId}&subcategory=${subCategoryId}&secondsubcategory=${v.second_sub_category_id}${technology?.length ? ("&tech=" + technology?.join(",")) : ""}${type?.length ? ("&type=" + type?.join(",")) : ""}${colorId ? ("&color=" + colorId) : ""}`}
                 >
-                  <Typography style={{ fontSize: "18px", fontWeight: 300, fontFamily: "Gilroy" }}>
+                  <Typography
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: 300,
+                      fontFamily: "Gilroy",
+                    }}
+                  >
                     {i18n?.language == "uz"
                       ? v.second_sub_category_name_uz
                       : v.second_sub_category_name_ru}
@@ -176,45 +186,170 @@ offset,
               ))}
           </Box>
           <Box sx={{ mt: 3 }}>
-            <Typography sx={{ fontSize: "20px", fontWeight: "bold"
-          , textTransform: "uppercase", fontFamily: "Gilroy" }}>
-              {t("Технология")}
+            <Typography
+              sx={{
+                fontSize: "20px",
+                fontWeight: "bold",
+                textTransform: "uppercase",
+                fontFamily: "Gilroy",
+              }}
+            >
+              {t("technology")}
             </Typography>
-           
 
             <div className="">
               <FormGroup>
-               {
-                technologiesData?.map(item => (
+                {technologies?.data?.map((item) => (
                   <FormControlLabel
-                  
-                  control={<Checkbox style={{fontFamily: "Gilroy"}} value={item.id} checked={technology?.includes(item.id)} onChange={() => handleCheckboxChange(technology, setTechnology, item?.id)} />}
-                  label={<Typography style={{fontWeight: 300, fontFamily: "Gilroy"}}>{item.name}</Typography>}
-                />
-                ))
-               }
-               
+                    control={
+                      <Checkbox
+                        style={{ fontFamily: "Gilroy" }}
+                        value={item.technology_id}
+                        checked={technology?.includes(item?.technology_id)}
+                        onChange={() => {
+                          if(technology?.includes(item?.technology_id)){
+                            const res = (`/product?${categoryId ? "category=" + categoryId : ""}${
+                              subCategoryId ? "&subcategory=" + subCategoryId : ""
+                            }${secondSubCategoryId ? "&secondsubcategory=" + secondSubCategoryId : ""}${
+                              type?.length ? ("&type=" + type?.join(",")) : ""
+                            }${technology?.length > 1 ? "&tech=" + technology?.filter(el => el != item?.technology_id)?.join(",") : ""}${colorId ? ("&color=" + colorId) : ""}`);
+
+                            navigate(res)
+
+                          }else {
+                            const res = (`/product?${categoryId ? "category=" + categoryId : ""}${
+                              subCategoryId ? "&subcategory=" + subCategoryId : ""
+                            }${secondSubCategoryId ? "&secondsubcategory=" + secondSubCategoryId : ""}${
+                              type?.length ? ("&type=" + type?.join(",")) : ""
+                            }${ "&tech=" + [...technology, item?.technology_id]?.join(",")}${colorId ? ("&color=" + colorId) : ""}`);
+                            console.log(res);
+                            navigate(res)
+                          }
+
+                         
+                        }
+                         
+                        }
+                      />
+                    }
+                    label={
+                      <Typography
+                        style={{ fontWeight: 300, fontFamily: "Gilroy" }}
+                      >
+                        {item[`technology_name_${i18n?.language ?? "uz"}`]}
+                      </Typography>
+                    }
+                  />
+                ))}
+              </FormGroup>
+            </div>
+          </Box>
+          <Box sx={{ mt: 3 }}>
+            <Typography
+              sx={{
+                fontSize: "20px",
+                fontWeight: "bold",
+                textTransform: "uppercase",
+                fontFamily: "Gilroy",
+              }}
+            >
+              {t("type")}
+            </Typography>
+
+            <div className="">
+              <FormGroup>
+                {types?.data?.map((item) => (
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        style={{ fontFamily: "Gilroy" }}
+                        value={item.type_id}
+                        checked={type?.includes(item?.type_id)}
+                        onChange={() =>{
+
+                          if(type?.includes(item?.type_id)){
+                            const res = (`/product?${categoryId ? "category=" + categoryId : ""}${
+                              subCategoryId ? "&subcategory=" + subCategoryId : ""
+                            }${secondSubCategoryId ? "&secondsubcategory=" + secondSubCategoryId : ""}${
+                              type?.length > 1 ? "&type=" + type?.filter(el => el != item?.type_id)?.join(",") : "" 
+                            }${technology?.length > 0 ? "&tech=" + technology?.join(",") : ""}`);
+
+                            navigate(res)
+
+                          }else {
+                            const res = (`/product?${categoryId ? "category=" + categoryId : ""}${
+                              subCategoryId ? "&subcategory=" + subCategoryId : ""
+                            }${secondSubCategoryId ? "&secondsubcategory=" + secondSubCategoryId : ""}${
+                              "&type=" + [...type, item?.type_id]?.join(",") 
+                            }${technology?.length > 0 ? "&tech=" + technology?.join(",") : ""}`);
+                            console.log(res);
+                            navigate(res)
+                          }
+
+                         
+
+
+
+                        }
+                          // handleCheckboxChange(
+                          //   type,
+                          //   setType,
+                          //   item?.type_id
+                          // )
+                        }
+                      />
+                    }
+                    label={
+                      <Typography
+                        style={{ fontWeight: 300, fontFamily: "Gilroy" }}
+                      >
+                        {item[`type_name_${i18n?.language ?? "uz"}`]}
+                      </Typography>
+                    }
+                  />
+                ))}
               </FormGroup>
             </div>
           </Box>
 
           <Box sx={{ mt: 3 }}>
-            <Typography sx={{ fontSize: "20px", fontWeight: "bold"
-          , textTransform: "uppercase", fontFamily: "Gilroy" }}>
+            <Typography
+              sx={{
+                fontSize: "20px",
+                fontWeight: "bold",
+                textTransform: "uppercase",
+                fontFamily: "Gilroy",
+              }}
+            >
               {t("brands")}
             </Typography>
             <Box sx={{}}>
-            <FormGroup>
-               {
-                brands?.data?.map(item => (
+              <FormGroup>
+                {brands?.data?.map((item) => (
                   <FormControlLabel
-                  style={{fontWeight: 300}}
-                  control={<Checkbox value={item.brand_id} checked={brandId?.includes(item.brand_id)} onChange={() => handleCheckboxChange(brandId, setBrandId, item?.brand_id)} />}
-                  label={<Typography style={{fontWeight: 300, fontFamily: "Gilroy"}}>{item?.brand_name}</Typography>}
-                />
-                ))
-               }
-               
+                    style={{ fontWeight: 300 }}
+                    control={
+                      <Checkbox
+                        value={item.brand_id}
+                        checked={brandId?.includes(item.brand_id)}
+                        onChange={() =>
+                          handleCheckboxChange(
+                            brandId,
+                            setBrandId,
+                            item?.brand_id
+                          )
+                        }
+                      />
+                    }
+                    label={
+                      <Typography
+                        style={{ fontWeight: 300, fontFamily: "Gilroy" }}
+                      >
+                        {item?.brand_name}
+                      </Typography>
+                    }
+                  />
+                ))}
               </FormGroup>
               {/* {brands?.data?.map((item) => (
                 <FormControlLabel
@@ -260,7 +395,14 @@ offset,
             />
           </div>
           <Box sx={{ mt: 3 }}>
-            <Typography sx={{ fontSize: "20px", fontWeight: "bold", textTransform: "uppercase", fontFamily: "Gilroy" }}>
+            <Typography
+              sx={{
+                fontSize: "20px",
+                fontWeight: "bold",
+                textTransform: "uppercase",
+                fontFamily: "Gilroy",
+              }}
+            >
               {t("colors")}
             </Typography>
             <Box sx={{ display: "flex", gap: "10px", flexWrap: "wrap", mt: 1 }}>
@@ -273,14 +415,26 @@ offset,
                     overflow: "hidden",
                     margin: "0px",
                     padding: 0,
-                    border: color == item?.id ? "2.5px solid black" : 0,
+                    border: colorId == item?.id ? "2.5px solid black" : 0,
                     cursor: "pointer",
                   }}
                   onClick={() => {
-                    if(item?.id == color){
-                      setColor(null)
-                    }else {
-                      setColor(item?.id);
+                    if (item?.id == colorId) {
+                      const res = (`/product?${categoryId ? "category=" + categoryId : ""}${
+                        subCategoryId ? "&subcategory=" + subCategoryId : ""
+                      }${secondSubCategoryId ? "&secondsubcategory=" + secondSubCategoryId : ""}${
+                        type?.length ? ("&type=" + type?.join(",")) : ""
+                      }${ technology?.length ?  "&tech=" + technology?.join(",") : ""}`);
+                      console.log(res);
+                      navigate(res)
+                    } else {
+                      const res = (`/product?${categoryId ? "category=" + categoryId : ""}${
+                        subCategoryId ? "&subcategory=" + subCategoryId : ""
+                      }${secondSubCategoryId ? "&secondsubcategory=" + secondSubCategoryId : ""}${
+                        type?.length ? ("&type=" + type?.join(",")) : ""
+                      }${ technology?.length ?  "&tech=" + technology?.join(",") : ""}${("&color=" + item.id)}`);
+                      console.log(res);
+                      navigate(res)
                     }
                   }}
                 >
@@ -297,10 +451,7 @@ offset,
                 </button>
               ))}
             </Box>
-
-            
           </Box>
-          
         </Grid>
 
         <Grid item lg={8} md={8} sm={10} xs={11} mt={2}>
@@ -309,46 +460,51 @@ offset,
             id="filled-basic"
             label={t("search")}
             variant="standard"
-            value={i18n?.language == "uz" ? searchUz : searchRu}
+            value={i18n?.language == "uz" ? searchUz :(i18n?.language == "ru" ?  searchRu : searchEn)}
             onChange={(e) => {
               if (i18n?.language == "uz") {
                 setSearchUz(e.target.value);
-              } else {
+              } else if(i18n?.language == "ru") {
                 setSearchRu(e.target.value);
+              }else {
+                setSearchEn(e.target.value);
+
               }
             }}
           />
-         <div className="">
-         {!data ? (
-            <Typography
-              style={{ textAlign: "center", margin: "30px", fontSize: "23px" }}
-            >
-              Loading...
-            </Typography>
-          ) : (
-            <ProductCard data={data} />
-          )}
-         </div>
-         <div className="flex justify-center items-center gap-4 mt-[30px] md:mt-[40px]">
+          <div className="">
+            {!data ? (
+              <Typography
+                style={{
+                  textAlign: "center",
+                  margin: "30px",
+                  fontSize: "23px",
+                }}
+              >
+                Loading...
+              </Typography>
+            ) : (
+              <ProductCard data={data} />
+            )}
+          </div>
+          <div className="flex justify-center items-center gap-4 mt-[30px] md:mt-[40px]">
             <Button
               variant="outlined"
               onClick={() => {
                 setOffset((e) => e - 20);
                 setOffsetNum((e) => e - 1);
-                
               }}
               disabled={offsetNum == 1}
             >
               <NavigateNextIcon className="rotate-180" />
             </Button>
-            <Typography style={{fontSize: "20px"}} >{offsetNum}</Typography>
+            <Typography style={{ fontSize: "20px" }}>{offsetNum}</Typography>
             <Button
               variant="outlined"
-              disabled={data?.data?.length  < 20}
+              disabled={data?.data?.length < 20}
               onClick={() => {
                 setOffset((e) => e + 20);
                 setOffsetNum((e) => e + 1);
-                
               }}
             >
               <NavigateNextIcon />

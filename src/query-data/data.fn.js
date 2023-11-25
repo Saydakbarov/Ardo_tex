@@ -136,3 +136,103 @@ export const getNews = async ({ limit, offset }) => {
     console.error(error);
   }
 };
+
+
+// SLIDERS
+
+
+export const getSliders = async () => {
+  try {
+    const res = await axios.get("tex/sliders/list");
+    
+
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+
+// ADS
+
+
+export const getAds = async () => {
+  try {
+    const res = await axios.get("tex/ads/list");
+    
+
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+
+
+// PARTNERS
+
+
+export const getPartners = async () => {
+  try {
+    const res = await axios.get("tex/partners/list");
+    
+
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+
+
+// CERTIFICATES
+
+
+export const getCertificates = async () => {
+  try {
+    const res = await axios.get("tex/certificates/list");
+    
+
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+
+
+// TYPES
+
+
+export const getTypes = async () => {
+  try {
+    const res = await axios.get("tex/type/list");
+    
+
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+
+
+// TECHNOLOGIES
+
+
+export const getTechnologies = async () => {
+  try {
+    const res = await axios.get("tex/technology/list");
+    
+
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+

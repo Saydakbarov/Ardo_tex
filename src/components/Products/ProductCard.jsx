@@ -47,7 +47,7 @@ export default function ProductCard({ data }) {
             alt=""
           />
           <Typography sx={{ p: 1 }}>
-            {i18n?.language == "uz" ? v?.product_title_uz : v?.product_title_ru}
+            { v[`product_title_${i18n?.language ?? "uz"}`]}
           </Typography>
         </Box>
       ))}

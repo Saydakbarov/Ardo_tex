@@ -10,8 +10,10 @@ import {
   useFilteredProducts,
   useSecondSubCategories,
   useSubCategories,
+  useTechnology,
+  useTypes,
 } from "../query-data/data.service";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useMutation } from "@tanstack/react-query";
@@ -25,6 +27,9 @@ export default function ProductsPage() {
   const categoryId = params.get("category");
   const subCategoryId = params.get("subcategory");
   const secondSubCategoryId = params.get("secondsubcategory");
+  const techId = params.get("tech");
+  const typeId = params.get("type");
+  const colorId = params.get("color");
   const [brandId, setBrandId] = useState([]);
   const [offset, setOffset] = useState(0);
   const [limit, setLimit] = useState(20);
@@ -33,8 +38,15 @@ export default function ProductsPage() {
   const [searchUz, setSearchUz] = useState("");
   const [searchRu, setSearchRu] = useState("");
   const [searchEn, setSearchEn] = useState("");
-  const [color, setColor] = useState(null);
   const [technology, setTechnology] = useState([]);
+  const [type, setType] = useState([]);
+
+
+  useEffect(() => {
+  
+  setType(typeId ? typeId?.split(",") : [])
+  setTechnology(techId ? techId?.split(",") : [])
+  }, [typeId, techId]);
 
   // const { data, refetch, isFetching } = useFilteredProducts({
   //   limit,
@@ -51,7 +63,6 @@ export default function ProductsPage() {
   //   color,
   // });
 
-
   // const {mutate, data, isPending} = useMutation({
   //   mutationFn: postFilteredProducts,
   //   mutationKey: ["post/filtered/products"],
@@ -60,30 +71,27 @@ export default function ProductsPage() {
   //   }
   // })
 
-  const [data, setData] = useState(null)
-
+  const [data, setData] = useState(null);
 
   console.log(data, "datat");
 
   useEffect(() => {
-
     const fetchData = async () => {
-
-    //   const formData = new FormData()
-    //   formData.append("category_id", categoryId)
-    //   formData.append("sub_category_id", subCategoryId)
-    //   formData.append("second_sub_category_id", secondSubCategoryId)
-    //   formData.append("price_from", priceFrom)
-    //   formData.append("price_to", priceTo)
-    //   formData.append("search_uz", searchUz)
-    //   formData.append("search_ru", searchRu)
-    //   formData.append("search_en", searchEn)
-    //   formData.append("color", color)
-    //  formData.append("brand_id", brandId)
-    //   // for(let i = 0; i < brandId?.length; i++) {
-    //   //   formData.append("brand_id", brandId[i])
-    //   // }
-    //  formData.append("technology", technology)
+      //   const formData = new FormData()
+      //   formData.append("category_id", categoryId)
+      //   formData.append("sub_category_id", subCategoryId)
+      //   formData.append("second_sub_category_id", secondSubCategoryId)
+      //   formData.append("price_from", priceFrom)
+      //   formData.append("price_to", priceTo)
+      //   formData.append("search_uz", searchUz)
+      //   formData.append("search_ru", searchRu)
+      //   formData.append("search_en", searchEn)
+      //   formData.append("color", color)
+      //  formData.append("brand_id", brandId)
+      //   // for(let i = 0; i < brandId?.length; i++) {
+      //   //   formData.append("brand_id", brandId[i])
+      //   // }
+      //  formData.append("technology", technology)
       // for(let i = 0; i < technology?.length; i++) {
       //   formData.append("technology", technology[i])
       // }
@@ -91,7 +99,7 @@ export default function ProductsPage() {
       const query = {
         params: {
           limit,
-          offset
+          offset,
         },
         body: {
           category_id: categoryId,
@@ -102,19 +110,18 @@ export default function ProductsPage() {
           search_uz: searchUz,
           search_ru: searchRu,
           search_en: searchEn,
-          color: color,
+          color: colorId,
           brand_id: brandId,
           technology: technology,
-        }
-      }
+          type,
+        },
+      };
 
-      const res = await postFilteredProducts(query)
+      const res = await postFilteredProducts(query);
       console.log(res, "asd");
-      setData(res)
-    }
-    fetchData()
-
-    
+      setData(res);
+    };
+    fetchData();
   }, [
     categoryId,
     subCategoryId,
@@ -126,8 +133,9 @@ export default function ProductsPage() {
     searchEn,
     searchRu,
     searchUz,
-    color,
-    technology
+    colorId,
+    technology,
+    type,
   ]);
 
   // console.log(data, "products");
@@ -139,6 +147,10 @@ export default function ProductsPage() {
     useSecondSubCategories(subCategoryId);
 
   const { data: brands } = useBrands();
+
+  const { data: types } = useTypes();
+
+  const { data: technologies } = useTechnology();
 
   useEffect(() => {
     if (categoryId) {
@@ -155,15 +167,15 @@ export default function ProductsPage() {
 
   const backLink = useMemo(() => {
     if (secondSubCategoryId) {
-      return `/product?category=${categoryId}&subcategory=${subCategoryId}`;
+      return `/product?category=${categoryId}&subcategory=${subCategoryId}${technology?.length ? ("&tech=" + technology?.join(",")) : ""}${type?.length ? ("&type=" + type?.join(",")) : ""}${colorId ? ("&color=" + colorId) : ""}`;
     } else if (subCategoryId) {
-      return `/product?category=${categoryId}`;
+      return `/product?category=${categoryId}${technology?.length ? ("&tech=" + technology?.join(",")) : ""}${type?.length ? ("&type=" + type?.join(",")) : ""}${colorId ? ("&color=" + colorId) : ""}`;
     } else if (categoryId) {
-      return `/product`;
+      return `/product?${technology?.length ? ("&tech=" + technology?.join(",")) : ""}${type?.length ? ("&type=" + type?.join(",")) : ""}${colorId ? ("&color=" + colorId) : ""}`;
     } else {
-      return "/product";
+      return `/product?${technology?.length ? ("&tech=" + technology?.join(",")) : ""}${type?.length ? ("&type=" + type?.join(",")) : ""}${colorId ? ("&color=" + colorId) : ""}`;
     }
-  }, [categoryId, subCategoryId, secondSubCategoryId]);
+  }, [categoryId, subCategoryId, secondSubCategoryId, techId, typeId, colorId]);
 
   const breadcrumpData = useMemo(() => {
     if (secondSubCategoryId) {
@@ -275,18 +287,23 @@ export default function ProductsPage() {
         priceTo={priceTo}
         searchRu={searchRu}
         searchUz={searchUz}
+        searchEn={searchEn}
         setSearchRu={setSearchRu}
         setSearchUz={setSearchUz}
+        setSearchEn={setSearchEn}
         secondSubCategoryId={secondSubCategoryId}
         secondsubcategories={secondsubcategories}
         setPriceFrom={setPriceFrom}
         setPriceTo={setPriceTo}
         subCategoryId={subCategoryId}
         subcategories={subcategories}
-        color={color}
-        setColor={setColor}
         technology={technology}
         setTechnology={setTechnology}
+        technologies={technologies}
+        types={types}
+        type={type}
+        setType={setType}
+        colorId={colorId}
       />
       <Footer />
     </Box>

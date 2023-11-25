@@ -32,7 +32,9 @@
     "price-from" : "Price from",
     "colors" : "Color",
     "back" : "Back",
-    "search" : "Search"
+    "search" : "Search",
+    "technology" : "Technology",
+    "type" : "Type"
   
   
   }

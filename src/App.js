@@ -13,12 +13,6 @@ import { useTranslation } from "react-i18next";
 function App() {
 
 
-  const {i18n, t} = useTranslation()
-  useEffect(() => {
-    if(localStorage.getItem("lang")) {
-      i18n.changeLanguage(localStorage.getItem("lang"))
-    }
-  },[])
 
   return (
     <div className="globalContainer">

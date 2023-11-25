@@ -10,14 +10,16 @@ import {
   useTheme,
 } from "@mui/material";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { MenuData, languages } from "../../data";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { MenuData } from "../../data";
 import DrawerComp from "./DrawerComp";
 import { Facebook, Instagram, Telegram, YouTube } from "@mui/icons-material";
 
 import Logo from "../../logo.png";
 import { useTranslation } from "react-i18next";
 import SearchComponent from "./SearchComponent";
+import { languages } from "../../utils/consts";
+import { useEffect } from "react";
 
 export default function HeaderMenu() {
   const navigate = useNavigate();
@@ -27,6 +29,24 @@ export default function HeaderMenu() {
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
   const { t, i18n } = useTranslation();
+
+  const [lang, setLang] = useState(languages[1])
+  const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    if(localStorage.getItem("lang")) {
+      i18n.changeLanguage(localStorage.getItem("lang"))
+      setLang(languages?.find(item => item?.name == localStorage.getItem("lang")))
+    }
+  },[])
+
+  useEffect(() => {
+window?.scrollTo({
+  top: 0,
+  behavior: "smooth",
+})
+  }, [])
+
 
   return (
     <Box
@@ -81,6 +101,7 @@ export default function HeaderMenu() {
                 >
                   <SearchComponent />
                   <Box>
+                    <div className="relative">
                     <IconButton
                       style={{
                         display: "flex",
@@ -89,27 +110,27 @@ export default function HeaderMenu() {
                       }}
                       sx={{ color: "gray" }}
                       onClick={() => {
-                        if (i18n?.language == "uz") {
-                          i18n.changeLanguage("ru");
-                          localStorage.setItem("lang", "ru");
-                        } else {
-                          i18n.changeLanguage("uz");
-                          localStorage.setItem("lang", "uz");
-                        }
+                        // if (i18n?.language == "uz") {
+                        //   i18n.changeLanguage("ru");
+                        //   localStorage.setItem("lang", "ru");
+                        // } else {
+                        //   i18n.changeLanguage("uz");
+                        //   localStorage.setItem("lang", "uz");
+                        // }
+
+                        setOpen(e => !e)
                       }}
                     >
                       <span
                         style={{ fontSize: "16px", textTransform: "uppercase" }}
                       >
-                        {i18n?.language == "uz"
-                          ? languages[1]?.lang
-                          : languages[0]?.lang}
+                        {
+                          lang?.name
+                        }
                       </span>
                       <img
                         src={
-                          i18n?.language == "uz"
-                            ? languages[1]?.image
-                            : languages[0]?.image
+                          lang?.image
                         }
                         style={{
                           width: "30px",
@@ -120,6 +141,60 @@ export default function HeaderMenu() {
                         className=""
                       />
                     </IconButton>
+                    <div className={` ${open ? "block" : "hidden"} shadow-md absolute flex flex-col pt-2 top-full left-0 w-full bg-white z-10 rounded-md`}>
+                      {
+                        languages?.map(item => {
+                          if(item.id != lang?.id){
+                            return (
+                              <IconButton
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "8px",
+                                padding: "5px"
+                              }}
+                              sx={{ color: "gray" }}
+                              onClick={() => {
+                                // if (i18n?.language == "uz") {
+                                //   i18n.changeLanguage("ru");
+                                //   localStorage.setItem("lang", "ru");
+                                // } else {
+                                //   i18n.changeLanguage("uz");
+                                //   localStorage.setItem("lang", "uz");
+                                // }
+        
+                                setOpen(false)
+                                setLang(item)
+                                localStorage.setItem("lang", item.name)
+                                i18n?.changeLanguage(item.name)
+                              }}
+                            >
+                              <span
+                                style={{ fontSize: "16px", textTransform: "uppercase" }}
+                              >
+                                {
+                                  item?.name
+                                }
+                              </span>
+                              <img
+                                src={
+                                  item?.image
+                                }
+                                style={{
+                                  width: "30px",
+                                  height: "30px",
+                                  objectFit: "contain",
+                                }}
+                                alt=""
+                                className=""
+                              />
+                            </IconButton>
+                            )
+                          }
+                        })
+                      }
+                    </div>
+                    </div>
                   </Box>
 
                   <DrawerComp />
@@ -213,18 +288,100 @@ export default function HeaderMenu() {
                     />
                   </IconButton> */}
 
-                  <select
-                    style={{
-                      padding: "0px 20px 0px 10px",
-                      border: "1px solid",
-                    }}
-                    name=""
-                    id=""
-                  >
-                    <option value="ru">Ru</option>
-                    <option value="uz">Uz</option>
-                    <option value="en">En</option>
-                  </select>
+<div className="relative">
+                    <IconButton
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                      }}
+                      sx={{ color: "gray" }}
+                      onClick={() => {
+                        // if (i18n?.language == "uz") {
+                        //   i18n.changeLanguage("ru");
+                        //   localStorage.setItem("lang", "ru");
+                        // } else {
+                        //   i18n.changeLanguage("uz");
+                        //   localStorage.setItem("lang", "uz");
+                        // }
+
+                        setOpen(e => !e)
+                      }}
+                    >
+                      <span
+                        style={{ fontSize: "16px", textTransform: "uppercase" }}
+                      >
+                        {
+                          lang?.name
+                        }
+                      </span>
+                      <img
+                        src={
+                          lang?.image
+                        }
+                        style={{
+                          width: "30px",
+                          height: "30px",
+                          objectFit: "contain",
+                        }}
+                        alt=""
+                        className=""
+                      />
+                    </IconButton>
+                    <div className={` ${open ? "block" : "hidden"} shadow-md absolute flex flex-col pt-2 top-full left-0 w-full bg-white z-10 rounded-md`}>
+                      {
+                        languages?.map(item => {
+                          if(item.id != lang?.id){
+                            return (
+                              <IconButton
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "8px",
+                                padding: "5px"
+                              }}
+                              sx={{ color: "gray" }}
+                              onClick={() => {
+                                // if (i18n?.language == "uz") {
+                                //   i18n.changeLanguage("ru");
+                                //   localStorage.setItem("lang", "ru");
+                                // } else {
+                                //   i18n.changeLanguage("uz");
+                                //   localStorage.setItem("lang", "uz");
+                                // }
+        
+                                setOpen(false)
+                                setLang(item)
+                                localStorage.setItem("lang", item.name)
+                                i18n?.changeLanguage(item.name)
+                              }}
+                            >
+                              <span
+                                style={{ fontSize: "16px", textTransform: "uppercase" }}
+                              >
+                                {
+                                  item?.name
+                                }
+                              </span>
+                              <img
+                                src={
+                                  item?.image
+                                }
+                                style={{
+                                  width: "30px",
+                                  height: "30px",
+                                  objectFit: "contain",
+                                }}
+                                alt=""
+                                className=""
+                              />
+                            </IconButton>
+                            )
+                          }
+                        })
+                      }
+                    </div>
+                    </div>
                 </Box>
 
                 <Box sx={{ color: "gray" }}>

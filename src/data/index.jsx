@@ -1543,18 +1543,18 @@ export const AboutPageProductData = [
 //   },
 // ];
 
-export const languages = [
-  {
-    id: 1,
-    lang: "ru",
-    image: "/img/ru.png",
-  },
-  {
-    id: 2,
-    lang: "uz",
-    image: "/img/uz.png",
-  },
-];
+// export const languages = [
+//   {
+//     id: 1,
+//     lang: "ru",
+//     image: "/img/ru.png",
+//   },
+//   {
+//     id: 2,
+//     lang: "uz",
+//     image: "/img/uz.png",
+//   },
+// ];
 
 export const colorsData = [
   {

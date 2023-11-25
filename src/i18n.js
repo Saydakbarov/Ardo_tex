@@ -9,7 +9,7 @@ i18n
   .init({
     fallbackLng: "ru",
     debug: true,
-    languages: ["ru", "uz"],
+    languages: ["ru", "uz", "en"],
     detection: {},
 
     interpolation: {

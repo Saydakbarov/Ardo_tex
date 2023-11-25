@@ -176,25 +176,17 @@ export default function SingleProduct({ data, isLoading }) {
                 </div>
               </div>
               <div className="w-full md:w-1/2">
-                <h2 className="font-light text-[34px] sm:text-[38px] smd:text-[45px] lg:text-[55px] mb-4 ">
-                  {i18n?.language == "uz"
-                    ? data?.data?.product_title_uz
-                    : data?.data?.product_title_ru}
+                <h2 className="font-light text-[34px] sm:text-[38px] smd:text-[45px] lg:text-[55px] mb-6 ">
+                  {data?.data?.[`product_title_${i18n?.language ?? "uz"}`]}
                 </h2>
                 <div
                   dangerouslySetInnerHTML={{
-                    __html:
-                      i18n?.language == "uz"
-                        ? data?.data?.product_model_uz
-                        : data?.data?.product_model_ru,
+                    __html: data?.data[`product_model_${i18n?.language ?? "uz"}`]
                   }}
                   className="single-product-model"
                 ></div>
                 <div  dangerouslySetInnerHTML={{
-                    __html:
-                      i18n?.language == "uz"
-                        ? data?.data?.product_desc_uz
-                        : data?.data?.product_desc_ru,
+                    __html: data?.data[`product_desc_${i18n?.language ?? "uz"}`]
                   }} className=""></div>
               </div>
             </div>

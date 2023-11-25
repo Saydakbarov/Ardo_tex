@@ -32,7 +32,10 @@
   "price-from" : "Цена от",
   "colors" : "Цвет",
   "back" : "Назад",
-  "search" : "Поиск"
+  "search" : "Поиск",
+  "technology" : "Технология",
+    "type" : "Тип"
+  
 
 
 }

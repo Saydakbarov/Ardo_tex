@@ -12,8 +12,12 @@ import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper/modules";
 import { HeaderCarousel } from "../../data";
 import { useTranslation } from "react-i18next";
+import { useSliders } from "../../query-data/data.service";
 export default function HeaderMain() {
   const { t } = useTranslation();
+
+  const {data, isLoading} = useSliders()
+
   return (
     <Box sx={{ background: "linear-gradient( #DCE9EC, #E8F0F3)" }}>
       <Grid
@@ -35,8 +39,8 @@ export default function HeaderMain() {
             }}
             className="mySwiper"
           >
-            {HeaderCarousel.map((v, i) => (
-              <SwiperSlide key={v.id}>
+            {data?.data?.map((v, i) => (
+              <SwiperSlide key={v?.slider_id}>
                 <Box
                   sx={{
                     display: "flex",
@@ -52,7 +56,7 @@ export default function HeaderMain() {
                   }}
                 >
                   <img
-                    src={v.img}
+                    src={v?.slider_image_link}
                     style={{ width: "100%", height: "auto" }}
                     alt=""
                   />

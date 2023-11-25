@@ -9,9 +9,13 @@ import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
 import { PartnerData } from "../../data";
 import { useTranslation } from "react-i18next";
+import { usePartners } from "../../query-data/data.service";
+import { Link } from "react-router-dom";
 export default function OurPartner() {
-  
-  const {t} = useTranslation()
+  const { t } = useTranslation();
+
+  const { data, isLoading } = usePartners();
+
   return (
     <Box sx={{ maxWidth: "1500px", margin: "0 auto", mt: 8 }}>
       <Typography
@@ -51,21 +55,19 @@ export default function OurPartner() {
           className="mySwiper"
           // style={{ marginTop: "50px" }}
         >
-          {PartnerData.map((v, i) => (
-            <SwiperSlide
-              key={i}
-              style={{
-                
-              }}
-            >
-              <div className="w-full px-6 md:border-r-2">
-              <img
-                
-                src={v.img}
-                alt=""
-                className="w-full h-[200px] object-contain object-center"
-              />
-              </div>
+          {data?.data?.map((v, i) => (
+            <SwiperSlide key={v?.partner_id} style={{}}>
+              <Link
+                to={v?.partner_link}
+                target="_blank"
+                className="block w-full px-6 md:border-r-2"
+              >
+                <img
+                  src={v?.partner_image_link}
+                  alt=""
+                  className="w-full h-[200px] object-contain object-center"
+                />
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>

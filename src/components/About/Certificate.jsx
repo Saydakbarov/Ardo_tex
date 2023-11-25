@@ -6,9 +6,11 @@ import { Pagination } from "swiper/modules";
 
 import { useTranslation } from "react-i18next";
 import { CertificateData } from "../../data";
+import { useCertificates } from "../../query-data/data.service";
 
 export default function Certificate() {
   const { t } = useTranslation();
+  const {data, isLoading} = useCertificates()
 
   return (
     <Box sx={{ mt: 10 }}>
@@ -51,10 +53,10 @@ export default function Certificate() {
             className="mySwiper"
             style={{ paddingBottom: "50px" }}
           >
-            {CertificateData.map((v, i) => (
-              <SwiperSlide>
-                <a href={v} target="blank_">
-                  <img style={{ width: "100%" }} src={v} alt="" />
+            {data?.data.map((v, i) => (
+              <SwiperSlide key={v?.certificate_id} >
+                <a href={v?.certificate_image_link} target="blank_">
+                  <img style={{ width: "100%" }} src={v?.certificate_image_link} alt="" />
                 </a>
               </SwiperSlide>
             ))}
