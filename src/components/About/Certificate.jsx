@@ -19,19 +19,14 @@ export default function Certificate() {
       >
         {t("certificates")}
       </Typography>
-      <Grid container justifyContent={"center"} gap={4} mt={5}>
-        <Grid item lg={11}>
-          <Swiper
+     <div className="mt-8 w-full px-6">
+     <Swiper
             slidesPerView={1}
             spaceBetween={10}
             pagination={{
               clickable: true,
             }}
             breakpoints={{
-              300: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-              },
               640: {
                 slidesPerView: 1,
                 spaceBetween: 20,
@@ -42,7 +37,7 @@ export default function Certificate() {
               },
               1024: {
                 slidesPerView: 3,
-                spaceBetween: 60,
+                spaceBetween: 50,
               },
               1500: {
                 slidesPerView: 4,
@@ -55,14 +50,13 @@ export default function Certificate() {
           >
             {data?.data.map((v, i) => (
               <SwiperSlide key={v?.certificate_id} >
-                <a href={v?.certificate_image_link} target="blank_">
-                  <img style={{ width: "100%" }} src={v?.certificate_image_link} alt="" />
+                <a className="block" href={v?.certificate_image_link} target="blank_">
+                  <img className="w-full" src={v?.certificate_image_link} alt="" />
                 </a>
               </SwiperSlide>
             ))}
           </Swiper>
-        </Grid>
-      </Grid>
+     </div>
     </Box>
   );
 }
