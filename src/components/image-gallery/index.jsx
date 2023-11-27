@@ -1,3 +1,5 @@
+import Magnifier from "react-magnifier";
+
 const ImageGallery = ({
   data,
   currentIndex,
@@ -58,17 +60,11 @@ const ImageGallery = ({
         {data?.map((item, index) => (
           <div
             key={item}
-            className={`w-full h-full  p-4 ${
+            className={`w-full h-full overflow-x-auto  p-4 ${
               index == currentIndex ? "block" : "hidden"
             }`}
           >
-            <img
-              alt=""
-              width={500}
-              height={600}
-              src={item}
-              className="w-full h-full object-contain object-center"
-            />
+           <Magnifier className="rounded-md"  src={item} />
           </div>
         ))}
       </div>
