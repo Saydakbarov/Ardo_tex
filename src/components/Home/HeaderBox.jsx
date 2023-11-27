@@ -19,7 +19,7 @@ export default function HeaderBox() {
      {data?.data?.map((v, i) => (
          <div className="flex gap-2 items-center flex-row  px-2 smd:px-4 py-4 smd:py-8 bg-gray-100">
           <div className="w-3/5">
-            <p className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-5">{v?.ads_title}</p>
+            <p className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-5">{v[`ads_title_${i18n?.language ?? "uz"}`]}</p>
             <Link className="font-medium hover:underline transition-all duration-300 text-base smd:text-lg" to={v?.ads_link} >{t("show-more")}</Link>
           </div>
           <div className="w-2/5">
