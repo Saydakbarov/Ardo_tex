@@ -6,6 +6,7 @@ import AboutMain from "../components/About/AboutMain";
 import AboutCompany from "../components/About/AboutCompany";
 import AboutProduct from "../components/About/AboutProducts";
 import Certificate from "../components/About/Certificate";
+import Media from "../components/media";
 
 export default function AboutPage() {
   return (
@@ -15,6 +16,7 @@ export default function AboutPage() {
       <AboutCompany />
       <AboutProduct />
       <Certificate />
+      <Media src={"/img/page-header/about.jpg"} type="img" className={"max-w-[1300px] mx-auto "} />
       <Footer />
     </Box>
   );
