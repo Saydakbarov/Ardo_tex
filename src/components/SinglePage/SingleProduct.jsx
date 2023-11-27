@@ -149,7 +149,10 @@ export default function SingleProduct({ data, isLoading }) {
 
         <div className="py-[40px]">
           <div className="max-w-[1200px] mx-auto px-4 w-full">
-            <ImageGallery currentIndex={currentInex} data={data?.data?.product_image_url ?? []} open={open} setCurrentIndex={setCurrentIndex} setOpen={setOpen}  />
+            {
+              data?.data?.product_material ? <ImageGallery type={"material"} numbers={data?.data?.product_extra_image_number} currentIndex={currentInex} data={data?.data?.product_extra_image_url ?? []} open={open} setCurrentIndex={setCurrentIndex} setOpen={setOpen}  /> : <ImageGallery currentIndex={currentInex} data={data?.data?.product_image_url ?? []} open={open} setCurrentIndex={setCurrentIndex} setOpen={setOpen}  />
+            }
+            
             <div className="flex flex-col md:flex-row items-start gap-[40px]">
               <div className=" w-full md:w-1/2">
                 <div className="mb-3">
@@ -165,22 +168,44 @@ export default function SingleProduct({ data, isLoading }) {
                   ))}
                 </div>
                 <div className="grid grid-cols-6 gap-3">
-                  {data?.data?.product_image_url?.map((v, i) => (
-                    <button
-                      key={v}
-                      className="w-full h-[40px] sm:h-[70px] md:h-[90px]"
-                      onClick={() => {
-                        setCurrentIndex(i)
-                         setOpen(true)
-                        }}
-                    >
-                      <img
-                        className="w-full h-full object-contain rounded-md"
-                        src={v}
-                        alt=""
-                      />
-                    </button>
-                  ))}
+                  {
+                    data?.data?.product_material ? (data?.data?.product_extra_image_url?.map((v, i) => (
+                      <button
+                        key={v}
+                        className="w-full h-[40px] sm:h-[70px] md:h-[90px] relative group overflow-hidden rounded-md"
+                        onClick={() => {
+                          setCurrentIndex(i)
+                           setOpen(true)
+                          }}
+                      >
+                        <img
+                          className="w-full h-full object-contain rounded-md group-hover:scale-125 transition-all duration-500"
+                          src={v}
+                          alt=""
+                        />
+                        <span className="absolute text-white font-bold bottom-[5px] right-[5px]">{
+                          data?.data?.product_extra_image_number[i]
+                        }</span>
+                      </button>
+                    ))) : (
+                      data?.data?.product_image_url?.map((v, i) => (
+                        <button
+                          key={v}
+                          className="w-full h-[40px] sm:h-[70px] md:h-[90px] group overflow-hidden rounded-md"
+                          onClick={() => {
+                            setCurrentIndex(i)
+                             setOpen(true)
+                            }}
+                        >
+                          <img
+                            className="w-full h-full object-contain rounded-md group-hover:scale-125 transition-all duration-500"
+                            src={v}
+                            alt=""
+                          />
+                        </button>
+                      ))
+                    )
+                  }
                 </div>
               </div>
               <div className="w-full md:w-1/2">

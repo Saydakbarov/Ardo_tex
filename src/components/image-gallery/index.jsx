@@ -6,6 +6,8 @@ const ImageGallery = ({
   open,
   setOpen,
   setCurrentIndex,
+  type,
+  numbers
 }) => {
   const handleClose = () => {
     setOpen(false);
@@ -15,12 +17,12 @@ const ImageGallery = ({
     <div
       className={
         open
-          ? "fixed bg-[#0000006c] top-0 left-0 w-screen md:p-10 h-screen flex items-center justify-center z-[200] "
+          ? "fixed bg-[#0000006c] top-0 left-0 w-screen  h-screen flex items-center justify-center z-[200] "
           : "hidden"
       }
     >
       <div className="w-full h-full bg-white md:rounded-md  relative p-8 ">
-        <div className="flex justify-end">
+        <div className="flex justify-end mb-5">
           <button
             className=" w-[30px] h-[30px] flex flex-col items-center justify-center"
             onClick={handleClose}
@@ -60,11 +62,16 @@ const ImageGallery = ({
         {data?.map((item, index) => (
           <div
             key={item}
-            className={`w-full h-full overflow-x-auto  p-4 ${
+            className={`w-full h-full overflow-x-auto  p-4 relative ${
               index == currentIndex ? "block" : "hidden"
             }`}
           >
            <Magnifier className="rounded-md"  src={item} />
+           {
+            type == "material" && (
+              <span className="text-lg md:text-2xl font-bold absolute z-[2] text-white top-[20px] right-[20px] ">{numbers ?  numbers[index] : "0"}</span>
+            )
+           }
           </div>
         ))}
       </div>
