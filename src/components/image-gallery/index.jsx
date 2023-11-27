@@ -17,7 +17,7 @@ const ImageGallery = ({
           : "hidden"
       }
     >
-      <div className="w-full h-full bg-white rounded-md  relative p-8 ">
+      <div className="w-full h-full bg-white md:rounded-md  relative p-8 ">
         <div className="flex justify-end">
           <button
             className=" w-[30px] h-[30px] flex flex-col items-center justify-center"
