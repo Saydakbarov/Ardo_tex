@@ -71,7 +71,7 @@ window?.scrollTo({
           sx={{
             borderBottom: "1px solid white",
             padding: "0px !important",
-            zIndex: "999",
+            zIndex: "100",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",

@@ -61,7 +61,7 @@ export default function SearchComponent() {
       <IconButton onClick={handleOpen}>
         <Search sx={{ color: "black" }} />
       </IconButton>
-     <div className={open ? "fixed top-0 left-0 overflow-x-auto w-screen h-screen  py-20 flex md:items-center justify-center   bg-[#0000008a] z-50" : "hidden"} onClick={handleClose} >
+     <div className={open ? "fixed top-0 left-0 overflow-x-auto w-screen h-screen  md:py-20 flex md:items-center justify-center   bg-[#0000008a] z-50" : "hidden"} onClick={handleClose} >
      <div className={"bg-white  py-[50px] h-fit p-10 "} onClick={(e) => {
       e.stopPropagation()
      }} >
