@@ -1,17 +1,52 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NewCollectionData } from "../../data";
 import { useSubCategories } from "../../query-data/data.service";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { postFilteredProducts } from "../../query-data/data.fn";
 
 export default function NewCollections() {
-  const { data, isLoading, refetch } = useSubCategories("4");
+  // const { data, isLoading, refetch } = useSubCategories("4");
+  const [data, setData] = useState(null);
   console.log(data, "da");
 
   const navigate = useNavigate();
 
   const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const query = {
+        params: {
+          limit: 8,
+          offset: 0,
+        },
+        body: {
+          category_id: null,
+          sub_category_id: null,
+          second_sub_category_id: null,
+          price_from: null,
+          price_to: null,
+          search_uz: null,
+          search_ru: null,
+          search_en: null,
+          color: null,
+          brand_id: null,
+          technology: null,
+          type: null,
+          collection: true,
+        },
+      };
+
+      const res = await postFilteredProducts(query);
+
+      setData(res);
+    };
+    fetchData();
+  }, []);
+
+  console.log(data);
 
   return (
     <Box sx={{ maxWidth: "1500px", margin: "0 auto", mt: 8 }}>
@@ -22,16 +57,24 @@ export default function NewCollections() {
       </Typography>
 
       <Grid container justifyContent={"center"} gap={4} mt={5}>
-        {data?.data?.slice(0, 8)?.map((v, i) => (
+        {data?.data?.map((v, i) => (
           <Grid item lg={2.5} md={2.5} sm={5.3} xs={10} key={v.id}>
-            <Link
-            className="w-full"
-              to={`/product?category=${4}&subcategory=${v?.sub_category_id}`}
-            >
-              <img
-                style={{ width: "100%", borderRadius: "6px" }}
-                src={v?.sub_link}
-              />
+            <Link className="w-full" to={`/single/${v?.product_id}`}>
+              <div className="relative">
+                <p
+                  className={
+                    v?.product_discount
+                      ? "absolute z-[5] top-[15px] right-[15px] p-2 rounded-full w-[45px] flex items-center justify-center h-[45px] text-white font-bold bg-red-500"
+                      : "hidden"
+                  }
+                >
+                  {v?.product_discount_precent}%
+                </p>
+                <img
+                  style={{ width: "100%", borderRadius: "6px" }}
+                  src={v?.product_image_url[0]}
+                />
+              </div>
               <Typography
                 sx={{
                   fontSize: "30px",
@@ -39,9 +82,7 @@ export default function NewCollections() {
                 }}
               >
                 <p style={{ textDecoration: "none", color: "inherit" }}>
-                  {i18n?.language == "uz"
-                    ? v.sub_category_name_uz
-                    : v.sub_category_name_ru}
+                  {v[`product_title_${i18n?.language ?? "uz"}`]}
                 </p>
               </Typography>
             </Link>
