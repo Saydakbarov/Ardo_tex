@@ -6,4 +6,10 @@ const handleCheckboxChange = (state, setState, id) => {
     }
   };
 
-  export {handleCheckboxChange}
+
+  const youTubeLinkParser = (url) => {
+    const arr = url?.split("https://youtu.be/")
+    return arr[1]
+  }
+
+  export {handleCheckboxChange, youTubeLinkParser}

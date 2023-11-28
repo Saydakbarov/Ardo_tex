@@ -9,6 +9,8 @@ import HomeCategory from "../components/Home/HomeCategory";
 import Footer from "../components/Home/Footer";
 import HomeContact from "../components/Home/HomeContact";
 import OurPartner from "../components/Home/OurPartner";
+import DiscountedProducts from "../components/Home/DiscountProducts";
+import { Banner } from "../components/Home/Banner";
 
 export default function HomePage() {
   return (
@@ -17,6 +19,8 @@ export default function HomePage() {
       <HeaderBox />
       <NewCollections />
       <BestSeller />
+      <Banner />
+      <DiscountedProducts />
       <LastestNews />
       <HomeCategory />
       <OurPartner />

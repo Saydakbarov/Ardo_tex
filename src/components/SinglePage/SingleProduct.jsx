@@ -179,7 +179,7 @@ export default function SingleProduct({ data, isLoading }) {
                           }}
                       >
                         <img
-                          className="w-full h-full object-contain rounded-md group-hover:scale-125 transition-all duration-500"
+                          className="w-full h-full object-cover rounded-md group-hover:scale-125 transition-all duration-500"
                           src={v}
                           alt=""
                         />
