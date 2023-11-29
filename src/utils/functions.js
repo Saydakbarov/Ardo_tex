@@ -9,7 +9,11 @@ const handleCheckboxChange = (state, setState, id) => {
 
   const youTubeLinkParser = (url) => {
     const arr = url?.split("https://youtu.be/")
-    return arr[1]
+    if(arr?.length > 1) {
+      return arr[1]
+    }else {
+      return arr[0]
+    }
   }
 
   export {handleCheckboxChange, youTubeLinkParser}

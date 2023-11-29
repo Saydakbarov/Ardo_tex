@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Magnifier from "react-magnifier";
 import ImageGallery from "../image-gallery";
+import { youTubeLinkParser } from "../../utils/functions";
 
 // const Magnifier = lazy(() => import("react-magnifier"))
 // import ReactImageMagnify from "react-image-magnify";
@@ -23,19 +24,18 @@ export default function SingleProduct({ data, isLoading }) {
     }
   }, [data]);
 
-
-  const [responsive, setResponsive] = useState(false)
+  const [responsive, setResponsive] = useState(false);
 
   useEffect(() => {
-    if(window.innerWidth > 600) {
-      setResponsive(false)
-    }else {
-      setResponsive(true)
+    if (window.innerWidth > 600) {
+      setResponsive(false);
+    } else {
+      setResponsive(true);
     }
-  }, [])
+  }, []);
 
-  const [open, setOpen] = useState(false)
-  const [currentInex, setCurrentIndex] = useState(0)
+  const [open, setOpen] = useState(false);
+  const [currentInex, setCurrentIndex] = useState(0);
 
   const { t, i18n } = useTranslation();
 
@@ -149,10 +149,26 @@ export default function SingleProduct({ data, isLoading }) {
 
         <div className="py-[40px]">
           <div className="max-w-[1200px] mx-auto px-4 w-full">
-            {
-              data?.data?.product_material ? <ImageGallery type={"material"} numbers={data?.data?.product_extra_image_number} currentIndex={currentInex} data={data?.data?.product_extra_image_url ?? []} open={open} setCurrentIndex={setCurrentIndex} setOpen={setOpen}  /> : <ImageGallery currentIndex={currentInex} data={data?.data?.product_image_url ?? []} open={open} setCurrentIndex={setCurrentIndex} setOpen={setOpen}  />
-            }
-            
+            {data?.data?.product_material ? (
+              <ImageGallery
+                type={"material"}
+                numbers={data?.data?.product_extra_image_number}
+                currentIndex={currentInex}
+                data={data?.data?.product_extra_image_url ?? []}
+                open={open}
+                setCurrentIndex={setCurrentIndex}
+                setOpen={setOpen}
+              />
+            ) : (
+              <ImageGallery
+                currentIndex={currentInex}
+                data={data?.data?.product_image_url ?? []}
+                open={open}
+                setCurrentIndex={setCurrentIndex}
+                setOpen={setOpen}
+              />
+            )}
+
             <div className="flex flex-col md:flex-row items-start gap-[40px]">
               <div className=" w-full md:w-1/2">
                 <div className="mb-3">
@@ -163,39 +179,39 @@ export default function SingleProduct({ data, isLoading }) {
                         mainImage == v ? "block" : "hidden"
                       } w-full h-fit rounded-md overflow-hidden`}
                     >
-                      <Magnifier className="rounded-md"  src={v} />
+                      <Magnifier className="rounded-md" src={v} />
                     </div>
                   ))}
                 </div>
                 <div className="grid grid-cols-6 gap-3">
-                  {
-                    data?.data?.product_material ? (data?.data?.product_extra_image_url?.map((v, i) => (
-                      <button
-                        key={v}
-                        className="w-full h-[40px] sm:h-[70px] md:h-[90px] relative group overflow-hidden rounded-md"
-                        onClick={() => {
-                          setCurrentIndex(i)
-                           setOpen(true)
+                  {data?.data?.product_material
+                    ? data?.data?.product_extra_image_url?.map((v, i) => (
+                        <button
+                          key={v}
+                          className="w-full h-[40px] sm:h-[70px] md:h-[90px] relative group overflow-hidden rounded-md"
+                          onClick={() => {
+                            setCurrentIndex(i);
+                            setOpen(true);
                           }}
-                      >
-                        <img
-                          className="w-full h-full object-cover rounded-md group-hover:scale-125 transition-all duration-500"
-                          src={v}
-                          alt=""
-                        />
-                        <span className="absolute text-white font-bold bottom-[5px] right-[5px]">{
-                          data?.data?.product_extra_image_number[i]
-                        }</span>
-                      </button>
-                    ))) : (
-                      data?.data?.product_image_url?.map((v, i) => (
+                        >
+                          <img
+                            className="w-full h-full object-cover rounded-md group-hover:scale-125 transition-all duration-500"
+                            src={v}
+                            alt=""
+                          />
+                          <span className="absolute text-white font-bold bottom-[5px] right-[5px]">
+                            {data?.data?.product_extra_image_number[i]}
+                          </span>
+                        </button>
+                      ))
+                    : data?.data?.product_image_url?.map((v, i) => (
                         <button
                           key={v}
                           className="w-full h-[40px] sm:h-[70px] md:h-[90px] group overflow-hidden rounded-md"
                           onClick={() => {
-                            setCurrentIndex(i)
-                             setOpen(true)
-                            }}
+                            setCurrentIndex(i);
+                            setOpen(true);
+                          }}
                         >
                           <img
                             className="w-full h-full object-contain rounded-md group-hover:scale-125 transition-all duration-500"
@@ -203,9 +219,7 @@ export default function SingleProduct({ data, isLoading }) {
                             alt=""
                           />
                         </button>
-                      ))
-                    )
-                  }
+                      ))}
                 </div>
               </div>
               <div className="w-full md:w-1/2">
@@ -214,13 +228,27 @@ export default function SingleProduct({ data, isLoading }) {
                 </h2>
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: data?.data[`product_model_${i18n?.language ?? "uz"}`]
+                    __html:
+                      data?.data[`product_model_${i18n?.language ?? "uz"}`],
                   }}
                   className="single-product-model"
                 ></div>
-                <div  dangerouslySetInnerHTML={{
-                    __html: data?.data[`product_desc_${i18n?.language ?? "uz"}`]
-                  }} className=""></div>
+
+                {data?.data?.product_video_link && (
+                  <div className={"w-full h-[400px]"}>
+                    <iframe
+                      width={560}
+                      height={315}
+                      src={`https://www.youtube.com/embed/${youTubeLinkParser(
+                        data?.data?.product_video_link
+                      )}`}
+                      title="YouTube video player"
+                      frameBorder={0}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </div>
