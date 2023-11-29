@@ -235,17 +235,13 @@ export default function SingleProduct({ data, isLoading }) {
                 ></div>
 
                 {data?.data?.product_video_link && (
-                  <div className={"w-full h-[400px]"}>
+                  <div className={"w-full h-[300px]"}>
                     <iframe
-                      width={560}
-                      height={315}
                       src={`https://www.youtube.com/embed/${youTubeLinkParser(
                         data?.data?.product_video_link
                       )}`}
                       title="YouTube video player"
-                      frameBorder={0}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
+                      className="w-full h-full"
                     />
                   </div>
                 )}
