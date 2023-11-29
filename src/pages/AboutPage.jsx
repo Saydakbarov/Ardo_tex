@@ -7,8 +7,11 @@ import AboutCompany from "../components/About/AboutCompany";
 import AboutProduct from "../components/About/AboutProducts";
 import Certificate from "../components/About/Certificate";
 import Media from "../components/media";
+import { useVideos } from "../query-data/data.service";
+import { youTubeLinkParser } from "../utils/functions";
 
 export default function AboutPage() {
+  const {data, isLoading} = useVideos()
   return (
     <Box>
       <HeaderMenu />
@@ -16,7 +19,9 @@ export default function AboutPage() {
       <AboutCompany />
       <AboutProduct />
       <Certificate />
-      <Media src={"/img/page-header/about.jpg"} type="img" className={"max-w-[1300px] mx-auto "} />
+      {
+        data?.data?.map(item => (<Media key={item?.video_id} src={youTubeLinkParser(item?.video_link)} type="youtube" className={"max-w-[1300px] mx-auto "} />))
+      }
       <Footer />
     </Box>
   );

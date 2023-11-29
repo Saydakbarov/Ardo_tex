@@ -236,3 +236,15 @@ export const getTechnologies = async () => {
   }
 };
 
+
+// VIDEOS
+
+
+
+export const getVideos = async () => {
+  return axios
+    .get("tex/videos/list")
+    .then((res) => res.data)
+    .catch((err) => err);
+};
+
