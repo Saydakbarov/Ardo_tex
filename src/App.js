@@ -15,7 +15,7 @@ function App() {
 
 
   return (
-    <div className="globalContainer">
+    <div className="globalContainer pt-[90px]">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />

@@ -69,7 +69,7 @@ const ImageGallery = ({
            <Magnifier className="rounded-md"  src={item} />
            {
             type == "material" && (
-              <span className="text-lg md:text-2xl font-bold absolute z-[2] text-white top-[20px] right-[20px] ">{numbers ?  numbers[index] : "0"}</span>
+              <span className="text-lg md:text-2xl font-bold absolute z-[2] text-white top-[20px]  md:top-[50px]  md:right-[50px]  right-[20px] w-fit block p-[4px] rounded-md bg-black ">{numbers ?  numbers[index] : "0"}</span>
             )
            }
           </div>

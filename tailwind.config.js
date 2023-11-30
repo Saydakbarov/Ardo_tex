@@ -8,6 +8,7 @@ module.exports = {
     "./src/widgets/**/*.{js,ts,jsx,tsx}",
     "./src/admin/**/*.{js,ts,jsx,tsx}",
     "./src/contents/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     screens: {

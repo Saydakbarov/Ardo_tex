@@ -49,7 +49,8 @@ window?.scrollTo({
 
 
   return (
-    <Box
+   <div className="w-full fixed top-0 left-0 z-[10] bg-white">
+     <Box
       sx={{
         position: "relative",
         width: "100%",
@@ -419,5 +420,6 @@ window?.scrollTo({
         </Toolbar>
       </Box>
     </Box>
+   </div>
   );
 }

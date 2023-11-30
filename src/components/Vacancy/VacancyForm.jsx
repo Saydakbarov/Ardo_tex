@@ -12,50 +12,60 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 
 const vacancyLanguages = [
   {
     id:1, 
-    name: "Инглиз"
+    name: "Инглиз",
+    translationName : "en"
   },
   {
     id:2, 
-    name: "Узбек"
+    name: "Узбек",
+    translationName : "uz"
   },
   {
     id:3, 
-    name: "Рус"
+    name: "Рус",
+    translationName : "ru"
   },
 ]
 
 const familyStateData = [
   {
     id:1, 
-    name: "Оилалиман"
+    name: "Оилалиман",
+    translationName : "married"
   },
   {
     id:2, 
-    name: "Уйланмаганман"
+    name: "Уйланмаганман",
+    translationName : "unmarried"
   },
   {
     id:3, 
-    name: "Ажрашганман"
+    name: "Ажрашганман",
+    translationName : "divorsed"
   },
 ]
 
 const currentWorkData = [
   {
     id:1, 
-    name: "Талабаман"
+    name: "Талабаман",
+    translationName : "student"
   },
   {
     id:2, 
-    name: "Вактинча ишсиз"
+    name: "Вактинча ишсиз",
+    translationName : "no-work"
   },
   {
     id:3, 
-    name: "Ишлайман бушамокчиман"
+    name: "Ишлайман бушамокчиман",
+    translationName : "want-to-leave"
   },
 ]
 
@@ -153,6 +163,8 @@ export default function VacancyForm() {
    
   };
 
+  const {t} = useTranslation()
+
   
 
   return (
@@ -160,7 +172,7 @@ export default function VacancyForm() {
       <Typography
         sx={{ fontSize: "34px", textAlign: "center", fontWeight: "500" }}
       >
-        ЯНГИ ХОДИМ УЧУН АНКЕТА-СЎРОВНОМА
+        {t("vacancy-heading")}
       </Typography>
       <Grid container justifyContent={"center"} p={3}>
         <Grid item lg={8} md={8}>
@@ -171,7 +183,7 @@ export default function VacancyForm() {
               fullWidth
               name="name"
               id="filled-basic"
-              label=" Исм фамилиянгиз"
+              label={t("name")}
               variant="filled"
               sx={{ mt: 2 }}
               value={name}
@@ -184,7 +196,7 @@ export default function VacancyForm() {
               fullWidth
               name="age"
               id="filled-basic"
-              label="Ёшингиз"
+              label={t("age")}
               variant="filled"
               sx={{ mt: 2 }}
               type="number"
@@ -198,7 +210,7 @@ export default function VacancyForm() {
               fullWidth
               name="address"
               id="filled-basic"
-              label="Доимий яшаш манзилингиз"
+              label={t("always-address")}
               variant="filled"
               sx={{ mt: 2 }}
               value={address}
@@ -211,7 +223,7 @@ export default function VacancyForm() {
               fullWidth
               name="reference"
               id="filled-basic"
-              label="Маълумотингиз"
+              label={t("degree")}
               variant="filled"
               sx={{ mt: 2 }}
               value={degree}
@@ -224,7 +236,7 @@ export default function VacancyForm() {
               fullWidth
               name="baby"
               id="filled-basic"
-              label="Фарзандларингиз сони"
+              label={t("children")}
               variant="filled"
               sx={{ mt: 2 }}
               type="number"
@@ -238,7 +250,7 @@ export default function VacancyForm() {
               fullWidth
               name="live"
               id="filled-basic"
-              label="Ким билан яшайсиз"
+              label={t("lives-with")}
               variant="filled"
               sx={{ mt: 2 }}
               value={livesWith}
@@ -250,7 +262,7 @@ export default function VacancyForm() {
               required
               name="work"
               id="filled-basic"
-              label="Қаерларда ва қайси лавозимларда ишлагансиз"
+              label={t("where-worked")}
               multiline
               rows={4}
               variant="filled"
@@ -265,7 +277,7 @@ export default function VacancyForm() {
               required
               name="work_"
               id="filled-basic"
-              label="Ишдан бўшашингиз сабаби"
+              label={t("why-leave-work")}
               multiline
               rows={4}
               variant="filled"
@@ -281,7 +293,7 @@ export default function VacancyForm() {
                 required
                 name="health"
                 id="filled-basic"
-                label="Соғлиғингиз"
+                label={t("health")}
                 multiline
                 rows={4}
                 variant="filled"
@@ -293,15 +305,14 @@ export default function VacancyForm() {
               }}
               />
               <Typography sx={{ color: "gray", fontSize: "14px" }}>
-                (Юқумли, оғир касалликлар борми? Ногиронлик гуруҳи? Оғир
-                операция бўлганми?)
+                ({t("is-sick")}?)
               </Typography>
             </Box>
             <TextField
               required
               name="health"
               id="filled-basic"
-              label="Ўзингизни нимада устун деб биласиз ёки устун томонларингиз"
+              label={t("advantages")}
               multiline
               rows={4}
               variant="filled"
@@ -316,7 +327,7 @@ export default function VacancyForm() {
               required
               name="hobby"
               id="filled-basic"
-              label="Қизиқишларингиз нимадан иборат"
+              label={t("interests")}
               multiline
               rows={4}
               variant="filled"
@@ -332,7 +343,7 @@ export default function VacancyForm() {
               fullWidth
               name="salary"
               id="filled-basic"
-              label="Қанча ойлик иш ҳақи кутаяпсиз"
+              label={t("salary")}
               variant="filled"
               sx={{ mt: 2 }}
               type="number"
@@ -346,7 +357,7 @@ export default function VacancyForm() {
               fullWidth
               name="phobe_number"
               id="filled-basic"
-              label="Телефон рақамингиз"
+              label={t("phone")}
               variant="filled"
               sx={{ mt: 2 }}
               type="number"
@@ -357,7 +368,7 @@ export default function VacancyForm() {
             />
             <Box sx={{ mt: 3 }}>
               <Typography sx={{ fontSize: "18px", fontWeight: "600" }}>
-                Оилавий аҳволингиз?
+                {t("family-state")}?
               </Typography>
               <RadioGroup
                 row
@@ -377,7 +388,7 @@ export default function VacancyForm() {
                       setState(prev => ({...prev, familyState: item?.name}))
                     }
                   }} checked={item?.name == familyState} />}
-                  label={item?.name}
+                  label={t(item?.translationName)}
                 />
                   ))
                 }
@@ -386,7 +397,7 @@ export default function VacancyForm() {
 
             <Box sx={{ mt: 3 }}>
               <Typography sx={{ fontSize: "18px", fontWeight: "600" }}>
-                Қайси тилларни биласиз ва қайдаражада?
+                {t("languages-you-know")}?
               </Typography>
               <FormGroup>
               {
@@ -400,7 +411,7 @@ export default function VacancyForm() {
                       setState(prev => ({...prev, languages: [...languages, item?.name]}))
                     }
                   }} />}
-                  label={item?.name}
+                  label={t(item?.translationName)}
                 />
                 ))
               }
@@ -409,7 +420,7 @@ export default function VacancyForm() {
 
             <Box sx={{ mt: 3 }}>
               <Typography sx={{ fontSize: "18px", fontWeight: "600" }}>
-                Ҳозирда нима билан бандсиз?
+                {t("current-work")}?
               </Typography>
               <RadioGroup
                 row
@@ -428,12 +439,12 @@ export default function VacancyForm() {
                    setState(prev => ({...prev, currentWork: item?.name}))
                    }
                   }}  />}
-                  label={item?.name}
+                  label={t(item?.translationName)}
                 />))}
               </RadioGroup>
             </Box>
             <Button fullWidth variant="contained" sx={{ mt: 2 }} type="submit">
-              Send
+              {t("send")}
             </Button>
           </Box>
         </Grid>

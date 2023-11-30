@@ -237,6 +237,7 @@ export default function SearchComponent() {
               color ? "&color=" + color : ""
             }`;
             navigate(url);
+            handleClose()
           }}
         >
           Search

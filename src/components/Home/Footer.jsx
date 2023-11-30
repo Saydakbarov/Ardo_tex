@@ -56,11 +56,11 @@ export default function Footer() {
               </Typography>
             </Box>
             <Box sx={{ display: "flex", gap: "15px", mt: 2 }}>
-              <a href="mailto:ardotex@gmail.com" target="blank_">
+              <a href="tel:+998951451000" target="blank_">
                 <Box sx={{ display: "flex", gap: "15px" }}>
                   <Call sx={{ color: "#307BC4" }} />
                   <Typography sx={{ color: "#274760" }}>
-                    (+998) 95 145 1000
+                    +998 (95) 145 1000
                   </Typography>
                 </Box>
               </a>

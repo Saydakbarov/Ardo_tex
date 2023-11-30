@@ -35,7 +35,32 @@
   "search" : "Qidirish",
   "technology" : "Texnologiya",
     "type" : "Tipi",
-    "discount-products" : "Chegirmali tovarlar"
+    "discount-products" : "Chegirmali tovarlar",
+    "vacancy-heading": "Yangi xodim uchun anketa so'rovnoma",
+    "age": "Yoshingiz",
+    "always-address": "Doimiy yashash manzilingiz",
+    "degree" : "Malumotingiz",
+    "children" : "Farzandlaringiz soni",
+    "lives-with" : "Kim bilan yashaysiz",
+    "where-worked" : "Qayerlarda va qaysi lavozimda ishlagansiz",
+    "why-leave-work" : "Ishdan bo'shashingiz sababi",
+    "health" : "Sog'lig'ingiz",
+    "is-sick" : "Yuqumli, og'ir kasalliklar bormi? Nogironlik guruhi? Og'ir operatsiya bo'ganmi",
+    "advantages" : "O'zingizni nimada ustun deb bilasiz yoki ustun tomonlaringiz",
+    "interests" : "Qiziqishlaringiz nimalardan iborat",
+    "salary" : "Qancha oylik ish haqi kutyapsiz",
+    "family-state" : "Oilaviy ahvolingiz",
+    "languages-you-know" : "Qaysi tillarni bilasiz",
+    "current-work" : "Xozirda nima bilan bandsiz",
+    "en" : "Ingliz",
+    "uz" : "O'zbek",
+    "ru" : "Rus",
+    "married" : "Oilali",
+    "unmarried" : "Uylanmagan",
+    "divorsed" : "Ajrashgan",
+    "student" : "Student",
+    "no-work" : "Ishsiz",
+    "want-to-leave" : "Ishdan bo'shamoqchi"
   
 
 
