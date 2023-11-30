@@ -6,6 +6,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { postFilteredProducts } from "../../query-data/data.fn";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
 export default function NewCollections() {
   // const { data, isLoading, refetch } = useSubCategories("4");
   const [data, setData] = useState(null);
@@ -55,41 +62,127 @@ export default function NewCollections() {
       >
         {t("new-collections")}
       </Typography>
-
-      <Grid container justifyContent={"center"} gap={4} mt={5}>
-        {data?.data?.map((v, i) => (
-          <Grid item lg={2.5} md={2.5} sm={5.3} xs={10} key={v.id}>
-            <Link className="w-full" to={`/single/${v?.product_id}`}>
-              <div className="relative">
-                <p
-                  className={
-                    v?.product_discount
-                      ? "absolute z-[5] top-[15px] right-[15px] p-2 rounded-full w-[45px] flex items-center justify-center h-[45px] text-white font-bold bg-red-500"
-                      : "hidden"
-                  }
+      <div className="hidden md:block">
+        <Grid container justifyContent={"center"} gap={4} mt={5}>
+          {data?.data?.map((v, i) => (
+            <Grid item lg={2.5} md={2.5} sm={5.3} xs={10} key={v.id}>
+              <Link className="w-full" to={`/single/${v?.product_id}`}>
+                <div className="relative">
+                  <p
+                    className={
+                      v?.product_discount
+                        ? "absolute z-[5] top-[15px] right-[15px] p-2 rounded-full w-[45px] flex items-center justify-center h-[45px] text-white font-bold bg-red-500"
+                        : "hidden"
+                    }
+                  >
+                    {v?.product_discount_precent}%
+                  </p>
+                  <img
+                    style={{
+                      width: "100%",
+                      borderRadius: "6px",
+                      height: "300px",
+                      objectFit: "cover",
+                    }}
+                    src={v?.product_image_url[0]}
+                  />
+                </div>
+                <Typography
+                  sx={{
+                    fontSize: "30px",
+                    textAlign: "center",
+                  }}
                 >
-                  {v?.product_discount_precent}%
-                </p>
-                <img
-                  style={{ width: "100%", borderRadius: "6px" }}
-                  src={v?.product_image_url[0]}
-                />
-              </div>
-              <Typography
-                sx={{
-                  fontSize: "30px",
-                  textAlign: "center",
-                }}
-              >
-                <p style={{ textDecoration: "none", color: "inherit" }}>
-                  {v[`product_title_${i18n?.language ?? "uz"}`]}
-                </p>
-              </Typography>
-            </Link>
+                  <p style={{ textDecoration: "none", color: "inherit" }}>
+                    {v[`product_title_${i18n?.language ?? "uz"}`]}
+                  </p>
+                </Typography>
+              </Link>
+            </Grid>
+          ))}
+        </Grid>
+      </div>
+      <div className="block md:hidden" style={{ padding: "10px 20px" }}>
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={10}
+          pagination={{
+            clickable: true,
+          }}
+          breakpoints={{
+            300: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 60,
+            },
+            1500: {
+              slidesPerView: 4,
+              spaceBetween: 60,
+            },
+          }}
+          modules={[Pagination]}
+          className="mySwiper"
+          style={{ paddingBottom: "50px" }}
+        >
+          <Grid
+            justifyContent={"center"}
+            sx={{
+              p: 2,
+            }}
+          >
+            {data?.data?.map((v, i) => (
+              <Grid item key={v?.product_id} sx={{ borderRadius: "6px" }}>
+                <SwiperSlide className="swiperSlideBox">
+                  <Link className="w-full" to={`/single/${v?.product_id}`}>
+                    <div className="relative">
+                      <p
+                        className={
+                          v?.product_discount
+                            ? "absolute z-[5] top-[15px] right-[15px] p-2 rounded-full w-[45px] flex items-center justify-center h-[45px] text-white font-bold bg-red-500"
+                            : "hidden"
+                        }
+                      >
+                        {v?.product_discount_precent}%
+                      </p>
+                      <img
+                        style={{
+                          width: "100%",
+                          borderRadius: "6px",
+                          height: "300px",
+                          objectFit: "cover",
+                        }}
+                        src={v?.product_image_url[0]}
+                      />
+                    </div>
+                    <Typography
+                      sx={{
+                        fontSize: "30px",
+                        textAlign: "center",
+                      }}
+                    >
+                      <p style={{ textDecoration: "none", color: "inherit" }}>
+                        {v[`product_title_${i18n?.language ?? "uz"}`]}
+                      </p>
+                    </Typography>
+                  </Link>
+                </SwiperSlide>
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
-
+        </Swiper>
+      </div>
+      ;
       <Box
         sx={{
           textAlign: { xs: "center", sm: "center", md: "center", lg: "end" },

@@ -9,9 +9,10 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 // Import Swiper React components
+import "./styles/ProductCard.scss";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
-import "./styles/ProductCard.scss";
 
 // Import Swiper styles
 import "swiper/css";

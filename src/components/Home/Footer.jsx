@@ -56,17 +56,25 @@ export default function Footer() {
               </Typography>
             </Box>
             <Box sx={{ display: "flex", gap: "15px", mt: 2 }}>
-              <Call sx={{ color: "#307BC4" }} />
-              <Typography sx={{ color: "#274760" }}>
-                (+998) 95 145 1000
-              </Typography>
+              <a href="mailto:ardotex@gmail.com" target="blank_">
+                <Box sx={{ display: "flex", gap: "15px" }}>
+                  <Call sx={{ color: "#307BC4" }} />
+                  <Typography sx={{ color: "#274760" }}>
+                    (+998) 95 145 1000
+                  </Typography>
+                </Box>
+              </a>
             </Box>
 
             <Box sx={{ display: "flex", gap: "15px", mt: 2 }}>
-              <Email sx={{ color: "#307BC4" }} />
-              <Typography sx={{ color: "#274760" }}>
-                ardotex@gmail.com
-              </Typography>
+              <a href="mailto:ardotex@gmail.com" target="blank_">
+                <Box sx={{ display: "flex", gap: "15px" }}>
+                  <Email sx={{ color: "#307BC4" }} />
+                  <Typography sx={{ color: "#274760" }}>
+                    ardotex@gmail.com
+                  </Typography>
+                </Box>
+              </a>
             </Box>
           </Box>
         </Grid>
