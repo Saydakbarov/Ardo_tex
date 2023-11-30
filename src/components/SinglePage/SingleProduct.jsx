@@ -199,7 +199,7 @@ export default function SingleProduct({ data, isLoading }) {
                             src={v}
                             alt=""
                           />
-                          <span className="absolute text-white font-bold bottom-[5px] right-[5px] w-fit block p-[4px] rounded-md bg-[rgba(0, 0, 0, 0.55)]">
+                          <span className="absolute text-white font-bold bottom-[5px] right-[5px] w-fit block p-[4px] rounded-md bg-[rgba(0, 0, 0, 0.719)]">
                             {data?.data?.product_extra_image_number[i]}
                           </span>
                         </button>
