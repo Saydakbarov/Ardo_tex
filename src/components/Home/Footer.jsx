@@ -58,9 +58,9 @@ export default function Footer() {
                 Узбекистан, г. Ташкент, Кичик Халка Йули (Улугбек),
               </Typography>
             </Box>
-            <Box sx={{ display: "flex", gap: "15px", mt: 2 }}>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "15px", mt: 2 }}>
               {data?.data?.map((item) => (
-                <a key={item?.phone_id} href={`tel:${item?.phone_number}`} target="blank_">
+                <a style={{display: "block"}} key={item?.phone_id} href={`tel:${item?.phone_number}`} target="blank_">
                   <Box sx={{ display: "flex", gap: "15px" }}>
                     <Call sx={{ color: "#307BC4" }} />
                     <Typography sx={{ color: "#274760" }}>
