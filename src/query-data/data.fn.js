@@ -248,3 +248,13 @@ export const getVideos = async () => {
     .catch((err) => err);
 };
 
+
+
+// NUMBERS
+
+export const getTexNumbers = async () => {
+  return axios
+    .get("tex/phone/list")
+    .then((res) => res.data)
+    .catch((err) => err);
+};
