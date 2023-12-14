@@ -57,7 +57,8 @@ export default function HeaderMain() {
                 >
                   <img
                     src={v?.slider_image_link}
-                    style={{ width: "100%", height: "auto" }}
+                    className="w-full h-[300px] smd:h-[450px] lg:h-[550px] object-cover"
+                    
                     alt=""
                   />
                   {/* <Box

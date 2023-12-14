@@ -31,7 +31,12 @@ export default function SingleMain({data}) {
             justifyContent: "center",
             alignItems: "center",
             mt: 2,
-            flexWrap: "wrap"
+            flexWrap: "wrap",
+            fontSize: {
+              xs: "12px",
+              sm: "14px",
+              md: "16px"
+            }
           }}
         >
           <Link to="/" style={{ color: "gray", textDecoration: "none" }}>

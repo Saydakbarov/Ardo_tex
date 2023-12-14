@@ -29,7 +29,12 @@ export default function Footer() {
   return (
     <Box
       sx={{
-        mt: 24,
+        mt: {
+          xs: 4,
+          sm: 6,
+          md: 12,
+          lg: 16
+        },
         background: "#E4EEF1",
         p: 3,
       }}
@@ -48,7 +53,13 @@ export default function Footer() {
               color: "#274760",
             }}
           >
-            Ardo_Tex
+            <Link className="block w-fit" to={"/"}>
+              <img
+                src={Logo}
+                alt=""
+                className="w-[100px] h-[100px] object-contain"
+              />
+            </Link>
           </Typography>
 
           <Box>
@@ -58,13 +69,25 @@ export default function Footer() {
                 Узбекистан, г. Ташкент, Кичик Халка Йули (Улугбек),
               </Typography>
             </Box>
-            <Box sx={{ display: "flex", flexDirection: "column", gap: "15px", mt: 2 }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "15px",
+                mt: 2,
+              }}
+            >
               {data?.data?.map((item) => (
-                <a style={{display: "block"}} key={item?.phone_id} href={`tel:${item?.phone_number}`} target="blank_">
+                <a
+                  style={{ display: "block" }}
+                  key={item?.phone_id}
+                  href={`tel:${item?.phone_number}`}
+                  target="blank_"
+                >
                   <Box sx={{ display: "flex", gap: "15px" }}>
                     <Call sx={{ color: "#307BC4" }} />
                     <Typography sx={{ color: "#274760" }}>
-                     {item?.phone_number}
+                      {item?.phone_number}
                     </Typography>
                   </Box>
                 </a>
@@ -85,34 +108,26 @@ export default function Footer() {
         </Grid>
 
         <Grid item lg={3}>
-          <Box>
-            {MenuData.map((item, i) => (
-              <Box key={i} sx={{ display: "flex", flexDirection: "column" }}>
+          <div className="flex flex-col items-center gap-3">
+            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+              {MenuData.map((item, i) => (
                 <Button
-                  key={item.title}
+                  key={i}
+                  
                   sx={{
                     color: "#274760",
                     // fontFamily: "Barlow",
                     fontWeight: "500",
-                    ml: 4,
                     fontSize: "18px",
                   }}
                   onClick={() => navigate(item.path)}
                 >
                   {t(item.title)}
                 </Button>
-              </Box>
-            ))}
+              ))}
+            </Box>
 
-            <Box
-              sx={{
-                display: "flex",
-                gap: "10px",
-                justifyContent: "center",
-                mt: 2,
-                color: "#274760",
-              }}
-            >
+            <div className="flex items-center justify-center gap-3">
               <Link
                 target="blank"
                 to="https://www.instagram.com/ardotex/"
@@ -144,8 +159,8 @@ export default function Footer() {
               >
                 <Facebook />
               </Link>
-            </Box>
-          </Box>
+            </div>
+          </div>
         </Grid>
 
         <Grid item lg={4}>

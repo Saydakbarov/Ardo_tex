@@ -9,17 +9,15 @@ export default function AboutMain() {
   const {t} = useTranslation()
 
   return (
-    <Box
-      sx={{
+    <div
+      style={{
         backgroundImage:
-          "url('/img/page-header/about.jpg')",
-        
-        pt: 25,
-        pb: 35,
+          "url(/img/page-header/about.jpg)",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover"
       }}
+      className="py-[100px] md:py-[140px] lg:py-[180px] block"
     >
       <Box
         sx={{
@@ -35,7 +33,6 @@ export default function AboutMain() {
             gap: "5px",
             justifyContent: "center",
             alignItems: "center",
-            mt: 2,
           }}
         >
           <Link to="/" style={{ color: "gray", textDecoration: "none" }}>
@@ -47,6 +44,6 @@ export default function AboutMain() {
           </Link>
         </Box>
       </Box>
-    </Box>
+    </div>
   );
 }

@@ -11,7 +11,9 @@ export default function AboutCompany() {
       sx={{
         p: 2,
         background: "white",
-        marginTop: "-100px",
+        marginTop: {
+          md: "-100px"
+        }
       }}
     >
       <Grid container justifyContent={"center"} gap={8}>

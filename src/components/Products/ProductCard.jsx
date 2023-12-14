@@ -12,27 +12,15 @@ export default function ProductCard({ data }) {
   const { i18n } = useTranslation();
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        display: "flex",
-        gap: "20px",
-        flexWrap: "wrap",
-        mt: 4,
-        justifyContent: "center",
-      }}
+    <div
+    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-6 sm:gap-5 mt-5"
+     
     >
       {data?.data?.map((v) => (
         <Box
-          className="product-card"
+          className="product-card w-full rounded-md cursor-pointer"
           key={v.id}
-          sx={{
-            width: "300px",
-            cursor: "pointer",
-            // border: "2px solid gray",
-            borderRadius: "6px",
-            // boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-          }}
+          
           component={"div"}
           onClick={() => navigate("/single/" + v.product_id)}
         >
@@ -62,6 +50,6 @@ export default function ProductCard({ data }) {
           </Typography>
         </Box>
       ))}
-    </Box>
+    </div>
   );
 }

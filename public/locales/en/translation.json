@@ -60,7 +60,9 @@
     "divorsed" : "Divorsed",
     "student" : "Student",
     "no-work" : "Unemployed",
-    "want-to-leave" : "Wants to leave work"
+    "want-to-leave" : "Wants to leave work",
+    "close" : "close",
+    "filter" : "Filter"
 
   
 

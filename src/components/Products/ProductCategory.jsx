@@ -9,6 +9,8 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import TuneIcon from '@mui/icons-material/Tune';
+import CloseIcon from "@mui/icons-material/Close";
 import { CategoryData, colorsData, technologiesData } from "../../data";
 import { useState } from "react";
 import ProductCard from "./ProductCard";
@@ -33,9 +35,9 @@ export default function ProductCategory({
   setPriceTo,
   searchUz,
   setSearchUz,
-  searchRu,  
+  searchRu,
   searchEn,
-  setSearchRu,  
+  setSearchRu,
   setSearchEn,
   backLink,
   data,
@@ -44,9 +46,8 @@ export default function ProductCategory({
   technologies,
   types,
   type,
-  colorId
+  colorId,
 }) {
-  
   // const [categoryId, setCategoryId] = useState(1);
 
   // const [value, setValue] = React.useState([20000, 1000000]);
@@ -56,19 +57,25 @@ export default function ProductCategory({
   // };
   // console.log(categoryId);
 
-  
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
-  
-
   const [offsetNum, setOffsetNum] = useState(1);
+
+  const [filter, setFilter] = useState(false)
 
   console.log(technology);
   return (
     <Box>
-      <Grid container justifyContent={"center"} gap={10}>
-        <Grid item lg={2.5} sx={{ p: 2, borderRadius: "10px" }}>
+      <div className="max-w-[1250px] px-4 mx-auto flex flex-col md:flex-row gap-10 py-6">
+        <div className={`${filter ? "fixed z-[100] md:sticky" : "hidden md:block"}  top-0 left-0 bg-white p-5 w-full h-screen overflow-x-auto md:h-auto  md:shrink-0 md:w-[25%]`}>
+          <div className="md:hidden flex justify-end">
+            <Button style={{color: "#000"}} onClick={() => {
+              setFilter(false)
+            }} >
+              <CloseIcon />
+            </Button>
+          </div>
           <Typography
             sx={{
               display: categoryId ? "block" : "none",
@@ -107,7 +114,11 @@ export default function ProductCategory({
               categories?.data?.map((v) => (
                 <Link
                   style={{ textDecoration: "none", color: "inherit" }}
-                  to={`/product?category=${v?.category_id}${technology?.length ? ("&tech=" + technology?.join(",")) : ""}${type?.length ? ("&type=" + type?.join(",")) : ""}${colorId ? ("&color=" + colorId) : ""}`}
+                  to={`/product?category=${v?.category_id}${
+                    technology?.length ? "&tech=" + technology?.join(",") : ""
+                  }${type?.length ? "&type=" + type?.join(",") : ""}${
+                    colorId ? "&color=" + colorId : ""
+                  }`}
                 >
                   <Typography
                     style={{
@@ -135,7 +146,13 @@ export default function ProductCategory({
               subcategories?.data?.map((v) => (
                 <Link
                   style={{ textDecoration: "none", color: "inherit" }}
-                  to={`/product?category=${categoryId}&subcategory=${v.sub_category_id}${technology?.length ? ("&tech=" + technology?.join(",")) : ""}${type?.length ? ("&type=" + type?.join(",")) : ""}${colorId ? ("&color=" + colorId) : ""}`}
+                  to={`/product?category=${categoryId}&subcategory=${
+                    v.sub_category_id
+                  }${
+                    technology?.length ? "&tech=" + technology?.join(",") : ""
+                  }${type?.length ? "&type=" + type?.join(",") : ""}${
+                    colorId ? "&color=" + colorId : ""
+                  }`}
                 >
                   <Typography
                     style={{
@@ -169,7 +186,13 @@ export default function ProductCategory({
                         : "none",
                     color: "inherit",
                   }}
-                  to={`/product?category=${categoryId}&subcategory=${subCategoryId}&secondsubcategory=${v.second_sub_category_id}${technology?.length ? ("&tech=" + technology?.join(",")) : ""}${type?.length ? ("&type=" + type?.join(",")) : ""}${colorId ? ("&color=" + colorId) : ""}`}
+                  to={`/product?category=${categoryId}&subcategory=${subCategoryId}&secondsubcategory=${
+                    v.second_sub_category_id
+                  }${
+                    technology?.length ? "&tech=" + technology?.join(",") : ""
+                  }${type?.length ? "&type=" + type?.join(",") : ""}${
+                    colorId ? "&color=" + colorId : ""
+                  }`}
                 >
                   <Typography
                     style={{
@@ -207,29 +230,46 @@ export default function ProductCategory({
                         value={item.technology_id}
                         checked={technology?.includes(item?.technology_id)}
                         onChange={() => {
-                          if(technology?.includes(item?.technology_id)){
-                            const res = (`/product?${categoryId ? "category=" + categoryId : ""}${
-                              subCategoryId ? "&subcategory=" + subCategoryId : ""
-                            }${secondSubCategoryId ? "&secondsubcategory=" + secondSubCategoryId : ""}${
-                              type?.length ? ("&type=" + type?.join(",")) : ""
-                            }${technology?.length > 1 ? "&tech=" + technology?.filter(el => el != item?.technology_id)?.join(",") : ""}${colorId ? ("&color=" + colorId) : ""}`);
+                          if (technology?.includes(item?.technology_id)) {
+                            const res = `/product?${
+                              categoryId ? "category=" + categoryId : ""
+                            }${
+                              subCategoryId
+                                ? "&subcategory=" + subCategoryId
+                                : ""
+                            }${
+                              secondSubCategoryId
+                                ? "&secondsubcategory=" + secondSubCategoryId
+                                : ""
+                            }${type?.length ? "&type=" + type?.join(",") : ""}${
+                              technology?.length > 1
+                                ? "&tech=" +
+                                  technology
+                                    ?.filter((el) => el != item?.technology_id)
+                                    ?.join(",")
+                                : ""
+                            }${colorId ? "&color=" + colorId : ""}`;
 
-                            navigate(res)
-
-                          }else {
-                            const res = (`/product?${categoryId ? "category=" + categoryId : ""}${
-                              subCategoryId ? "&subcategory=" + subCategoryId : ""
-                            }${secondSubCategoryId ? "&secondsubcategory=" + secondSubCategoryId : ""}${
-                              type?.length ? ("&type=" + type?.join(",")) : ""
-                            }${ "&tech=" + [...technology, item?.technology_id]?.join(",")}${colorId ? ("&color=" + colorId) : ""}`);
+                            navigate(res);
+                          } else {
+                            const res = `/product?${
+                              categoryId ? "category=" + categoryId : ""
+                            }${
+                              subCategoryId
+                                ? "&subcategory=" + subCategoryId
+                                : ""
+                            }${
+                              secondSubCategoryId
+                                ? "&secondsubcategory=" + secondSubCategoryId
+                                : ""
+                            }${type?.length ? "&type=" + type?.join(",") : ""}${
+                              "&tech=" +
+                              [...technology, item?.technology_id]?.join(",")
+                            }${colorId ? "&color=" + colorId : ""}`;
                             console.log(res);
-                            navigate(res)
+                            navigate(res);
                           }
-
-                         
-                        }
-                         
-                        }
+                        }}
                       />
                     }
                     label={
@@ -265,32 +305,55 @@ export default function ProductCategory({
                         style={{ fontFamily: "Gilroy" }}
                         value={item.type_id}
                         checked={type?.includes(item?.type_id)}
-                        onChange={() =>{
+                        onChange={
+                          () => {
+                            if (type?.includes(item?.type_id)) {
+                              const res = `/product?${
+                                categoryId ? "category=" + categoryId : ""
+                              }${
+                                subCategoryId
+                                  ? "&subcategory=" + subCategoryId
+                                  : ""
+                              }${
+                                secondSubCategoryId
+                                  ? "&secondsubcategory=" + secondSubCategoryId
+                                  : ""
+                              }${
+                                type?.length > 1
+                                  ? "&type=" +
+                                    type
+                                      ?.filter((el) => el != item?.type_id)
+                                      ?.join(",")
+                                  : ""
+                              }${
+                                technology?.length > 0
+                                  ? "&tech=" + technology?.join(",")
+                                  : ""
+                              }`;
 
-                          if(type?.includes(item?.type_id)){
-                            const res = (`/product?${categoryId ? "category=" + categoryId : ""}${
-                              subCategoryId ? "&subcategory=" + subCategoryId : ""
-                            }${secondSubCategoryId ? "&secondsubcategory=" + secondSubCategoryId : ""}${
-                              type?.length > 1 ? "&type=" + type?.filter(el => el != item?.type_id)?.join(",") : "" 
-                            }${technology?.length > 0 ? "&tech=" + technology?.join(",") : ""}`);
-
-                            navigate(res)
-
-                          }else {
-                            const res = (`/product?${categoryId ? "category=" + categoryId : ""}${
-                              subCategoryId ? "&subcategory=" + subCategoryId : ""
-                            }${secondSubCategoryId ? "&secondsubcategory=" + secondSubCategoryId : ""}${
-                              "&type=" + [...type, item?.type_id]?.join(",") 
-                            }${technology?.length > 0 ? "&tech=" + technology?.join(",") : ""}`);
-                            console.log(res);
-                            navigate(res)
+                              navigate(res);
+                            } else {
+                              const res = `/product?${
+                                categoryId ? "category=" + categoryId : ""
+                              }${
+                                subCategoryId
+                                  ? "&subcategory=" + subCategoryId
+                                  : ""
+                              }${
+                                secondSubCategoryId
+                                  ? "&secondsubcategory=" + secondSubCategoryId
+                                  : ""
+                              }${
+                                "&type=" + [...type, item?.type_id]?.join(",")
+                              }${
+                                technology?.length > 0
+                                  ? "&tech=" + technology?.join(",")
+                                  : ""
+                              }`;
+                              console.log(res);
+                              navigate(res);
+                            }
                           }
-
-                         
-
-
-
-                        }
                           // handleCheckboxChange(
                           //   type,
                           //   setType,
@@ -420,21 +483,33 @@ export default function ProductCategory({
                   }}
                   onClick={() => {
                     if (item?.id == colorId) {
-                      const res = (`/product?${categoryId ? "category=" + categoryId : ""}${
-                        subCategoryId ? "&subcategory=" + subCategoryId : ""
-                      }${secondSubCategoryId ? "&secondsubcategory=" + secondSubCategoryId : ""}${
-                        type?.length ? ("&type=" + type?.join(",")) : ""
-                      }${ technology?.length ?  "&tech=" + technology?.join(",") : ""}`);
+                      const res = `/product?${
+                        categoryId ? "category=" + categoryId : ""
+                      }${subCategoryId ? "&subcategory=" + subCategoryId : ""}${
+                        secondSubCategoryId
+                          ? "&secondsubcategory=" + secondSubCategoryId
+                          : ""
+                      }${type?.length ? "&type=" + type?.join(",") : ""}${
+                        technology?.length
+                          ? "&tech=" + technology?.join(",")
+                          : ""
+                      }`;
                       console.log(res);
-                      navigate(res)
+                      navigate(res);
                     } else {
-                      const res = (`/product?${categoryId ? "category=" + categoryId : ""}${
-                        subCategoryId ? "&subcategory=" + subCategoryId : ""
-                      }${secondSubCategoryId ? "&secondsubcategory=" + secondSubCategoryId : ""}${
-                        type?.length ? ("&type=" + type?.join(",")) : ""
-                      }${ technology?.length ?  "&tech=" + technology?.join(",") : ""}${("&color=" + item.id)}`);
+                      const res = `/product?${
+                        categoryId ? "category=" + categoryId : ""
+                      }${subCategoryId ? "&subcategory=" + subCategoryId : ""}${
+                        secondSubCategoryId
+                          ? "&secondsubcategory=" + secondSubCategoryId
+                          : ""
+                      }${type?.length ? "&type=" + type?.join(",") : ""}${
+                        technology?.length
+                          ? "&tech=" + technology?.join(",")
+                          : ""
+                      }${"&color=" + item.id}`;
                       console.log(res);
-                      navigate(res)
+                      navigate(res);
                     }
                   }}
                 >
@@ -452,23 +527,39 @@ export default function ProductCategory({
               ))}
             </Box>
           </Box>
-        </Grid>
+          <div className="flex items-center justify-center mt-4 ">
+            <button className="px-4 py-2 bg-black text-white rounded-md max-w-[250px] text-base uppercase w-full">{t("close")}</button>
+          </div>
+        </div>
 
-        <Grid item lg={8} md={8} sm={10} xs={11} mt={2}>
+        <div className="grow">
+        <div className="md:hidden">
+            <Button sx={{color: "#000", fontSize: "16px", display: "flex", alignItems: "center", gap: "8px"}} onClick={() => {
+              setFilter(true)
+            }} >
+              <TuneIcon />
+              {t("filter")}
+            </Button>
+          </div>
           <TextField
             fullWidth
             id="filled-basic"
             label={t("search")}
             variant="standard"
-            value={i18n?.language == "uz" ? searchUz :(i18n?.language == "ru" ?  searchRu : searchEn)}
+            value={
+              i18n?.language == "uz"
+                ? searchUz
+                : i18n?.language == "ru"
+                ? searchRu
+                : searchEn
+            }
             onChange={(e) => {
               if (i18n?.language == "uz") {
                 setSearchUz(e.target.value);
-              } else if(i18n?.language == "ru") {
+              } else if (i18n?.language == "ru") {
                 setSearchRu(e.target.value);
-              }else {
+              } else {
                 setSearchEn(e.target.value);
-
               }
             }}
           />
@@ -510,8 +601,8 @@ export default function ProductCategory({
               <NavigateNextIcon />
             </Button>
           </div>
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     </Box>
   );
 }

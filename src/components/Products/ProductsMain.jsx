@@ -10,17 +10,16 @@ export default function ProductsMain({ breadcrumpData }) {
   const {i18n, t} = useTranslation()
 
   return (
-    <Box
-      sx={{
+    <div
+      style={{
         
         backgroundImage:
         "url('/img/page-header/product.jpg')",
-        pt: 20,
-        pb: 45,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover"
       }}
+      className="py-[80px] sm:py-[110px] md:py-[150px] lg:py-[180px]"
     >
       <Box
         sx={{
@@ -58,6 +57,6 @@ export default function ProductsMain({ breadcrumpData }) {
           ))}
         </Box>
       </Box>
-    </Box>
+    </div>
   );
 }

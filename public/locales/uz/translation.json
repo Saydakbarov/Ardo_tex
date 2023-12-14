@@ -60,7 +60,9 @@
     "divorsed" : "Ajrashgan",
     "student" : "Student",
     "no-work" : "Ishsiz",
-    "want-to-leave" : "Ishdan bo'shamoqchi"
+    "want-to-leave" : "Ishdan bo'shamoqchi",
+    "close" : "Yopish",
+    "filter" : "Filter"
   
 
 
