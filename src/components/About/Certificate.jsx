@@ -48,6 +48,7 @@ export default function Certificate() {
           className="mySwiper"
           style={{ paddingBottom: "50px" }}
         >
+          
           {data?.data.map((v, i) => (
             <SwiperSlide key={v?.certificate_id}>
               <div className="w-full px-2">
