@@ -29,7 +29,7 @@ export default function ProductCard({ data }) {
               style={{
                 width: "100%",
                 height: "300px",
-                objectFit: "contain",
+                objectFit: "cover",
                 borderRadius: "8px",
               }}
               src={v?.product_image_url[0]}
