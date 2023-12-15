@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import Magnifier from "react-magnifier";
 import ImageGallery from "../image-gallery";
 import { youTubeLinkParser } from "../../utils/functions";
+import { useTechnology, useTypes } from "../../query-data/data.service";
 
 // const Magnifier = lazy(() => import("react-magnifier"))
 // import ReactImageMagnify from "react-image-magnify";
@@ -39,6 +40,22 @@ export default function SingleProduct({ data, isLoading }) {
 
   const { t, i18n } = useTranslation();
 
+
+  
+  const { data: types } = useTypes();
+
+  const { data: technologies } = useTechnology();
+
+  const [currentTech, setCurrentTech] = useState(null)
+  const [currentType, setCurrentType] = useState(null)
+
+
+  useEffect(() => {
+    if(data?.data) {
+      setCurrentTech(technologies?.data?.find(el => el?.technology_id == data?.data?.product_technology))
+      setCurrentType(types?.data?.find(el => el?.type_id == data?.data?.product_type))
+    }
+  }, [data, technologies, types])
   return (
     <Box>
       {isLoading ? (
@@ -223,9 +240,23 @@ export default function SingleProduct({ data, isLoading }) {
                 </div>
               </div>
               <div className="w-full md:w-1/2">
-                <h2 className="font-light text-[34px] sm:text-[38px] smd:text-[45px] lg:text-[55px] mb-6 ">
+               <div className="flex items-center justify-between flex-col sm:flex-row">
+               <h2 className="font-light text-[34px] sm:text-[38px] smd:text-[45px] lg:text-[55px] mb-6 ">
                   {data?.data?.[`product_title_${i18n?.language ?? "uz"}`]}
                 </h2>
+                <div className="flex items-center justify-end gap-3">
+                        {
+                          currentTech?.technology_image_url && (
+                            <img src={currentTech?.technology_image_url} loading="lazy" alt="technology" className="w-[70px] h-[70px] object-contain" />
+                          )
+                        }
+                        {
+                          currentType?.type_image_url && (
+                            <img src={currentType?.type_image_url} loading="lazy" alt="type" className="w-[70px] h-[70px] object-contain" />
+                          )
+                        }
+                </div>
+               </div>
                 <div
                   dangerouslySetInnerHTML={{
                     __html:
