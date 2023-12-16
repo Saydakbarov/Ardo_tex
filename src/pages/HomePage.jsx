@@ -19,7 +19,7 @@ export default function HomePage() {
       <HeaderBox />
       <NewCollections />
       <BestSeller />
-      <Banner />
+      <Banner src={"/img/banner.png"} />
       <DiscountedProducts />
       <LastestNews />
       <HomeCategory />
