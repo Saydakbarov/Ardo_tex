@@ -40,39 +40,38 @@ export default function Certificate() {
               spaceBetween: 50,
             },
             1500: {
-              slidesPerView: 4,
-              spaceBetween: 60,
+              slidesPerView: 3,
+              spaceBetween: 30,
             },
           }}
           modules={[Pagination]}
           className="mySwiper"
           style={{ paddingBottom: "50px" }}
         >
-          
           {data?.data.map((v, i) => (
             <SwiperSlide key={v?.certificate_id}>
               <div className="w-full px-2">
-              {v?.certificate_image_link?.includes(".pdf") ? (
-                <div className="w-full h-[500px]">
-                  <iframe
-                    src={v?.certificate_image_link}
-                    className="w-full h-full"
-                    frameborder="0"
-                  ></iframe>
-                </div>
-              ) : (
-                <a
-                  className="block h-[500px]"
-                  href={v?.certificate_image_link}
-                  target="blank_"
-                >
-                  <img
-                    src={v?.certificate_image_link}
-                    alt=""
-                    className="w-full h-full object-contain"
-                  />
-                </a>
-              )}
+                {v?.certificate_image_link?.includes(".pdf") ? (
+                  <div className="w-full h-[500px]">
+                    <iframe
+                      src={v?.certificate_image_link}
+                      className="w-full h-full"
+                      frameborder="0"
+                    ></iframe>
+                  </div>
+                ) : (
+                  <a
+                    className="block h-[500px]"
+                    href={v?.certificate_image_link}
+                    target="blank_"
+                  >
+                    <img
+                      src={v?.certificate_image_link}
+                      alt=""
+                      className="w-full h-full object-contain"
+                    />
+                  </a>
+                )}
               </div>
             </SwiperSlide>
           ))}
