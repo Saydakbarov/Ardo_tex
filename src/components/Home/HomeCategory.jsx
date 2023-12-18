@@ -3,12 +3,12 @@ import React from "react";
 
 import ArdoHomeLogo from "../../ArdoHomeLogo.png";
 
-import Img1 from "../../ArdoHomeImages/img1.JPG";
-import Img2 from "../../ArdoHomeImages/img2.JPG";
-import Img3 from "../../ArdoHomeImages/img3.JPG";
-import Img4 from "../../ArdoHomeImages/img4.JPG";
-import Img5 from "../../ArdoHomeImages/img5.JPG";
-import Img6 from "../../ArdoHomeImages/img6.JPG";
+import Img1 from "../../ArdoHomeImages/img1.png";
+import Img2 from "../../ArdoHomeImages/img2.png";
+import Img3 from "../../ArdoHomeImages/img3.png";
+import Img4 from "../../ArdoHomeImages/img4.png";
+import Img5 from "../../ArdoHomeImages/img5.png";
+import Img6 from "../../ArdoHomeImages/img6.png";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -57,8 +57,8 @@ export default function HomeCategory() {
                 backgroundSize: "130%",
               }}
             >
-              <Typography sx={{ fontWeight: "600" }}>Storage</Typography>
-              <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography>
+              {/* <Typography sx={{ fontWeight: "600" }}>Storage</Typography> */}
+              {/* <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography> */}
             </Box>
           </Grid>
           <Grid item lg={4} md={4} sm={5.5} xs={10}>
@@ -73,8 +73,8 @@ export default function HomeCategory() {
                 backgroundPosition: "center",
               }}
             >
-              <Typography sx={{ fontWeight: "600" }}>Decor Vases</Typography>
-              <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography>
+              {/* <Typography sx={{ fontWeight: "600" }}>Decor Vases</Typography> */}
+              {/* <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography> */}
             </Box>
             <Box
               sx={{
@@ -88,8 +88,8 @@ export default function HomeCategory() {
                 backgroundPosition: "center",
               }}
             >
-              <Typography sx={{ fontWeight: "600" }}>Accessories</Typography>
-              <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography>
+              {/* <Typography sx={{ fontWeight: "600" }}>Accessories</Typography> */}
+              {/* <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography> */}
             </Box>
           </Grid>
           <Grid item lg={2} md={4} sm={5.5} xs={10}>
@@ -105,8 +105,8 @@ export default function HomeCategory() {
                 backgroundPosition: "center",
               }}
             >
-              <Typography sx={{ fontWeight: "600" }}>Lighting</Typography>
-              <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography>
+              {/* <Typography sx={{ fontWeight: "600" }}>Lighting</Typography> */}
+              {/* <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography> */}
             </Box>
             <Box
               sx={{
@@ -121,8 +121,8 @@ export default function HomeCategory() {
                 backgroundPosition: "center",
               }}
             >
-              <Typography sx={{ fontWeight: "600" }}>Living Room</Typography>
-              <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography>
+              {/* <Typography sx={{ fontWeight: "600" }}>Living Room</Typography> */}
+              {/* <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography> */}
             </Box>
           </Grid>
 
@@ -138,8 +138,8 @@ export default function HomeCategory() {
                 objectFit: "cover",
               }}
             >
-              <Typography sx={{ fontWeight: "600" }}>Decoration</Typography>
-              <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography>
+              {/* <Typography sx={{ fontWeight: "600" }}>Decoration</Typography> */}
+              {/* <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography> */}
             </Box>
           </Grid>
         </Grid>
@@ -196,8 +196,8 @@ export default function HomeCategory() {
                   backgroundSize: "cover",
                 }}
               >
-                <Typography sx={{ fontWeight: "600" }}>Storage</Typography>
-                <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography>
+                {/* <Typography sx={{ fontWeight: "600" }}>Storage</Typography>
+                <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography> */}
               </Box>
             </SwiperSlide>
 
@@ -213,8 +213,8 @@ export default function HomeCategory() {
                   backgroundPosition: "center",
                 }}
               >
-                <Typography sx={{ fontWeight: "600" }}>Decor Vases</Typography>
-                <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography>
+                {/* <Typography sx={{ fontWeight: "600" }}>Decor Vases</Typography>
+                <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography> */}
               </Box>
             </SwiperSlide>
 
@@ -230,8 +230,8 @@ export default function HomeCategory() {
                   backgroundPosition: "center",
                 }}
               >
-                <Typography sx={{ fontWeight: "600" }}>Accessories</Typography>
-                <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography>
+                {/* <Typography sx={{ fontWeight: "600" }}>Accessories</Typography> */}
+                {/* <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography> */}
               </Box>
             </SwiperSlide>
 
@@ -248,8 +248,8 @@ export default function HomeCategory() {
                   backgroundPosition: "center",
                 }}
               >
-                <Typography sx={{ fontWeight: "600" }}>Lighting</Typography>
-                <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography>
+                {/* <Typography sx={{ fontWeight: "600" }}>Lighting</Typography> */}
+                {/* <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography> */}
               </Box>
             </SwiperSlide>
 
@@ -266,8 +266,8 @@ export default function HomeCategory() {
                   backgroundPosition: "center",
                 }}
               >
-                <Typography sx={{ fontWeight: "600" }}>Living Room</Typography>
-                <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography>
+                {/* <Typography sx={{ fontWeight: "600" }}>Living Room</Typography> */}
+                {/* <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography> */}
               </Box>
             </SwiperSlide>
 
@@ -283,8 +283,8 @@ export default function HomeCategory() {
                   objectFit: "cover",
                 }}
               >
-                <Typography sx={{ fontWeight: "600" }}>Decoration</Typography>
-                <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography>
+                {/* <Typography sx={{ fontWeight: "600" }}>Decoration</Typography> */}
+                {/* <Typography sx={{ fontSize: "12px" }}>Shop Now</Typography> */}
               </Box>
             </SwiperSlide>
           </Grid>
