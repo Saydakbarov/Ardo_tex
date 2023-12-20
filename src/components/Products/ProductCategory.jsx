@@ -127,9 +127,7 @@ export default function ProductCategory({
                       fontFamily: "Gilroy",
                     }}
                   >
-                    {i18n?.language == "uz"
-                      ? v.category_name_uz
-                      : v.category_name_ru}
+                    {v[`category_name_${i18n?.language ?? "uz"}`]}
                   </Typography>
                 </Link>
               ))}
@@ -161,9 +159,7 @@ export default function ProductCategory({
                       fontFamily: "Gilroy",
                     }}
                   >
-                    {i18n?.language == "uz"
-                      ? v.sub_category_name_uz
-                      : v.sub_category_name_ru}
+                    {v[`sub_category_name_${i18n?.language ?? "uz"}`]}
                   </Typography>
                 </Link>
               ))}
@@ -201,9 +197,7 @@ export default function ProductCategory({
                       fontFamily: "Gilroy",
                     }}
                   >
-                    {i18n?.language == "uz"
-                      ? v.second_sub_category_name_uz
-                      : v.second_sub_category_name_ru}
+                    {v[`second_sub_category_name_${i18n?.language ?? "uz"}`]}
                   </Typography>
                 </Link>
               ))}
