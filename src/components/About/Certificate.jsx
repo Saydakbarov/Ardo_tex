@@ -52,9 +52,14 @@ export default function Certificate() {
             <SwiperSlide key={v?.certificate_id}>
               <div className="w-full px-2">
                 {v?.certificate_image_link?.includes(".pdf") ? (
-                  <div className="w-full h-[500px]">
+                  <div className=" relative z-[2] w-full h-[500px]">
+                    <a
+                      href={v?.certificate_image_link}
+                      target="_blank"
+                      className="block absolute z-[10] top-0 left-0 w-full h-full"
+                    ></a>
                     <iframe
-                      src={v?.certificate_image_link}
+                      src={v?.certificate_image_link + "#toolbar=0"}
                       className="w-full h-full"
                       frameborder="0"
                     ></iframe>
