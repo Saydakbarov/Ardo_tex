@@ -23,7 +23,7 @@ const Media = ({ type = "img", src, className, style }) => {
     return (
       <div className="px-4">
         <iframe
-          className={`my-[20px] block w-full h-[350px] sm:h-[400px] md:h-[500px] rounded-md object-cover ${className}`}
+          className={`my-[20px] block w-full h-[300px] sm:h-[400px] md:h-[500px] rounded-md object-cover ${className}`}
           src={`https://www.youtube.com/embed/${src}`}
           title="YouTube video player"
         />

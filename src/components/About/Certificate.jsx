@@ -7,6 +7,7 @@ import { Pagination } from "swiper/modules";
 import { useTranslation } from "react-i18next";
 import { CertificateData } from "../../data";
 import { useCertificates } from "../../query-data/data.service";
+import PDFRenderer from "../pdf-renderer";
 
 export default function Certificate() {
   const { t } = useTranslation();
@@ -62,7 +63,10 @@ export default function Certificate() {
                       src={v?.certificate_image_link + "#toolbar=0"}
                       className="w-full h-full"
                       frameborder="0"
+                      width={"100%"}
+                      height={"100%"}
                     ></iframe>
+                    {/* <PDFRenderer className={"w-full h-full"} src={v?.certificate_image_link}  /> */}
                   </div>
                 ) : (
                   <a

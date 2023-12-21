@@ -18,10 +18,12 @@ export default function ContactCompany() {
       <Grid container>
         <Grid item lg={12} md={12} sm={12} xs={12}>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2997.1318640648483!2d69.19144117563799!3d41.30599490104053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8bdf3f55a937%3A0x3446e0e39c1c4b18!2zQXJkb3RleCDQntCx0LjQstC-0YfQvdGL0LUg0JzQsNGC0LXRgNC40LDQu9GL!5e0!3m2!1sru!2s!4v1693417945165!5m2!1sru!2s"
-            width="100%"
-            height="450"
-          ></iframe>
+            src="https://yandex.uz/map-widget/v1/?ll=69.210637%2C41.295886&mode=search&oid=172958207416&ol=biz&z=12.38"
+            className="w-full h-[300px] sm:h-[400px] "
+            frameBorder={1}
+            allowFullScreen="true"
+            style={{ position: "relative" }}
+          />
         </Grid>
       </Grid>
       <Grid

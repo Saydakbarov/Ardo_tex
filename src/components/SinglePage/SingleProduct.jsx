@@ -1,20 +1,13 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React, { lazy, useState } from "react";
-// import Video4 from "../../video/video4.mp4";
-// import InnerImageZoom from "react-inner-image-zoom";
-// import "react-inner-image-zoom/lib/InnerImageZoom/styles.min.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
-// import { useOneProduct } from "../../query-data/data.service";
 import { useTranslation } from "react-i18next";
 import Magnifier from "react-magnifier";
 import ImageGallery from "../image-gallery";
 import { youTubeLinkParser } from "../../utils/functions";
 import { useTechnology, useTypes } from "../../query-data/data.service";
 
-// const Magnifier = lazy(() => import("react-magnifier"))
-// import ReactImageMagnify from "react-image-magnify";
-// const ReactImageMagnify = lazy(() => import("react-image-magnify"))
 
 export default function SingleProduct({ data, isLoading }) {
   const [mainImage, setMainImage] = useState(data?.data?.product_image_url[0]);
