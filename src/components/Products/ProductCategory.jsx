@@ -428,7 +428,7 @@ export default function ProductCategory({
             </Box>
           </Box>
 
-          <div
+          {/* <div
             style={{
               display: "flex",
               alignItems: "center",
@@ -450,7 +450,7 @@ export default function ProductCategory({
               type="number"
               fullWidth
             />
-          </div>
+          </div> */}
           <Box sx={{ mt: 3 }}>
             <Typography
               sx={{
