@@ -13,7 +13,7 @@ export default function ProductCard({ data }) {
 
   return (
     <div
-    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-6 sm:gap-5 mt-5"
+    className="grid grid-cols-1 tel:grid-cols-2 lg:grid-cols-3  gap-6 sm:gap-5 mt-5"
      
     >
       {data?.data?.map((v) => (
@@ -26,12 +26,7 @@ export default function ProductCard({ data }) {
         >
           <div className="relative">
             <img
-              style={{
-                width: "100%",
-                height: "300px",
-                objectFit: "cover",
-                borderRadius: "8px",
-              }}
+              className="w-full rounded-md object-cover h-[200px] md:h-[300px]"
               src={v?.product_image_url[0]}
               alt=""
             />

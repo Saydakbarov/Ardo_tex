@@ -63,9 +63,9 @@ export default function NewCollections() {
         {t("new-collections")}
       </Typography>
       <div className="hidden md:block">
-        <Grid container justifyContent={"center"} gap={4} mt={5}>
+        <div  className="grid grid-cols-1 tel:grid-cols-2 smd:grid-cols-3 lg:grid-cols-4 gap-3" >
           {data?.data?.map((v, i) => (
-            <Grid item lg={2.5} md={2.5} sm={5.3} xs={10} key={v.id}>
+            <div className="w-full" >
               <Link className="w-full" to={`/single/${v?.product_id}`}>
                 <div className="relative">
                   <p
@@ -98,9 +98,9 @@ export default function NewCollections() {
                   </p>
                 </Typography>
               </Link>
-            </Grid>
+            </div>
           ))}
-        </Grid>
+        </div>
       </div>
       <div className="block md:hidden" style={{ padding: "10px 20px" }}>
         <Swiper
@@ -110,11 +110,11 @@ export default function NewCollections() {
             clickable: true,
           }}
           breakpoints={{
-            300: {
+            0: {
               slidesPerView: 1,
               spaceBetween: 20,
             },
-            640: {
+            400: {
               slidesPerView: 2,
               spaceBetween: 20,
             },
@@ -156,12 +156,9 @@ export default function NewCollections() {
                         {v?.product_discount_precent}%
                       </p>
                       <img
-                        style={{
-                          width: "100%",
-                          borderRadius: "6px",
-                          height: "300px",
-                          objectFit: "cover",
-                        }}
+
+                      className="w-full rounded-md object-cover h-[200px] md:h-[300px]"
+                        
                         src={v?.product_image_url[0]}
                       />
                     </div>

@@ -52,21 +52,21 @@ export default function ProductsCard({ data }) {
               clickable: true,
             }}
             breakpoints={{
-              300: {
+              0: {
                 slidesPerView: 1,
                 spaceBetween: 20,
               },
-              640: {
-                slidesPerView: 1,
+              400: {
+                slidesPerView: 2,
                 spaceBetween: 20,
               },
               768: {
-                slidesPerView: 2,
+                slidesPerView: 3,
                 spaceBetween: 40,
               },
               1024: {
-                slidesPerView: 3,
-                spaceBetween: 60,
+                slidesPerView: 4,
+                spaceBetween: 40,
               },
               1500: {
                 slidesPerView: 4,
@@ -154,12 +154,7 @@ export default function ProductsCard({ data }) {
                         <div className="relative">
                           <img
                             src={v?.product_image_url[0]}
-                            style={{
-                              width: "100%",
-                              height: "300px",
-                              objectFit: "contain",
-                              borderRadius: "6px",
-                            }}
+                            className="w-full rounded-md object-cover h-[200px] md:h-[300px]"
                           />
                           <p
                             className={
@@ -189,9 +184,7 @@ export default function ProductsCard({ data }) {
                             sx={{ fontSize: "22px" }}
                           /> */}
                               <Typography sx={{ p: 1 }}>
-                                {i18n?.language == "uz"
-                                  ? v?.product_title_uz
-                                  : v?.product_title_ru}
+                                {v[`product_title_${i18n?.language ?? "uz"}`]}
                               </Typography>
                             </Box>
 

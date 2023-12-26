@@ -62,7 +62,9 @@
     "no-work" : "Unemployed",
     "want-to-leave" : "Wants to leave work",
     "close" : "close",
-    "filter" : "Filter"
+    "filter" : "Filter",
+    "exists": "Available for sale",
+    "not-exists": "Not available for sale"
 
   
 

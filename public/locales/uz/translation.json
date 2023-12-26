@@ -62,7 +62,9 @@
     "no-work" : "Ishsiz",
     "want-to-leave" : "Ishdan bo'shamoqchi",
     "close" : "Yopish",
-    "filter" : "Filter"
+    "filter" : "Filter",
+    "exists": "Sotuvda mavjud",
+    "not-exists": "Sotuvda mavjud emas"
   
 
 

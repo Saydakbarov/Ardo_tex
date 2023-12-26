@@ -8,7 +8,6 @@ import ImageGallery from "../image-gallery";
 import { youTubeLinkParser } from "../../utils/functions";
 import { useTechnology, useTypes } from "../../query-data/data.service";
 
-
 export default function SingleProduct({ data, isLoading }) {
   const [mainImage, setMainImage] = useState(data?.data?.product_image_url[0]);
 
@@ -33,22 +32,25 @@ export default function SingleProduct({ data, isLoading }) {
 
   const { t, i18n } = useTranslation();
 
-
-  
   const { data: types } = useTypes();
 
   const { data: technologies } = useTechnology();
 
-  const [currentTech, setCurrentTech] = useState(null)
-  const [currentType, setCurrentType] = useState(null)
-
+  const [currentTech, setCurrentTech] = useState(null);
+  const [currentType, setCurrentType] = useState(null);
 
   useEffect(() => {
-    if(data?.data) {
-      setCurrentTech(technologies?.data?.find(el => el?.technology_id == data?.data?.product_technology))
-      setCurrentType(types?.data?.find(el => el?.type_id == data?.data?.product_type))
+    if (data?.data) {
+      setCurrentTech(
+        technologies?.data?.find(
+          (el) => el?.technology_id == data?.data?.product_technology
+        )
+      );
+      setCurrentType(
+        types?.data?.find((el) => el?.type_id == data?.data?.product_type)
+      );
     }
-  }, [data, technologies, types])
+  }, [data, technologies, types]);
   return (
     <Box>
       {isLoading ? (
@@ -233,23 +235,39 @@ export default function SingleProduct({ data, isLoading }) {
                 </div>
               </div>
               <div className="w-full md:w-1/2">
-               <div className="flex items-center justify-between flex-col sm:flex-row">
-               <h2 className="font-light text-[34px] sm:text-[38px] smd:text-[45px] lg:text-[55px] mb-6 ">
-                  {data?.data?.[`product_title_${i18n?.language ?? "uz"}`]}
-                </h2>
-                <div className="flex items-center justify-end gap-3">
-                        {
-                          currentTech?.technology_image_url && (
-                            <img src={currentTech?.technology_image_url} loading="lazy" alt="technology" className="w-[70px] h-[70px] object-contain" />
-                          )
-                        }
-                        {
-                          currentType?.type_image_url && (
-                            <img src={currentType?.type_image_url} loading="lazy" alt="type" className="w-[70px] h-[70px] object-contain" />
-                          )
-                        }
+                <div className="flex items-center justify-between flex-col sm:flex-row">
+                  <h2 className="font-light text-[34px] sm:text-[38px] smd:text-[45px] lg:text-[55px] mb-3 ">
+                    {data?.data?.[`product_title_${i18n?.language ?? "uz"}`]}
+                  </h2>
+
+                  <div className="flex items-center justify-end gap-3">
+                    {currentTech?.technology_image_url && (
+                      <img
+                        src={currentTech?.technology_image_url}
+                        loading="lazy"
+                        alt="technology"
+                        className="w-[70px] h-[70px] object-contain"
+                      />
+                    )}
+                    {currentType?.type_image_url && (
+                      <img
+                        src={currentType?.type_image_url}
+                        loading="lazy"
+                        alt="type"
+                        className="w-[70px] h-[70px] object-contain"
+                      />
+                    )}
+                  </div>
                 </div>
-               </div>
+                <p
+                  className={`mb-4 w-fit p-[6px] rounded-[16px] font-semibold ${
+                    data?.data?.product_finished
+                      ? "bg-[#e33f3f47] text-[#e33f3f]"
+                      : "bg-[#34b14740] text-[#34b147]"
+                  } `}
+                >
+                  {data?.data?.product_finished ? t("not-exists") : t("exists")}
+                </p>
                 <div
                   dangerouslySetInnerHTML={{
                     __html:

@@ -98,7 +98,7 @@ export default function NewsProductCard() {
                 ></Box>
                 <Box>
                   <Typography sx={{ fontWeight: "600", fontSize: "18px" }}>
-                    {i18n?.language == "uz" ? v?.new_title_uz : v?.new_title_ru}
+                    {v[`new_title_${i18n?.language ?? "uz"}`]}
                   </Typography>
                   {/* <Typography sx={{ mt: 2, fontSize: "14px" }}>
                   

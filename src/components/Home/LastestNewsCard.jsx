@@ -78,7 +78,14 @@ export default function LastestNewsCard() {
                   style={{ width: "100%" }}
                 >
                   <Grid item sx={{ borderRadius: "6px" }}>
-                    <Link style={{display: "block", textDecoration: "none", color: "black"}} to={`/news`} >
+                    <Link
+                      style={{
+                        display: "block",
+                        textDecoration: "none",
+                        color: "black",
+                      }}
+                      to={`/news`}
+                    >
                       <Box
                         sx={{
                           boxShadow: "0px 5px 10px 0px gray",
@@ -170,9 +177,7 @@ export default function LastestNewsCard() {
                                   color: "black",
                                 }}
                               >
-                                {i18n?.language == "uz"
-                                  ? v?.new_title_uz
-                                  : v?.new_title_ru}
+                                {v[`new_title_${i18n?.language ?? "uz"}`]}
                               </Typography>
                               {/* <Typography
                               sx={{
