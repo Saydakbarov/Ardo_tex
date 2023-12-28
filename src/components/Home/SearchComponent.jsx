@@ -130,6 +130,7 @@ export default function SearchComponent() {
                     />
                     {categories?.data?.map((item) => (
                       <FormControlLabel
+                      key={item?.category_id}
                         value={item?.category_id}
                         control={<Radio style={{ color: "#000" }} />}
                         label={item[`category_name_${i18n.language ?? "uz"}`]}
