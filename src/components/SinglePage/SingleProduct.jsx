@@ -195,12 +195,12 @@ export default function SingleProduct({ data, isLoading }) {
                     </div>
                   ))}
                 </div>
-                <div className="grid grid-cols-6 gap-3">
+                <div className="grid grid-cols-5 sm:grid-cols-6 md:grid-cols-5 lg:grid-cols-6 gap-2 sm:gap-3">
                   {data?.data?.product_material
                     ? data?.data?.product_extra_image_url?.map((v, i) => (
                         <button
                           key={v}
-                          className="w-full h-[40px] sm:h-[70px] md:h-[90px] relative group overflow-hidden rounded-md"
+                          className="w-full h-[60px] sm:h-[70px] md:h-[90px] relative group overflow-hidden rounded-md"
                           onClick={() => {
                             setCurrentIndex(i);
                             setOpen(true);
@@ -211,7 +211,7 @@ export default function SingleProduct({ data, isLoading }) {
                             src={v}
                             alt=""
                           />
-                          <span className="absolute text-white font-bold bottom-[5px] right-[5px] w-fit block p-[4px] rounded-md bg-[#000000b7]">
+                          <span className="absolute text-xs sm:text-sm md:text-base text-white font-bold bottom-[5px] right-[5px] w-fit block p-[4px] rounded-md bg-[#000000b7]">
                             {data?.data?.product_extra_image_number[i]}
                           </span>
                         </button>
@@ -219,7 +219,7 @@ export default function SingleProduct({ data, isLoading }) {
                     : data?.data?.product_image_url?.map((v, i) => (
                         <button
                           key={v}
-                          className="w-full h-[40px] sm:h-[70px] md:h-[90px] group overflow-hidden rounded-md"
+                          className="w-full h-[60px] sm:h-[70px] md:h-[90px] group overflow-hidden rounded-md"
                           onClick={() => {
                             setCurrentIndex(i);
                             setOpen(true);
@@ -235,8 +235,8 @@ export default function SingleProduct({ data, isLoading }) {
                 </div>
               </div>
               <div className="w-full md:w-1/2">
-                <div className="flex items-center justify-between flex-col sm:flex-row">
-                  <h2 className="font-light text-[34px] sm:text-[38px] smd:text-[45px] lg:text-[55px] mb-3 ">
+                <div className="flex items-center justify-between flex-row mb-3">
+                  <h2 className="font-light text-[34px] sm:text-[38px] smd:text-[45px] lg:text-[55px]  ">
                     {data?.data?.[`product_title_${i18n?.language ?? "uz"}`]}
                   </h2>
 
@@ -246,7 +246,7 @@ export default function SingleProduct({ data, isLoading }) {
                         src={currentTech?.technology_image_url}
                         loading="lazy"
                         alt="technology"
-                        className="w-[70px] h-[70px] object-contain"
+                        className="  w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px] object-contain"
                       />
                     )}
                     {currentType?.type_image_url && (
@@ -254,7 +254,7 @@ export default function SingleProduct({ data, isLoading }) {
                         src={currentType?.type_image_url}
                         loading="lazy"
                         alt="type"
-                        className="w-[70px] h-[70px] object-contain"
+                        className="  w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px] object-contain"
                       />
                     )}
                   </div>

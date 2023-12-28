@@ -64,7 +64,8 @@
     "close" : "Yopish",
     "filter" : "Filter",
     "exists": "Sotuvda mavjud",
-    "not-exists": "Sotuvda mavjud emas"
+    "not-exists": "Sotuvda mavjud emas",
+    "all" : "Barchasi"
   
 
 

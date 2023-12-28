@@ -64,7 +64,8 @@
     "close" : "close",
     "filter" : "Filter",
     "exists": "Available for sale",
-    "not-exists": "Not available for sale"
+    "not-exists": "Not available for sale",
+    "all" : "All"
 
   
 

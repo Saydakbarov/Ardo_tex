@@ -521,7 +521,7 @@ export default function ProductCategory({
               ))}
             </Box>
           </Box>
-          <div className="flex items-center justify-center mt-4 ">
+          <div className="flex md:hidden items-center justify-center mt-4 ">
             <button className="px-4 py-2 bg-black text-white rounded-md max-w-[250px] text-base uppercase w-full" onClick={() => {
               setFilter(false)
             }} >{t("close")}</button>
