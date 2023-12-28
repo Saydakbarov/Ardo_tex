@@ -24,17 +24,10 @@ body {
 } */
 
 .single-product-model {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
   margin: 30px 0;
-  white-space: pre-line;
 }
 .single-product-model > * {
-  white-space: pre-line;
   font-size: 19px !important;
-  margin: 0;
-  padding: 0;
 }
 
 .single-product-model ul, ol, menu {
