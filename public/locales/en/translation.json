@@ -65,7 +65,15 @@
     "filter" : "Filter",
     "exists": "Available for sale",
     "not-exists": "Not available for sale",
-    "all" : "All"
+    "all" : "All",
+    "blue": "Blue",
+    "black": "Black",
+    "gold": "Gold",
+    "green": "Green",
+    "red": "Red",
+    "violet": "Violet",
+    "white": "White",
+    "download-catalog" : "Download catalog"
 
   
 

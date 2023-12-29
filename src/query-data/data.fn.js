@@ -258,3 +258,17 @@ export const getTexNumbers = async () => {
     .then((res) => res.data)
     .catch((err) => err);
 };
+
+
+
+// CATALOG
+
+
+
+export const getCatalog = async () => {
+  return axios
+    .get("tex/catalogs")
+    .then((res) => res.data)
+    .catch((err) => err);
+};
+

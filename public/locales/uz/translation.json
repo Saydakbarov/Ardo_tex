@@ -65,7 +65,15 @@
     "filter" : "Filter",
     "exists": "Sotuvda mavjud",
     "not-exists": "Sotuvda mavjud emas",
-    "all" : "Barchasi"
+    "all" : "Barchasi",
+    "blue": "Ko'k",
+    "black": "Qora",
+    "gold": "Tillarang",
+    "green": "Yashil",
+    "red": "Qizil",
+    "violet": "Siyohrang",
+    "white": "Oq",
+    "download-catalog" : "Katalogni yuklash"
   
 
 

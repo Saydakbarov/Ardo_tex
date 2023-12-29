@@ -1,10 +1,12 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useCatalog } from "../../query-data/data.service";
 
 export default function AboutCompany() {
+  const { t, i18n } = useTranslation();
 
-  const {t, i18n} = useTranslation()
+  const { data: catalog } = useCatalog();
 
   return (
     <Container
@@ -12,8 +14,8 @@ export default function AboutCompany() {
         p: 2,
         background: "white",
         marginTop: {
-          md: "-100px"
-        }
+          md: "-100px",
+        },
       }}
     >
       <Grid container justifyContent={"center"} gap={8}>
@@ -30,8 +32,10 @@ export default function AboutCompany() {
           }}
         ></Grid>
         <Grid item lg={7} md={7} sm={10} xs={12} sx={{ padding: "0px 20px" }}>
-          <Typography  sx={{ fontSize: "34px", fontWeight: "600" }}>
-            {i18n?.language == "ru" ? t("welcome-to") : ""} <span style={{ color: "red" }}>Ardo Tex</span> {i18n?.language == "uz" ? t("welcome-to") : ""}.
+          <Typography sx={{ fontSize: "34px", fontWeight: "600" }}>
+            {i18n?.language == "ru" ? t("welcome-to") : ""}{" "}
+            <span style={{ color: "red" }}>Ardo Tex</span>{" "}
+            {i18n?.language == "uz" ? t("welcome-to") : ""}.
           </Typography>
           <Typography sx={{ color: "gray", mt: 2 }}>
             {t("about-desc")}
@@ -42,6 +46,30 @@ export default function AboutCompany() {
           <Typography sx={{ color: "gray", mt: 2 }}>
             {t("about-desc-2")}
           </Typography>
+
+          {catalog?.data?.map((item) => (
+            <Button
+              sx={{
+                width: "100%",
+                mt: 2,
+                bgcolor: "#000",
+                color: "#fff",
+                p: 2,
+                borderRadius: "12px",
+                transition: "500ms ease all",
+                border: "2px solid #000",
+                fontWeight: "600",
+                "&:hover" : {
+                  bgcolor: "#fff",
+                  color: "#000",
+                }
+              }}
+              target="_blank"
+              href={item.catalog_file_link}
+            >
+              {t("download-catalog")}
+            </Button>
+          ))}
         </Grid>
       </Grid>
     </Container>

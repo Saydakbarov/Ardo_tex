@@ -31,6 +31,7 @@ export default function ProductsPage() {
   const typeId = params.get("type");
   const colorId = params.get("color");
   const [brandId, setBrandId] = useState([]);
+  const [colors, setColors] = useState([]);
   const [offset, setOffset] = useState(0);
   const [limit, setLimit] = useState(20);
   const [priceFrom, setPriceFrom] = useState(0);
@@ -46,7 +47,10 @@ export default function ProductsPage() {
   
   setType(typeId ? typeId?.split(",") : [])
   setTechnology(techId ? techId?.split(",") : [])
-  }, [typeId, techId]);
+  setColors(colorId ? colorId?.split(",") : [])
+  }, [typeId, techId, colorId]);
+
+  console.log({colors});
 
   // const { data, refetch, isFetching } = useFilteredProducts({
   //   limit,
@@ -108,7 +112,7 @@ export default function ProductsPage() {
           search_uz: searchUz,
           search_ru: searchRu,
           search_en: searchEn,
-          color: colorId,
+          color: colors?.map(col => +col),
           brand_id: brandId,
           technology: technology,
           type,
@@ -300,6 +304,8 @@ export default function ProductsPage() {
         type={type}
         setType={setType}
         colorId={colorId}
+        colors={colors}
+        setColors={setColors}
       />
       <Footer />
     </Box>
