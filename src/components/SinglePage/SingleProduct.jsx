@@ -42,12 +42,22 @@ export default function SingleProduct({ data, isLoading }) {
   useEffect(() => {
     if (data?.data) {
       setCurrentTech(
-        technologies?.data?.find(
-          (el) => el?.technology_id == data?.data?.product_technology
-        )
+        data?.data?.product_technology
+          ? data?.data?.product_technology?.map((item) => {
+              let current = technologies?.data?.find(
+                (el) => el?.technology_id == item
+              );
+              return current;
+            })
+          : null
       );
       setCurrentType(
-        types?.data?.find((el) => el?.type_id == data?.data?.product_type)
+        data?.data?.product_type
+          ? data?.data?.product_type?.map((item) => {
+              let current = types?.data?.find((el) => el?.type_id == item);
+              return current;
+            })
+          : null
       );
     }
   }, [data, technologies, types]);
@@ -240,23 +250,25 @@ export default function SingleProduct({ data, isLoading }) {
                     {data?.data?.[`product_title_${i18n?.language ?? "uz"}`]}
                   </h2>
 
-                  <div className="flex items-center justify-end gap-3">
-                    {currentTech?.technology_image_url && (
-                      <img
-                        src={currentTech?.technology_image_url}
-                        loading="lazy"
-                        alt="technology"
-                        className="  w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px] object-contain"
-                      />
-                    )}
-                    {currentType?.type_image_url && (
-                      <img
-                        src={currentType?.type_image_url}
-                        loading="lazy"
-                        alt="type"
-                        className="  w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px] object-contain"
-                      />
-                    )}
+                  <div className="flex flex-wrap items-center justify-end gap-3">
+                    {currentTech &&
+                      currentTech?.map((item) => (
+                        <img
+                          src={item?.technology_image_url}
+                          loading="lazy"
+                          alt="technology"
+                          className={`${!item?.technology_image_url && "hidden"}  w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px] object-contain`}
+                        />
+                      ))}
+                    {currentType &&
+                      currentType?.map((item) => (
+                        <img
+                          src={item?.type_image_url}
+                          loading="lazy"
+                          alt="type"
+                          className={`${!item?.type_image_url && "hidden"} w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px] object-contain`}
+                        />
+                      ))}
                   </div>
                 </div>
                 <p

@@ -112,7 +112,7 @@ export default function ProductsPage() {
           search_uz: searchUz,
           search_ru: searchRu,
           search_en: searchEn,
-          color: colors?.map(col => +col),
+          color: colors,
           brand_id: brandId,
           technology: technology,
           type,
