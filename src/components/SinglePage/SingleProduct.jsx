@@ -257,6 +257,7 @@ export default function SingleProduct({ data, isLoading }) {
                           src={item?.technology_image_url}
                           loading="lazy"
                           alt="technology"
+                          key={item?.technology_id}
                           className={`${!item?.technology_image_url && "hidden"}  w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px] object-contain`}
                         />
                       ))}
@@ -266,6 +267,7 @@ export default function SingleProduct({ data, isLoading }) {
                           src={item?.type_image_url}
                           loading="lazy"
                           alt="type"
+                          key={item?.type_id}
                           className={`${!item?.type_image_url && "hidden"} w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px] object-contain`}
                         />
                       ))}
