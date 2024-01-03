@@ -23,7 +23,7 @@ function App() {
           <Route path="/news" element={<NewsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/single/:id" element={<SinglePage />} />
-          <Route path="/singlenews/:id" element={<SIngleNewPage />} />
+          <Route path="/news/:id" element={<SIngleNewPage />} />
         </Routes>
       </BrowserRouter>
     </div>

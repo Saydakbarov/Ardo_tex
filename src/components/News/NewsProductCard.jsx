@@ -46,11 +46,6 @@ export default function NewsProductCard() {
 
   const { data, isFetching, refetch } = useNews({ limit, offset });
 
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const [modalData, setModalData] = useState([]);
 
   // console.log(singleNews, "news");
 
@@ -81,8 +76,7 @@ export default function NewsProductCard() {
               sx={{ cursor: "pointer" }}
               component={"div"}
               onClick={() => {
-                handleOpen();
-                navigate(`/singlenews/${v?.new_id}`);
+                navigate(`/news/${v?.new_id}`);
               }}
             >
               <Box>
@@ -114,34 +108,7 @@ export default function NewsProductCard() {
         </Grid>
       )}
 
-      {/* <Dialog
-        open={open}
-        onClose={handleClose}
-        fullWidth
-        maxWidth={"lg"}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        
-        <DialogContent>
-        <Box sx={{ textAlign: "end" }}>
-            <IconButton onClick={handleClose}>
-              <Close sx={{ color: "black" }} />
-            </IconButton>
-          </Box>
-          <Box>
-           <img src={modalData.new_img} alt="" className="w-full h-auto" />
-            <Box>
-              <Typography sx={{ fontWeight: "600", fontSize: "18px" }}>
-                {modalData?.[`new_title_${i18n?.language ?? "uz"}`]}
-              </Typography>
-              <Typography  dangerouslySetInnerHTML={{__html: modalData?.[`new_description_${i18n?.language ?? "uz"}`]}} sx={{ mt: 2, fontSize: "14px" }}>
-               
-              </Typography>
-            </Box>
-          </Box>
-        </DialogContent>
-      </Dialog> */}
+     
     </Box>
   );
 }

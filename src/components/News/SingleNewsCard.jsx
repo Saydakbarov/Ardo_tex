@@ -8,7 +8,7 @@ import "./styles/SIngleCard.scss";
 export default function SingleNewsCard({ id }) {
   const { t, i18n } = useTranslation();
 
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     async function getNewsCard() {
@@ -37,21 +37,15 @@ export default function SingleNewsCard({ id }) {
 
             <Box>
               <Typography sx={{ fontWeight: "600", fontSize: "18px" }}>
-                {i18n?.language == "uz"
-                  ? data?.new_title_uz
-                  : i18n?.language == "ru"
-                  ? data?.new_title_ru
-                  : data?.new_title_en}
+                {
+                 data?.[`new_title_${i18n?.language ?? "uz"}`]}
               </Typography>
               <Box className="news_description">
                 <Typography
                   dangerouslySetInnerHTML={{
                     __html:
-                      i18n?.language == "uz"
-                        ? data?.new_description_uz
-                        : i18n?.language == "ru"
-                        ? data?.new_description_ru
-                        : data?.new_description_en,
+                      
+                      data?.[`new_description_${i18n?.language ?? "uz"}`]
                   }}
                   sx={{ mt: 2, fontSize: "14px" }}
                 ></Typography>

@@ -1,13 +1,9 @@
 import React from "react";
-import { Box, Grid, Typography } from "@mui/material";
-
+import { Box, Typography } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
-
 import { useTranslation } from "react-i18next";
-import { CertificateData } from "../../data";
 import { useCertificates } from "../../query-data/data.service";
-import PDFRenderer from "../pdf-renderer";
 
 export default function Certificate() {
   const { t } = useTranslation();
