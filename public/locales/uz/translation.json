@@ -62,7 +62,18 @@
     "no-work" : "Ishsiz",
     "want-to-leave" : "Ishdan bo'shamoqchi",
     "close" : "Yopish",
-    "filter" : "Filter"
+    "filter" : "Filter",
+    "exists": "Sotuvda mavjud",
+    "not-exists": "Sotuvda mavjud emas",
+    "all" : "Barchasi",
+    "blue": "Ko'k",
+    "black": "Qora",
+    "gold": "Tillarang",
+    "green": "Yashil",
+    "red": "Qizil",
+    "violet": "Siyohrang",
+    "white": "Oq",
+    "download-catalog" : "Katalogni yuklash"
   
 
 

@@ -34,20 +34,17 @@ export default function OurPartner() {
             disableOnInteraction: false,
           }}
           breakpoints={{
-            640: {
-              slidesPerView: 1,
-              spaceBetween: 20,
-            },
-            768: {
+           
+            0: {
               slidesPerView: 2,
               spaceBetween: 40,
             },
-            1024: {
+            754: {
               slidesPerView: 3,
               spaceBetween: 30,
             },
-            1500: {
-              slidesPerView: 3,
+            1000: {
+              slidesPerView: 4,
               spaceBetween: 30,
             },
           }}

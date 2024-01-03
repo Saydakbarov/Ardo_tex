@@ -62,7 +62,18 @@
     "no-work" : "Unemployed",
     "want-to-leave" : "Wants to leave work",
     "close" : "close",
-    "filter" : "Filter"
+    "filter" : "Filter",
+    "exists": "Available for sale",
+    "not-exists": "Not available for sale",
+    "all" : "All",
+    "blue": "Blue",
+    "black": "Black",
+    "gold": "Gold",
+    "green": "Green",
+    "red": "Red",
+    "violet": "Violet",
+    "white": "White",
+    "download-catalog" : "Download catalog"
 
   
 

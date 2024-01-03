@@ -28,7 +28,7 @@ export default function BestSeller() {
 
   return (
     <Box
-      sx={{ textAlign: "center", maxWidth: "1500px", margin: "0 auto", mt: 12 }}
+      sx={{ textAlign: "center", maxWidth: "1500px", margin: "0 auto", mt: {xs: 5, md: 12} }}
     >
       <Typography
         sx={{ fontSize: "34px", fontWeight: "600", textAlign: "center" }}

@@ -12,7 +12,7 @@ import OurPartner from "../components/Home/OurPartner";
 import DiscountedProducts from "../components/Home/DiscountProducts";
 import { Banner } from "../components/Home/Banner";
 
-export default function HomePage() {
+export default function  HomePage() {
   return (
     <Box>
       <Header />

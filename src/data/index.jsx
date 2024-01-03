@@ -1559,37 +1559,37 @@ export const AboutPageProductData = [
 export const colorsData = [
   {
     id: 1,
-    name: "Синий",
+    name: "blue",
     image: "/img/colors/blue.webp",
   },
   {
     id: 2,
-    name: "Черный",
+    name: "black",
     image: "/img/colors/black.webp",
   },
   {
     id: 3,
-    name: "Золотой",
+    name: "gold",
     image: "/img/colors/gold.webp",
   },
   {
     id: 4,
-    name: "Зеленый",
+    name: "green",
     image: "/img/colors/green.webp",
   },
   {
     id: 5,
-    name: "Красный",
+    name: "red",
     image: "/img/colors/red.webp",
   },
   {
     id: 6,
-    name: "Фиолетовый",
+    name: "violet",
     image: "/img/colors/violet.webp",
   },
   {
     id: 7,
-    name: "Белый",
+    name: "white",
     image: "/img/colors/white.webp",
   },
 ];

@@ -101,7 +101,7 @@ export default function NewsProductCard() {
                 ></Box>
                 <Box>
                   <Typography sx={{ fontWeight: "600", fontSize: "18px" }}>
-                    {i18n?.language == "uz" ? v?.new_title_uz : v?.new_title_ru}
+                    {v[`new_title_${i18n?.language ?? "uz"}`]}
                   </Typography>
                   {/* <Typography sx={{ mt: 2, fontSize: "14px" }}>
                   
@@ -133,13 +133,9 @@ export default function NewsProductCard() {
            <img src={modalData.new_img} alt="" className="w-full h-auto" />
             <Box>
               <Typography sx={{ fontWeight: "600", fontSize: "18px" }}>
-                {i18n?.language == "uz"
-                  ? modalData?.new_title_uz
-                  : modalData?.new_title_ru}
+                {modalData?.[`new_title_${i18n?.language ?? "uz"}`]}
               </Typography>
-              <Typography  dangerouslySetInnerHTML={{__html: i18n?.language == "uz"
-                  ? modalData?.new_description_uz
-                  : modalData?.new_description_ru}} sx={{ mt: 2, fontSize: "14px" }}>
+              <Typography  dangerouslySetInnerHTML={{__html: modalData?.[`new_description_${i18n?.language ?? "uz"}`]}} sx={{ mt: 2, fontSize: "14px" }}>
                
               </Typography>
             </Box>

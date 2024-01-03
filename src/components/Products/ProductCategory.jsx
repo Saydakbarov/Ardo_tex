@@ -5,11 +5,12 @@ import {
   FormControlLabel,
   FormGroup,
   Grid,
+  Stack,
   TextField,
   Typography,
 } from "@mui/material";
 import React from "react";
-import TuneIcon from '@mui/icons-material/Tune';
+import TuneIcon from "@mui/icons-material/Tune";
 import CloseIcon from "@mui/icons-material/Close";
 import { CategoryData, colorsData, technologiesData } from "../../data";
 import { useState } from "react";
@@ -47,6 +48,8 @@ export default function ProductCategory({
   types,
   type,
   colorId,
+  colors,
+  setColors
 }) {
   
 
@@ -55,17 +58,24 @@ export default function ProductCategory({
 
   const [offsetNum, setOffsetNum] = useState(1);
 
-  const [filter, setFilter] = useState(false)
+  const [filter, setFilter] = useState(false);
 
   console.log(technology);
   return (
     <Box>
       <div className="max-w-[1250px] px-4 mx-auto flex flex-col md:flex-row gap-10 py-6">
-        <div className={`${filter ? "fixed z-[100] md:sticky" : "hidden md:block"}  top-0 left-0 bg-white p-5 w-full h-screen overflow-x-auto md:h-auto  md:shrink-0 md:w-[25%]`}>
+        <div
+          className={`${
+            filter ? "fixed z-[100] md:sticky" : "hidden md:block"
+          }  top-0 left-0 bg-white p-5 w-full h-screen overflow-x-auto md:h-auto  md:shrink-0 md:w-[25%]`}
+        >
           <div className="md:hidden flex justify-end">
-            <Button style={{color: "#000"}} onClick={() => {
-              setFilter(false)
-            }} >
+            <Button
+              style={{ color: "#000" }}
+              onClick={() => {
+                setFilter(false);
+              }}
+            >
               <CloseIcon />
             </Button>
           </div>
@@ -120,9 +130,7 @@ export default function ProductCategory({
                       fontFamily: "Gilroy",
                     }}
                   >
-                    {i18n?.language == "uz"
-                      ? v.category_name_uz
-                      : v.category_name_ru}
+                    {v[`category_name_${i18n?.language ?? "uz"}`]}
                   </Typography>
                 </Link>
               ))}
@@ -154,9 +162,7 @@ export default function ProductCategory({
                       fontFamily: "Gilroy",
                     }}
                   >
-                    {i18n?.language == "uz"
-                      ? v.sub_category_name_uz
-                      : v.sub_category_name_ru}
+                    {v[`sub_category_name_${i18n?.language ?? "uz"}`]}
                   </Typography>
                 </Link>
               ))}
@@ -194,9 +200,7 @@ export default function ProductCategory({
                       fontFamily: "Gilroy",
                     }}
                   >
-                    {i18n?.language == "uz"
-                      ? v.second_sub_category_name_uz
-                      : v.second_sub_category_name_ru}
+                    {v[`second_sub_category_name_${i18n?.language ?? "uz"}`]}
                   </Typography>
                 </Link>
               ))}
@@ -427,7 +431,7 @@ export default function ProductCategory({
             </Box>
           </Box>
 
-          <div
+          {/* <div
             style={{
               display: "flex",
               alignItems: "center",
@@ -449,7 +453,7 @@ export default function ProductCategory({
               type="number"
               fullWidth
             />
-          </div>
+          </div> */}
           <Box sx={{ mt: 3 }}>
             <Typography
               sx={{
@@ -461,77 +465,146 @@ export default function ProductCategory({
             >
               {t("colors")}
             </Typography>
-            <Box sx={{ display: "flex", gap: "10px", flexWrap: "wrap", mt: 1 }}>
+            <Stack mt={1} spacing={1}>
               {colorsData?.map((item) => (
-                <button
-                  style={{
-                    width: "30px",
-                    height: "30px",
-                    borderRadius: "4px",
-                    overflow: "hidden",
-                    margin: "0px",
-                    padding: 0,
-                    border: colorId == item?.id ? "2.5px solid black" : 0,
-                    cursor: "pointer",
-                  }}
-                  onClick={() => {
-                    if (item?.id == colorId) {
-                      const res = `/product?${
-                        categoryId ? "category=" + categoryId : ""
-                      }${subCategoryId ? "&subcategory=" + subCategoryId : ""}${
-                        secondSubCategoryId
-                          ? "&secondsubcategory=" + secondSubCategoryId
-                          : ""
-                      }${type?.length ? "&type=" + type?.join(",") : ""}${
-                        technology?.length
-                          ? "&tech=" + technology?.join(",")
-                          : ""
-                      }`;
-                      console.log(res);
-                      navigate(res);
-                    } else {
-                      const res = `/product?${
-                        categoryId ? "category=" + categoryId : ""
-                      }${subCategoryId ? "&subcategory=" + subCategoryId : ""}${
-                        secondSubCategoryId
-                          ? "&secondsubcategory=" + secondSubCategoryId
-                          : ""
-                      }${type?.length ? "&type=" + type?.join(",") : ""}${
-                        technology?.length
-                          ? "&tech=" + technology?.join(",")
-                          : ""
-                      }${"&color=" + item.id}`;
-                      console.log(res);
-                      navigate(res);
-                    }
-                  }}
-                >
-                  <img
-                    src={item.image}
-                    alt={item?.name}
-                    className=""
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                </button>
+                <FormControlLabel
+                  style={{ fontWeight: 300 }}
+                  control={
+                    <Checkbox
+                      // value={item.id}
+                      checked={colors?.includes(`${item.id}`)}
+                      onChange={() => {
+
+                        const colorsId = colors?.includes(`${item.id}`) ? colors?.filter(el => el != item.id) : [item.id, ...colors]
+                        const res = `/product?${
+                          categoryId ? "category=" + categoryId : ""
+                        }${subCategoryId ? "&subcategory=" + subCategoryId : ""}${
+                          secondSubCategoryId
+                            ? "&secondsubcategory=" + secondSubCategoryId
+                            : ""
+                        }${type?.length ? "&type=" + type?.join(",") : ""}${
+                          technology?.length
+                            ? "&tech=" + technology?.join(",")
+                            : ""
+                        }${ colorsId.length ? ("&color=" + colorsId?.join(",")) : ""}`;
+                        console.log(res);
+                        navigate(res);
+                        // if (item?.id == colorId) {
+                        //         const res = `/product?${
+                        //           categoryId ? "category=" + categoryId : ""
+                        //         }${subCategoryId ? "&subcategory=" + subCategoryId : ""}${
+                        //           secondSubCategoryId
+                        //             ? "&secondsubcategory=" + secondSubCategoryId
+                        //             : ""
+                        //         }${type?.length ? "&type=" + type?.join(",") : ""}${
+                        //           technology?.length
+                        //             ? "&tech=" + technology?.join(",")
+                        //             : ""
+                        //         }`;
+                        //         console.log(res);
+                        //         navigate(res);
+                        //       } else {
+                               
+                        //       }
+                      }}
+                     
+                      
+                    />
+                  }
+                  label={
+                   <Stack direction={"row"} spacing={1} >
+                    <img src={item.image} alt="" className="w-[30px] h-[30px] object-cover" />
+                     <Typography
+                      style={{ fontWeight: 300, fontFamily: "Gilroy" }}
+                    >
+                      {t(item?.name)}
+                    </Typography>
+                   </Stack>
+                  }
+                />
+                // <button
+                //   style={{
+                //     width: "30px",
+                //     height: "30px",
+                //     borderRadius: "4px",
+                //     overflow: "hidden",
+                //     margin: "0px",
+                //     padding: 0,
+                //     border: colorId == item?.id ? "3px solid #363131" : 0,
+                //     cursor: "pointer",
+                //   }}
+                //   onClick={() => {
+                //     if (item?.id == colorId) {
+                //       const res = `/product?${
+                //         categoryId ? "category=" + categoryId : ""
+                //       }${subCategoryId ? "&subcategory=" + subCategoryId : ""}${
+                //         secondSubCategoryId
+                //           ? "&secondsubcategory=" + secondSubCategoryId
+                //           : ""
+                //       }${type?.length ? "&type=" + type?.join(",") : ""}${
+                //         technology?.length
+                //           ? "&tech=" + technology?.join(",")
+                //           : ""
+                //       }`;
+                //       console.log(res);
+                //       navigate(res);
+                //     } else {
+                //       const res = `/product?${
+                //         categoryId ? "category=" + categoryId : ""
+                //       }${subCategoryId ? "&subcategory=" + subCategoryId : ""}${
+                //         secondSubCategoryId
+                //           ? "&secondsubcategory=" + secondSubCategoryId
+                //           : ""
+                //       }${type?.length ? "&type=" + type?.join(",") : ""}${
+                //         technology?.length
+                //           ? "&tech=" + technology?.join(",")
+                //           : ""
+                //       }${"&color=" + item.id}`;
+                //       console.log(res);
+                //       navigate(res);
+                //     }
+                //   }}
+                // >
+                //   <img
+                //     src={item.image}
+                //     alt={item?.name}
+                //     className=""
+                //     style={{
+                //       width: "100%",
+                //       height: "100%",
+                //       objectFit: "cover",
+                //     }}
+                //   />
+                // </button>
               ))}
-            </Box>
+            </Stack>
           </Box>
-          <div className="flex items-center justify-center mt-4 ">
-            <button className="px-4 py-2 bg-black text-white rounded-md max-w-[250px] text-base uppercase w-full" onClick={() => {
-              setFilter(false)
-            }} >{t("close")}</button>
+          <div className="flex md:hidden items-center justify-center mt-4 ">
+            <button
+              className="px-4 py-2 bg-black text-white rounded-md max-w-[250px] text-base uppercase w-full"
+              onClick={() => {
+                setFilter(false);
+              }}
+            >
+              {t("close")}
+            </button>
           </div>
         </div>
 
         <div className="grow">
-        <div className="md:hidden">
-            <Button sx={{color: "#000", fontSize: "16px", display: "flex", alignItems: "center", gap: "8px"}} onClick={() => {
-              setFilter(true)
-            }} >
+          <div className="md:hidden">
+            <Button
+              sx={{
+                color: "#000",
+                fontSize: "16px",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+              }}
+              onClick={() => {
+                setFilter(true);
+              }}
+            >
               <TuneIcon />
               {t("filter")}
             </Button>

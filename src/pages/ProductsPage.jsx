@@ -31,6 +31,7 @@ export default function ProductsPage() {
   const typeId = params.get("type");
   const colorId = params.get("color");
   const [brandId, setBrandId] = useState([]);
+  const [colors, setColors] = useState([]);
   const [offset, setOffset] = useState(0);
   const [limit, setLimit] = useState(20);
   const [priceFrom, setPriceFrom] = useState(0);
@@ -46,7 +47,10 @@ export default function ProductsPage() {
   
   setType(typeId ? typeId?.split(",") : [])
   setTechnology(techId ? techId?.split(",") : [])
-  }, [typeId, techId]);
+  setColors(colorId ? colorId?.split(",") : [])
+  }, [typeId, techId, colorId]);
+
+  console.log({colors});
 
   // const { data, refetch, isFetching } = useFilteredProducts({
   //   limit,
@@ -105,12 +109,10 @@ export default function ProductsPage() {
           category_id: categoryId,
           sub_category_id: subCategoryId,
           second_sub_category_id: secondSubCategoryId,
-          price_from: priceFrom,
-          price_to: priceTo,
           search_uz: searchUz,
           search_ru: searchRu,
           search_en: searchEn,
-          color: colorId,
+          color: colors,
           brand_id: brandId,
           technology: technology,
           type,
@@ -128,8 +130,6 @@ export default function ProductsPage() {
     secondSubCategoryId,
     brandId,
     offset,
-    priceFrom,
-    priceTo,
     searchEn,
     searchRu,
     searchUz,
@@ -304,6 +304,8 @@ export default function ProductsPage() {
         type={type}
         setType={setType}
         colorId={colorId}
+        colors={colors}
+        setColors={setColors}
       />
       <Footer />
     </Box>
