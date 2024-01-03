@@ -73,7 +73,7 @@ export default function ProductsPage() {
 
   const [data, setData] = useState(null);
 
-  console.log(data, "datat");
+  console.log(data, "data");
 
   useEffect(() => {
     const fetchData = async () => {

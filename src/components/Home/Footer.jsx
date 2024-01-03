@@ -22,7 +22,7 @@ import { useNumbers } from "../../query-data/data.service";
 export default function Footer() {
   const navigate = useNavigate();
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const { data, isLoading } = useNumbers();
 
@@ -33,7 +33,7 @@ export default function Footer() {
           xs: 4,
           sm: 6,
           md: 12,
-          lg: 16
+          lg: 16,
         },
         background: "#E4EEF1",
         p: 3,
@@ -66,7 +66,11 @@ export default function Footer() {
             <Box sx={{ display: "flex", gap: "15px", mt: 2 }}>
               <Place sx={{ color: "#307BC4" }} />
               <Typography sx={{ color: "#274760" }}>
-                Узбекистан, г. Ташкент, Кичик Халка Йули (Улугбек),
+                {i18n?.language === "ru"
+                  ? "Узбекистан, Ташкент, маленькая дорога (Улугбек)"
+                  : i18n?.language === "uz"
+                  ? "O'zbekiston, Toshkent, kichik xalqa yoli (Ulug'bek)"
+                  : "Uzbekistan, Tashkent, Small Street (Ulugbek)"}
               </Typography>
             </Box>
             <Box
@@ -109,11 +113,16 @@ export default function Footer() {
 
         <Grid item lg={3}>
           <div className="flex flex-col items-center gap-3">
-            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
               {MenuData.map((item, i) => (
                 <Button
                   key={i}
-                  
                   sx={{
                     color: "#274760",
                     // fontFamily: "Barlow",

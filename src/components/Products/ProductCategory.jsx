@@ -48,14 +48,7 @@ export default function ProductCategory({
   type,
   colorId,
 }) {
-  // const [categoryId, setCategoryId] = useState(1);
-
-  // const [value, setValue] = React.useState([20000, 1000000]);
-
-  // const handleChange = (event, newValue) => {
-  //   setValue(newValue);
-  // };
-  // console.log(categoryId);
+  
 
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();

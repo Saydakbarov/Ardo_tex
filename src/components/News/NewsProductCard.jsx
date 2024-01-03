@@ -21,6 +21,7 @@ import { NewsPageProduct } from "../../data";
 import { useTranslation } from "react-i18next";
 import { useNews } from "../../query-data/data.service";
 import { Close } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -38,6 +39,8 @@ const style = {
 export default function NewsProductCard() {
   const { t, i18n } = useTranslation();
 
+  const navigate = useNavigate();
+
   const [offset, setOffset] = useState(0);
   const [limit, setLimit] = useState(20);
 
@@ -49,7 +52,7 @@ export default function NewsProductCard() {
 
   const [modalData, setModalData] = useState([]);
 
-  console.log(data, "news");
+  // console.log(singleNews, "news");
 
   // console.log(modalData);
   return (
@@ -79,7 +82,7 @@ export default function NewsProductCard() {
               component={"div"}
               onClick={() => {
                 handleOpen();
-                setModalData(v);
+                navigate(`/singlenews/${v?.new_id}`);
               }}
             >
               <Box>
@@ -111,7 +114,7 @@ export default function NewsProductCard() {
         </Grid>
       )}
 
-      <Dialog
+      {/* <Dialog
         open={open}
         onClose={handleClose}
         fullWidth
@@ -142,7 +145,7 @@ export default function NewsProductCard() {
             </Box>
           </Box>
         </DialogContent>
-      </Dialog>
+      </Dialog> */}
     </Box>
   );
 }

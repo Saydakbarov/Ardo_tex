@@ -6,14 +6,12 @@ import ContactPage from "./pages/ContactPage";
 import ProductsPage from "./pages/ProductsPage";
 import VacancyPage from "./pages/VacancyPage";
 import SinglePage from "./pages/SinglePage";
-import "./i18n"
-import { useEffect } from "react";
+import "./i18n";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import SIngleNewPage from "./components/News/SIngleNewPage";
 
 function App() {
-
-
-
   return (
     <div className="globalContainer pt-[90px]">
       <BrowserRouter>
@@ -25,6 +23,7 @@ function App() {
           <Route path="/news" element={<NewsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/single/:id" element={<SinglePage />} />
+          <Route path="/singlenews/:id" element={<SIngleNewPage />} />
         </Routes>
       </BrowserRouter>
     </div>

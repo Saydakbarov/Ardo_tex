@@ -5,7 +5,7 @@ import NewsProductCard from "./NewsProductCard";
 import { useTranslation } from "react-i18next";
 
 export default function NewsProducts() {
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   return (
     <Box
       sx={{
@@ -18,7 +18,7 @@ export default function NewsProducts() {
       <Typography sx={{ fontSize: "40px", textAlign: "center", mt: 4 }}>
         {t("news")}
       </Typography>
-      <NewsProductCard />
+      <NewsProductCard  />
     </Box>
   );
 }
