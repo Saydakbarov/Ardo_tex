@@ -5,7 +5,7 @@ import { Business, Email, Phone } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
 
 export default function ContactCompany() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <Container
@@ -48,7 +48,11 @@ export default function ContactCompany() {
           <Box sx={{ p: 3 }}>
             <Typography sx={{ fontSize: "24px" }}>{t("contact-us")}</Typography>
             <Typography sx={{ color: "gray", fontSize: "14px", mt: 3 }}>
-              {t("quality-for-all")}
+              {i18n.language === "ru"
+                ? "Надежно Качественно Для Всех!"
+                : i18n.language === "uz"
+                ? "Hamma uchun ishonchli sifat!"
+                : "Reliable quality for everyone!"}
             </Typography>
             <Box sx={{ mt: 3 }}>
               <a
@@ -67,7 +71,11 @@ export default function ContactCompany() {
               </a>
 
               <Typography sx={{ mt: 2, color: "gray", fontSize: "14px" }}>
-                Узбекистан, г. Ташкент, Кичик Халка Йули (Улугбек),
+                {i18n.language === "ru"
+                  ? " Узбекистан, г. Ташкент, Кичик Халка Йули (Улугбек)"
+                  : i18n.language === "uz"
+                  ? "Oʻzbekiston, Toshkent, Kichik xalqa yoʻli (Ulugʻbek)"
+                  : "Uzbekistan, Tashkent, Small People's Road (Ulugbek)"}
               </Typography>
             </Box>
 
