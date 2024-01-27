@@ -4,6 +4,7 @@ import React, { useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useSubCategories } from "../../query-data/data.service";
+import { generateSlug } from "../../utils/functions";
 
 export default function SingleMain({ data }) {
   const { t, i18n } = useTranslation();
@@ -82,7 +83,7 @@ export default function SingleMain({ data }) {
             </>
           )}
           <Link
-            to={`/single/${data?.data?.product_id}`}
+            to={`/single/${data?.data?.product_id}/${generateSlug(data?.data?.product_title_en)}`}
             style={{ color: "red", textDecoration: "none" }}
           >
             {data?.data[`product_title_${i18n?.language ?? "uz"}`]}

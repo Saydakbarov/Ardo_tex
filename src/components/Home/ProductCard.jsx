@@ -23,6 +23,7 @@ import { Favorite, IosShare, ShoppingBag } from "@mui/icons-material";
 import { BestSellerData } from "../../data";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
+import { generateSlug } from "../../utils/functions";
 
 export default function ProductsCard({ data }) {
   const [ratingValue, setRatingValue] = useState(0);
@@ -84,7 +85,7 @@ export default function ProductsCard({ data }) {
                     <Link
                       className="product-card"
                       style={{ textDecoration: "none", color: "inherit" }}
-                      to={`/single/${v?.product_id}`}
+                      to={`/single/${v?.product_id}/${generateSlug(v?.product_title_en)}`}
                     >
                       <Box>
                         {/* <Box

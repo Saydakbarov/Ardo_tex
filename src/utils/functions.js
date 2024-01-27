@@ -16,4 +16,12 @@ const handleCheckboxChange = (state, setState, id) => {
     }
   }
 
-  export {handleCheckboxChange, youTubeLinkParser}
+ const generateSlug = (inputString) => {
+    return inputString
+      ?.toLowerCase()
+      ?.replace(/[^a-z0-9]/g, '-')
+      ?.replace(/-+/g, '-')
+      ?.replace(/^-|-$/g, '');
+  }
+
+  export {handleCheckboxChange, youTubeLinkParser, generateSlug}

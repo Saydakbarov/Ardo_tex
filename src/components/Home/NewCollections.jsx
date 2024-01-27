@@ -12,6 +12,7 @@ import { Pagination } from "swiper/modules";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import { generateSlug } from "../../utils/functions";
 
 export default function NewCollections() {
   // const { data, isLoading, refetch } = useSubCategories("4");
@@ -66,7 +67,7 @@ export default function NewCollections() {
         <div  className="grid grid-cols-1 tel:grid-cols-2 smd:grid-cols-3 lg:grid-cols-4 gap-3" >
           {data?.data?.map((v, i) => (
             <div className="w-full" >
-              <Link className="w-full" to={`/single/${v?.product_id}`}>
+              <Link className="w-full" to={`/single/${v?.product_id}/${generateSlug(v?.product_title_en)}`}>
                 <div className="relative">
                   <p
                     className={
@@ -144,7 +145,7 @@ export default function NewCollections() {
             {data?.data?.map((v, i) => (
               <Grid item key={v?.product_id} sx={{ borderRadius: "6px" }}>
                 <SwiperSlide className="swiperSlideBox">
-                  <Link className="w-full" to={`/single/${v?.product_id}`}>
+                  <Link className="w-full" to={`/single/${v?.product_id}/${generateSlug(v?.product_title_en)}`}>
                     <div className="relative">
                       <p
                         className={

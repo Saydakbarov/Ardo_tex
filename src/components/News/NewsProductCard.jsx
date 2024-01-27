@@ -22,6 +22,7 @@ import { useTranslation } from "react-i18next";
 import { useNews } from "../../query-data/data.service";
 import { Close } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { generateSlug } from "../../utils/functions";
 
 const style = {
   position: "absolute",
@@ -76,7 +77,7 @@ export default function NewsProductCard() {
               sx={{ cursor: "pointer" }}
               component={"div"}
               onClick={() => {
-                navigate(`/news/${v?.new_id}`);
+                navigate(`/news/${v?.new_id}/${generateSlug(v?.new_title_en)}`);
               }}
             >
               <Box>

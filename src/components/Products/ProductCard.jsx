@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { generateSlug } from "../../utils/functions";
 
 export default function ProductCard({ data }) {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ export default function ProductCard({ data }) {
           key={v.id}
           
           component={"div"}
-          onClick={() => navigate("/single/" + v.product_id)}
+          onClick={() => navigate("/single/" + v.product_id + `/${generateSlug(v?.product_title_en)}`)}
         >
           <div className="relative">
             <img
