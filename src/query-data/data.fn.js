@@ -276,4 +276,4 @@ export const getCatalog = async () => {
 
 
 
-export const getSecurity = () => axios.get("/slug").then(res => res.data).catch(err => err)
+export const getSlug = () => axios.get("/slug").then(res => res.data).catch(err => err)

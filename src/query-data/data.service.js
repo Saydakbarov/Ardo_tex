@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getAds, getBrands, getCatalog, getCategories, getCertificates, getFilteredProducts, getNews, getOneProduct, getPartners, getSecondSubCategories, getSecurity, getSliders, getSubCategories, getTechnologies, getTexNumbers, getTypes, getVideos } from "./data.fn";
+import { getAds, getBrands, getCatalog, getCategories, getCertificates, getFilteredProducts, getNews, getOneProduct, getPartners, getSecondSubCategories, getSlug, getSliders, getSubCategories, getTechnologies, getTexNumbers, getTypes, getVideos } from "./data.fn";
 
 //  CATEGORIES
 
@@ -95,4 +95,4 @@ export const useCatalog = () => useQuery({queryFn: getCatalog, queryKey: ["catal
 
 
 
-export const useSecurity = () => useQuery({queryFn: getSecurity, queryKey: ["security"]})
+export const useSlug = () => useQuery({queryFn: getSlug, queryKey: ["slug"]})

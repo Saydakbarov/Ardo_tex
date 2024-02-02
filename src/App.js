@@ -7,15 +7,13 @@ import ProductsPage from "./pages/ProductsPage";
 import VacancyPage from "./pages/VacancyPage";
 import SinglePage from "./pages/SinglePage";
 import "./i18n";
-import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 import SIngleNewPage from "./components/News/SIngleNewPage";
-import { SecurityProvider } from "./context/securityProvider";
+import { MainProvider } from "./context/mainProvider";
 
 function App() {
   return (
     <div className="globalContainer pt-[90px]">
-      <SecurityProvider>
+      <MainProvider>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -30,7 +28,7 @@ function App() {
             <Route path="/news/:id/:slug" element={<SIngleNewPage />} />
           </Routes>
         </BrowserRouter>
-      </SecurityProvider>
+      </MainProvider>
     </div>
   );
 }

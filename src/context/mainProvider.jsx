@@ -1,10 +1,10 @@
-import { createContext, useEffect } from "react"
-import { useSecurity } from "../query-data/data.service"
+import { useEffect } from "react"
+import { useSlug } from "../query-data/data.service"
 
 
-export const SecurityProvider = ({children}) => {
+export const MainProvider = ({children}) => {
 
-    const {data, refetch} = useSecurity()
+    const {data, refetch} = useSlug()
 
     useEffect(() => {
         refetch()
