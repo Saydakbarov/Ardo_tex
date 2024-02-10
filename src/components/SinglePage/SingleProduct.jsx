@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import React, { lazy, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Magnifier from "react-magnifier";
@@ -289,6 +289,13 @@ export default function SingleProduct({ data, isLoading }) {
                   }}
                   className="single-product-model"
                 ></div>
+
+                {data?.data?.product_pdf_url && (
+                  <Link target="_blank" to={data?.data?.product_pdf_url} className="w-fit p-2 md:p-3 border-2 border-black rounded-md flex items-center gap-2 text-lg md:text-xl" >
+                    <span className="">{data?.data?.[`product_button_text_${i18n.language ?? "uz"}`]}</span>
+                    <img src="/img/download.png" alt="" className="w-[30px] h-[30px] object-contain" />
+                  </Link>
+                )}
 
                 {data?.data?.product_video_link && (
                   <div className={"w-full h-[300px]"}>
