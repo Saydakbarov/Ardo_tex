@@ -291,9 +291,9 @@ export default function SingleProduct({ data, isLoading }) {
                 ></div>
 
                 {data?.data?.product_pdf_url && (
-                  <Link target="_blank" to={data?.data?.product_pdf_url} className="w-fit p-2 md:p-3 border-2 border-black rounded-md flex items-center gap-2 text-lg md:text-xl" >
+                  <Link target="_blank" to={data?.data?.product_pdf_url} className="w-fit p-2 border-2 border-black rounded-md flex items-center gap-2 text-sm md:text-base" >
                     <span className="">{data?.data?.[`product_button_text_${i18n.language ?? "uz"}`]}</span>
-                    <img src="/img/download.png" alt="" className="w-[30px] h-[30px] object-contain" />
+                    <img src="/img/download.png" alt="" className="w-[20px] h-[20px] object-contain" />
                   </Link>
                 )}
 
