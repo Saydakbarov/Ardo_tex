@@ -13,7 +13,7 @@ import {
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Logo from "../../logo.png";
+// import Logo from "../../logo.png";
 import { MenuData } from "../../data";
 import { useTranslation } from "react-i18next";
 import FormContact from "../Contact/FormContact";
@@ -55,7 +55,7 @@ export default function Footer() {
           >
             <Link className="block w-fit" to={"/"}>
               <img
-                src={Logo}
+                src={"/img/logo.png"}
                 alt=""
                 className="w-[100px] h-[100px] object-contain"
               />

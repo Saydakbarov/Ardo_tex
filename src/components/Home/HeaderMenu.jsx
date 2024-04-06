@@ -15,7 +15,7 @@ import { MenuData } from "../../data";
 import DrawerComp from "./DrawerComp";
 import { Facebook, Instagram, Telegram, YouTube } from "@mui/icons-material";
 
-import Logo from "../../logo.png";
+// import Logo from "../../logo.png";
 import { useTranslation } from "react-i18next";
 import SearchComponent from "./SearchComponent";
 import { languages } from "../../utils/consts";
@@ -93,7 +93,7 @@ export default function HeaderMenu() {
                       width: "150px",
                       cursor: "pointer",
                     }}
-                    src={Logo}
+                    src={"/img/logo.png"}
                     onClick={() => navigate("/")}
                     alt=""
                   />
@@ -228,7 +228,7 @@ export default function HeaderMenu() {
                         width: "100px",
                         cursor: "pointer",
                       }}
-                      src={Logo}
+                      src={"/img/logo.png"}
                       onClick={() => navigate("/")}
                       alt=""
                     />
