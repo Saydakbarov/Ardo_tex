@@ -33,19 +33,17 @@ export default function AboutCompany() {
         ></Grid>
         <Grid item lg={7} md={7} sm={10} xs={12} sx={{ padding: "0px 20px" }}>
           <Typography sx={{ fontSize: "34px", fontWeight: "600" }}>
-            {i18n?.language == "ru" ? t("welcome-to") : ""}{" "}
+            {/* {i18n?.language == "ru" ? t("welcome-to") : ""}{" "}
             <span style={{ color: "red" }}>Ardo Tex</span>{" "}
-            {i18n?.language == "uz" ? t("welcome-to") : ""}.
+            {i18n?.language == "uz" ? t("welcome-to") : ""}. */}
+            {t("about-1")}
           </Typography>
-          <Typography sx={{ color: "gray", mt: 2 }}>
-            {t("about-desc")}
-          </Typography>
-          <Typography sx={{ fontSize: "22px", fontWeight: "550", mt: 4 }}>
-            {t("about-head-2")}
-          </Typography>
-          <Typography sx={{ color: "gray", mt: 2 }}>
-            {t("about-desc-2")}
-          </Typography>
+          <Typography sx={{ color: "gray", mt: 2 }}>{t("about-2")}</Typography>
+          {/* <Typography sx={{ fontSize: "22px", fontWeight: "550", mt: 4 }}>
+            {t("about-3")}
+          </Typography> */}
+          <Typography sx={{ color: "gray", mt: 2 }}>{t("about-3")}</Typography>
+          <Typography sx={{ color: "gray", mt: 2 }}>{t("about-4")}</Typography>
 
           {catalog?.data?.map((item) => (
             <Button
@@ -59,10 +57,10 @@ export default function AboutCompany() {
                 transition: "500ms ease all",
                 border: "2px solid #000",
                 fontWeight: "600",
-                "&:hover" : {
+                "&:hover": {
                   bgcolor: "#fff",
                   color: "#000",
-                }
+                },
               }}
               target="_blank"
               href={item.catalog_file_link}
@@ -72,6 +70,15 @@ export default function AboutCompany() {
           ))}
         </Grid>
       </Grid>
+
+      <Box sx={{textAlign: "center"}} >
+        {/* <Typography sx={{ fontSize: "34px", fontWeight: "600" }}>
+          {t("about-5")}
+        </Typography> */}
+        <Typography sx={{ color: "gray", mt: 2 }}>{t("about-5")}</Typography>
+        <Typography sx={{ color: "gray", mt: 2 }}>{t("about-6")}</Typography>
+        <Typography sx={{ color: "gray", mt: 2 }}>{t("about-7")}</Typography>
+      </Box>
     </Container>
   );
 }

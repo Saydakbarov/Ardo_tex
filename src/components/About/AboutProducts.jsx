@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 export default function AboutProduct() {
 
-  const {i18n} = useTranslation()
+  const {t} = useTranslation()
 
   return (
     <Box sx={{ mt: 3 , p:2}}>
@@ -19,9 +19,9 @@ export default function AboutProduct() {
                 alt=""
               />
               <Typography sx={{ mt: 1, fontWeight: "bold" }}>
-                {i18n?.language == "uz" ?  v.title_uz : v.title_ru}
+                {t(v?.title)}
               </Typography>
-              <Typography sx={{ mt: 2, color: "gray" }}>{i18n?.language == "uz" ? v.text_uz : v.text_ru}</Typography>
+              <Typography sx={{ mt: 2, color: "gray" }}>{t(v?.text)}</Typography>
             </Box>
           </Grid>
         ))}

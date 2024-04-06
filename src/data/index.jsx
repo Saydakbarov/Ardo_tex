@@ -240,30 +240,21 @@ export const PartnerData = [
 export const AboutPageProductData = [
   {
     img: "https://ukrlinen.com/modules/xipblog/img/large-about-advantages.jpg",
-    title_uz: "Mebel uchun matolar",
-    title_ru: "ТКАНИ ДЛЯ МЕБЕЛИ",
-    text_uz:
-      "Har qanday divan, kreslo yoki stulning 'yuzi' uning qoplamasi hisoblanadi. Uning yordami bilan siz ichki buyumlarga ma'lum bir uslubni berishingiz, ularni yanada qulayroq qilishingiz yoki eksklyuzivligini ta'kidlashingiz mumkin. Bizning do'konimizda mebel qoplamasi uchun rang, tekstura, zichlikdagi matolarni xarid qilishingiz mumkin, ular sizning interyeringizga eng mos tushadi va sevimli divaningizga yangi hayot bag'ishlaydi.",
-    text_ru:
-      "«Лицо» любого дивана, кресла или стула – его обивка. С её помощью можно придать предметам интерьера определённый стиль, сделать их более уютными или акцентировать их эксклюзивность. В нашем магазине вы можете купить ткань для обивки мебели той расцветки, фактуры, плотности, которая максимально гармонично впишется в ваш интерьер и вдохнёт новую жизнь в любимый диванчик.",
+    title: "about-p-1-head",
+    text: "about-p-1-desc",
+   
   },
   {
     img: "https://slavamebel.ru/images/page/78357836.jpg",
-    title_uz: "Mebellar uchun mexanizmlar",
-    title_ru: "МЕХАНИЗМЫ ДЛЯ МЕБЕЛИ",
-    text_uz:
-      "Tasavvur qiling-a, mebelni to'g'ri tanlash bilan siz bir nechta oddiy harakatlar qilishingiz kerak va sehrli mexanizm tufayli divan hashamatli uyqu yoki dam olish joyiga aylanadi. Kvartiradagi mebel esdalik sovg'asi bo'lmasligi kerak, u ishlatilishi va har bir uyga qulaylik keltirishi kerak, shuning uchun mexanizmlardan foydalanishga e'tibor berish juda muhimdir.",
-    text_ru:
-      "Представьте себе, что при правильном выборе мебели, вам достаточно сделать несколько нехитрых движений, и благодаря волшебному механизму, диван превратится в шикарное спальное место или место для отдыха. Мебель в квартире не должна быть сувениром, она должна использоваться и приносить комфорт в каждый дом, поэтому крайне важно уделять внимание использованию механизмов.",
+    title: "about-p-2-head",
+    text: "about-p-2-desc",
+   
   },
   {
     img: "https://www.angstrem-mebel.ru/upload/medialibrary/e21/o78ohc6d948jqwyimoja1jpxpu0k1lij.png",
-    title_uz: "Mebel aksesuarlari",
-    title_ru: "ФУРНИТУРА ДЛЯ МЕБЕЛИ",
-    text_uz:
-      "Mebel sotib olayotganda, biz birinchi navbatda uning tashqi ko'rinishini baholaymiz. Ammo xaridorlar uning qancha davom etishi va mebel qanchalik amaliy, funktsional va ishonchli bo'lishi haqida kamroq o'ylashadi. Ammo bu sifatli mebel jihozlari mahsulotlarning uzoq umr ko'rishining kalitidir.",
-    text_ru:
-      "Когда мы приобретаем мебель, то, в первую очередь, оцениваем ее внешний вид. Но о том, как долго она может прослужить и насколько мебель будет практична, функциональна и надежна, покупатели задумываются гораздо реже. А ведь именно мебельная фурнитура хорошего качества является залогом продолжительного срока службы изделий.",
+    title: "about-p-3-head",
+    text: "about-p-3-desc",
+   
   },
 ];
 
