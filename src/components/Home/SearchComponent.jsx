@@ -278,7 +278,7 @@ export default function SearchComponent() {
               </Box>
             </Stack>
           </div>
-          <div className="text-center">
+          <div className="text-center pb-6">
             <Button
               sx={{
                 background: "black",
