@@ -30,6 +30,7 @@ export default function ProductsPage() {
   const techId = params.get("tech");
   const typeId = params.get("type");
   const colorId = params.get("color");
+  const searchQ = params.get("q");
   const [brandId, setBrandId] = useState([]);
   const [colors, setColors] = useState([]);
   const [offset, setOffset] = useState(0);
@@ -41,6 +42,16 @@ export default function ProductsPage() {
   const [searchEn, setSearchEn] = useState("");
   const [technology, setTechnology] = useState([]);
   const [type, setType] = useState([]);
+
+  useEffect(() => {
+    if(i18n.language == "uz") {
+      setSearchUz(searchQ)
+    }else if(i18n.language == "ru") {
+      setSearchRu(searchQ)
+    }else {
+      setSearchEn(searchQ)
+    }
+  }, [searchQ])
 
 
   useEffect(() => {
@@ -100,6 +111,8 @@ export default function ProductsPage() {
       //   formData.append("technology", technology[i])
       // }
 
+      
+
       const query = {
         params: {
           limit,
@@ -119,6 +132,7 @@ export default function ProductsPage() {
         },
       };
 
+      console.log(query);
       const res = await postFilteredProducts(query);
       console.log(res, "asd");
       setData(res);

@@ -55,6 +55,8 @@ export default function SearchComponent() {
   const [technology, setTechnology] = useState([]);
   const [type, setType] = useState([]);
   const [category, setCategory] = useState("");
+  const [search, setSearch] = useState("");
+
 
   const [color, setColor] = useState(null);
 
@@ -97,7 +99,7 @@ export default function SearchComponent() {
             </IconButton>
           </div>
           <div className="w-full sm:w-2/3 sm:ml-auto">
-            <TextField fullWidth label={t("search")} variant="standard" />
+            <TextField value={search} onChange={(e) => setSearch(e.target.value)} fullWidth label={t("search")} variant="standard" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mt-[24px] gap-4 ">
             <Box>
@@ -297,7 +299,7 @@ export default function SearchComponent() {
                   category ? "category=" + category : ""
                 }${technology?.length ? "&tech=" + technology?.join(",") : ""}${
                   type?.length ? "&type=" + type?.join(",") : ""
-                }${color ? "&color=" + color : ""}`;
+                }${color ? "&color=" + color : ""}${search ? "&q=" + search : ""}`;
                 navigate(url);
                 handleClose();
               }}
