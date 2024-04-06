@@ -57,7 +57,6 @@ export default function SearchComponent() {
   const [category, setCategory] = useState("");
   const [search, setSearch] = useState("");
 
-
   const [color, setColor] = useState(null);
 
   const [open, setOpen] = React.useState(false);
@@ -88,7 +87,7 @@ export default function SearchComponent() {
         onClick={handleClose}
       >
         <div
-          className={"bg-white  py-[50px] h-fit p-10 "}
+          className={"bg-white  py-[50px] h-fit p-4 sm:p-10 "}
           onClick={(e) => {
             e.stopPropagation();
           }}
@@ -98,10 +97,16 @@ export default function SearchComponent() {
               <Close />
             </IconButton>
           </div>
-          <div className="w-full sm:w-2/3 sm:ml-auto">
-            <TextField value={search} onChange={(e) => setSearch(e.target.value)} fullWidth label={t("search")} variant="standard" />
+          <div className="w-full md:w-2/3 sm:ml-auto">
+            <TextField
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              fullWidth
+              label={t("search")}
+              variant="standard"
+            />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mt-[24px] gap-4 ">
+          <div className="grid grid-cols-1 tel:grid-cols-2 md:grid-cols-3 mt-[24px] gap-4 mb-5">
             <Box>
               <Typography
                 sx={{
@@ -127,11 +132,13 @@ export default function SearchComponent() {
                   >
                     <FormControlLabel
                       value={""}
+                      sx={{ marginRight: 0 }}
                       control={<Radio style={{ color: "#000" }} />}
                       label={t("all")}
                     />
                     {categories?.data?.map((item) => (
                       <FormControlLabel
+                        sx={{ marginRight: 0 }}
                         key={item?.category_id}
                         value={item?.category_id}
                         control={<Radio style={{ color: "#000" }} />}
@@ -158,6 +165,7 @@ export default function SearchComponent() {
                 <FormGroup>
                   {types?.data?.map((item) => (
                     <FormControlLabel
+                      sx={{ marginRight: 0 }}
                       control={
                         <Checkbox
                           style={{ fontFamily: "Gilroy", color: "#000" }}
@@ -180,103 +188,102 @@ export default function SearchComponent() {
                 </FormGroup>
               </div>
             </Box>
-            <Stack spacing={3}>
-              <Box>
-                <Typography
-                  sx={{
-                    fontSize: "20px",
-                    fontWeight: "bold",
-                    textTransform: "uppercase",
-                    fontFamily: "Gilroy",
-                  }}
-                >
-                  {t("technology")}
-                </Typography>
+            <Box>
+              <Typography
+                sx={{
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                  textTransform: "uppercase",
+                  fontFamily: "Gilroy",
+                }}
+              >
+                {t("technology")}
+              </Typography>
 
-                <div className="">
-                  <FormGroup>
-                    {technologies?.data?.map((item) => (
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            style={{ fontFamily: "Gilroy", color: "#000" }}
-                            value={item.technology_id}
-                            checked={technology?.includes(item.technology_id)}
-                            onChange={() =>
-                              handleCheckboxChange(
-                                technology,
-                                setTechnology,
-                                item?.technology_id
-                              )
-                            }
-                          />
-                        }
-                        label={
-                          <Typography
-                            style={{ fontWeight: 300, fontFamily: "Gilroy" }}
-                          >
-                            {item[`technology_name_${i18n?.language ?? "uz"}`]}
-                          </Typography>
-                        }
-                      />
-                    ))}
-                  </FormGroup>
-                </div>
-              </Box>
-              <Box>
-                <Typography
-                  sx={{
-                    fontSize: "20px",
-                    fontWeight: "bold",
-                    textTransform: "uppercase",
-                    fontFamily: "Gilroy",
-                  }}
-                >
-                  {t("colors")}
-                </Typography>
-                <Box
-                  sx={{
-                    display: "flex",
-                    gap: "10px",
-                    flexWrap: "wrap",
-                    mt: 1,
-                  }}
-                >
-                  {colorsData?.map((item) => (
-                    <button
-                      style={{
-                        width: "50px",
-                        height: "50px",
-                        borderRadius: "4px",
-                        overflow: "hidden",
-                        margin: "0px",
-                        padding: 0,
-                        border: color == item?.id ? "2.5px solid black" : 0,
-                        cursor: "pointer",
-                      }}
-                      onClick={() => {
-                        if (item?.id == color) {
-                          setColor(null);
-                        } else {
-                          setColor(item?.id);
-                        }
-                      }}
-                    >
-                      <img
-                        src={item.image}
-                        alt={item?.name}
-                        className=""
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
-                        }}
-                      />
-                    </button>
+              <div className="">
+                <FormGroup>
+                  {technologies?.data?.map((item) => (
+                    <FormControlLabel
+                      sx={{ marginRight: 0 }}
+                      control={
+                        <Checkbox
+                          style={{ fontFamily: "Gilroy", color: "#000" }}
+                          value={item.technology_id}
+                          checked={technology?.includes(item.technology_id)}
+                          onChange={() =>
+                            handleCheckboxChange(
+                              technology,
+                              setTechnology,
+                              item?.technology_id
+                            )
+                          }
+                        />
+                      }
+                      label={
+                        <Typography
+                          style={{ fontWeight: 300, fontFamily: "Gilroy" }}
+                        >
+                          {item[`technology_name_${i18n?.language ?? "uz"}`]}
+                        </Typography>
+                      }
+                    />
                   ))}
-                </Box>
+                </FormGroup>
+              </div>
+            </Box>
+            <Box>
+              <Typography
+                sx={{
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                  textTransform: "uppercase",
+                  fontFamily: "Gilroy",
+                }}
+              >
+                {t("colors")}
+              </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  gap: "10px",
+                  flexWrap: "wrap",
+                  mt: 1,
+                }}
+              >
+                {colorsData?.map((item) => (
+                  <button
+                    style={{
+
+                      borderRadius: "4px",
+                      overflow: "hidden",
+                      margin: "0px",
+                      padding: 0,
+                      border: color == item?.id ? "2.5px solid black" : 0,
+                      cursor: "pointer",
+                    }}
+                    className="sm:w-[50px] w-[40px] sm:h-[50px] h-[40px]"
+                    onClick={() => {
+                      if (item?.id == color) {
+                        setColor(null);
+                      } else {
+                        setColor(item?.id);
+                      }
+                    }}
+                  >
+                    <img
+                      src={item.image}
+                      alt={item?.name}
+                      className=""
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </button>
+                ))}
               </Box>
-            </Stack>
+            </Box>
           </div>
           <div className="text-center pb-6">
             <Button
@@ -299,7 +306,9 @@ export default function SearchComponent() {
                   category ? "category=" + category : ""
                 }${technology?.length ? "&tech=" + technology?.join(",") : ""}${
                   type?.length ? "&type=" + type?.join(",") : ""
-                }${color ? "&color=" + color : ""}${search ? "&q=" + search : ""}`;
+                }${color ? "&color=" + color : ""}${
+                  search ? "&q=" + search : ""
+                }`;
                 navigate(url);
                 handleClose();
               }}
