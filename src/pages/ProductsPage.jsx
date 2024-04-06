@@ -132,7 +132,6 @@ export default function ProductsPage() {
         },
       };
 
-      console.log(query);
       const res = await postFilteredProducts(query);
       console.log(res, "asd");
       setData(res);
