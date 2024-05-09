@@ -239,19 +239,19 @@ export const PartnerData = [
 
 export const AboutPageProductData = [
   {
-    img: "https://ukrlinen.com/modules/xipblog/img/large-about-advantages.jpg",
+    img: "/img/about-p-1.jpg",
     title: "about-p-1-head",
     text: "about-p-1-desc",
    
   },
   {
-    img: "https://slavamebel.ru/images/page/78357836.jpg",
+    img: "/img/about-p-2.png",
     title: "about-p-2-head",
     text: "about-p-2-desc",
    
   },
   {
-    img: "https://www.angstrem-mebel.ru/upload/medialibrary/e21/o78ohc6d948jqwyimoja1jpxpu0k1lij.png",
+    img: "/img/about-p-3.png",
     title: "about-p-3-head",
     text: "about-p-3-desc",
    
