@@ -1,4 +1,4 @@
-import { Box, Container } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import React from "react";
 import HeaderMenu from "../components/Home/HeaderMenu";
 import Footer from "../components/Home/Footer";
@@ -9,9 +9,11 @@ import Certificate from "../components/About/Certificate";
 import Media from "../components/media";
 import { useVideos } from "../query-data/data.service";
 import { youTubeLinkParser } from "../utils/functions";
+import { useTranslation } from "react-i18next";
 
 export default function AboutPage() {
   const { data, isLoading } = useVideos();
+  const {t} = useTranslation()
   return (
     <Box>
       <HeaderMenu />
@@ -27,6 +29,7 @@ export default function AboutPage() {
       >
         <div className="py-[40px]">
         <img src="/img/about-banner.jpg" alt="" className="w-full h-[250px] sm:h-[300px] md:h-[400px] xl:h-[500px] object-cover rounded-[10px] lg:rounded-[18px]" />
+        <Typography sx={{ color: "gray", mt: 2 }}>{t("about-4")}</Typography>
         </div>
       </Container>
       <Certificate />

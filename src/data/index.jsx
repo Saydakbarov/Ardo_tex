@@ -245,13 +245,13 @@ export const AboutPageProductData = [
    
   },
   {
-    img: "/img/about-p-2.png",
+    img: "/img/about-p-2.jpg",
     title: "about-p-2-head",
     text: "about-p-2-desc",
    
   },
   {
-    img: "/img/about-p-3.png",
+    img: "/img/about-p-3.jpg",
     title: "about-p-3-head",
     text: "about-p-3-desc",
    

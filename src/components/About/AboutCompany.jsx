@@ -43,7 +43,6 @@ export default function AboutCompany() {
             {t("about-3")}
           </Typography> */}
           <Typography sx={{ color: "gray", mt: 2 }}>{t("about-3")}</Typography>
-          <Typography sx={{ color: "gray", mt: 2 }}>{t("about-4")}</Typography>
 
           {catalog?.data?.map((item) => (
             <Button
